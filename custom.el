@@ -469,7 +469,7 @@
      ("org" . "http://orgmode.org/elpa/"))))
  '(package-selected-packages
    (quote
-    (elpy ess-smart-equals ess echo-bell zenburn-theme yasnippet web-mode wc-mode w3m thingatpt+ synonyms smtpmail-multi smartparens slime python-info pydoc-info projectile-speedbar projectile-sift pp+ php-mode php+-mode pcomplete-extension org-wc org-ref org-plus-contrib multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode ggtags fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ csv-mode crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
+    (magit elpy ess-smart-equals ess echo-bell zenburn-theme yasnippet web-mode wc-mode w3m thingatpt+ synonyms smtpmail-multi smartparens slime python-info pydoc-info projectile-speedbar projectile-sift pp+ php-mode php+-mode pcomplete-extension org-wc org-ref org-plus-contrib multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode ggtags fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ csv-mode crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
  '(projectile-mode t nil (projectile))
  '(projectile-project-root-files
    (quote
