@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: po positional_options
+# key: po
+# --
+po::positional_options_description ${1:pod};
+$1.add("${2:input}", -1);

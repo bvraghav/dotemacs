@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: frame
+# key: fr
+# --
+:PROPERTIES:
+:BEAMER_ENV: frame
+:END:

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: matvec
+# key: matvec
+# --
+std::vector<cv::Mat> $1;
+${2:_$1.getMatVector($1);
+}$0

@@ -1,0 +1,15 @@
+# -*- mode: snippet -*-
+# name: namespace
+# key: ns
+# binding: C-, C-n
+# --
+namespace ${1:`(if (buffer-file-name)
+                   (upcase-initials
+		    (file-name-nondirectory
+		     (substring
+		      (file-name-directory (buffer-file-name)) 0 -1)))
+                 "bvr")`} {
+
+          `yas/selected-text`$0
+
+}  // $1

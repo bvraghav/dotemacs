@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: div
+# key: div
+# binding: C-, w
+# --
+<div${1: ${2:class}="$3"}>
+  `(yas/selected-text)`
+  $0
+</div>

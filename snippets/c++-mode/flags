@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: flags
+# key: fl
+# --
+flags["$1"].as<${2:std::string}>()

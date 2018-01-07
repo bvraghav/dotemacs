@@ -1,0 +1,22 @@
+# -*- mode: cc -*-
+# name : #ifndef XXX; #define XXX; #endif
+# key: once
+# --
+#ifndef     ${1:`(mapconcat
+ 'upcase
+ (split-string
+  (let ((case-fold-search nil))
+    (replace-regexp-in-string
+     "\\([a-z]\\)\\([A-Z]\\)" "\\1 \\2"   
+     (if (buffer-file-name)
+	 (file-name-nondirectory (buffer-file-name))
+       "bvrSAMple.hpp")))
+  "[ \\.]" t)
+ "_")
+`}
+#define     $1
+
+$0
+
+// defined  $1
+#endif

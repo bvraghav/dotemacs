@@ -1,0 +1,11 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: tuple
+# key: tup
+# binding: C-, C-t
+# --
+#include <boost/tuple/tuple.hpp>
+using boost::tuple;
+using boost::make_tuple;
+
+${1:#include <boost/tuple/tuple_io.hpp>
+}${2:#include <boost/tuple/tuple_comparison.hpp>}$0

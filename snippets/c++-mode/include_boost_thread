@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: include_boost_thread
+# key: inc
+# --
+#include <boost/thread/thread.hpp>
+using boost::thread_group;

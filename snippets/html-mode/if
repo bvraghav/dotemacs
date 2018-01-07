@@ -1,0 +1,9 @@
+# key: if
+# name: if
+# --
+<!--#if expr="$1" -->
+${2:`yas/selected-text`}
+${3:<!--#elif expr="$4" -->
+$5
+}<!--#endif -->
+$0

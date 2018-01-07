@@ -1,0 +1,4 @@
+# key: endl
+# name: endl
+# --
+${1:std::cerr }${2:<< }std::endl$0

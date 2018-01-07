@@ -1,0 +1,5 @@
+# key: done
+# name: done
+# --
+${1:std::cerr} << " ...${2:done}" << std::endl;
+$0

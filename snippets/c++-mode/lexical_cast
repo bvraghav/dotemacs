@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lexical_cast
+# key: cast
+# --
+lexical_cast<$1>${2:(${3:`(yas-selected-text)`})}

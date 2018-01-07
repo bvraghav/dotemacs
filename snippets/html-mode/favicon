@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: favicon
+# key: favicon
+# --
+<link rel="icon" href="${1:/favicon.png}" type="${2:image/png}">
+$0

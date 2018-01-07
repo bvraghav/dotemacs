@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: set
+# key: set
+# --
+<!--#set var="$1" value="$2" -->
+$0

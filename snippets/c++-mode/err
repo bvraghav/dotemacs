@@ -1,0 +1,5 @@
+# key: err
+# name: err
+# --
+std::cerr << "[${1:info}] $2: $3"${4: << std::endl};
+$0

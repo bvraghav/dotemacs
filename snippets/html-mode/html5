@@ -1,0 +1,26 @@
+# -*- mode: snippet -*-
+# name: html5
+# key: html5
+# --
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>$1</title>
+  <meta name="description" content="$1">
+  <meta name="author" content="$2">
+
+  <link rel="stylesheet" href="${3:style.css}">
+
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  $0
+  ${4:<script src="${5:js/scripts.js}"></script>}
+</body>
+</html>

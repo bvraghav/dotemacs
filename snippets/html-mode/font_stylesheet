@@ -1,0 +1,7 @@
+# key: font
+# name: font_stylesheet
+# --
+<!-- Font Stylesheet
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<link href='//fonts.googleapis.com/css?family=$1:$2' rel='stylesheet' type='text/css'>
+$0

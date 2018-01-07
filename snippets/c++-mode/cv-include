@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: cv-include
+# key: cv
+# --
+#include <opencv2/${1:core}.hpp>$0

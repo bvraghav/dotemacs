@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: include boost::shared_ptr;
+# key: shpi
+# --
+#include <boost/shared_ptr.hpp>

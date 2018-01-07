@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: log_include
+# key: log
+# --
+#include <bvr/log_init.hpp>
+$0

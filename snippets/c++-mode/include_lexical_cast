@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: include_lexical_cast
+# key: inc
+# --
+#include <boost/lexical_cast.hpp>
+using boost::lexical_cast;

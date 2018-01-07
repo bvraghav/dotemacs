@@ -1,2 +1,0 @@
-# dotemacs
-Emacs Customization

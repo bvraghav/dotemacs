@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: testcheck
+# key: testcheck
+# --
+BOOST_CHECK($0);

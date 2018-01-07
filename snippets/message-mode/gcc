@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: gcc
+# key: gcc
+# --
+Gcc: ${1:nnimap+${2:r-bvr}:INBOX.Sent}
+${3:X-SMTP-Server: mail.bvraghav.com}$0

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: emph
+# key: emph
+# binding: C-, C-i
+# --
+/`(yas/selected-text)`$0/

@@ -1,0 +1,4 @@
+# key: echo
+# name: echo
+# --
+<!--#echo var="$1" -->$0

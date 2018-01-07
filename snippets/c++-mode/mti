@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: mti
+# key: mti
+# --
+#include <boost/random/mersenne_twister.hpp>
+using boost::random::mt19937;
+
+#include <boost/random/uniform_int_distribution.hpp>
+using boost::random::uniform_int_distribution;
+$0

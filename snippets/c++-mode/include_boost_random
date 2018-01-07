@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: include_boost_random
+# key: inc
+# --
+#include <boost/random/mersenne_twister.hpp>
+#include <boost/random/uniform_int_distribution.hpp>
+typedef boost::random::mt19937 rng_type;
+typedef boost::random::uniform_int_distribution<> dist_type;

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: shared_ptr
+# key: shp
+# binding: C-, C-p
+# --
+boost::shared_ptr<${1:`(or yas/selected-text 'int)`}> ${2:${1:$(progn (aset yas-text 0 (downcase (aref yas-text 0))) yas-text)}}

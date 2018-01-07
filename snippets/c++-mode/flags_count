@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: flags_count
+# key: fl
+# --
+flags.count("$1")

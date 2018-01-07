@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: testcheckequal
+# key: testcheckequal
+# --
+BOOST_CHECK_EQUAL($1, $2);$0

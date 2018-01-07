@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: asr
+# key: asr
+# --
+#include <boost/assert.hpp>
+#define assert_ BOOST_ASSERT
+$0

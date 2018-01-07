@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: env
+# key: env
+# --
+<!--#printenv -->
+$0

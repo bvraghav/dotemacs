@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: bold
+# key: *
+# binding: C-, C-b
+# --
+*`(yas/selected-text)`$0*

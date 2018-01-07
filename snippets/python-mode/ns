@@ -1,0 +1,5 @@
+# key: ns
+# name: ns
+# --
+with tf.name_scope('$1') :
+$0

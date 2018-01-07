@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: include_boost_tokenizer
+# key: inc
+# --
+#include <boost/tokenizer.hpp>
+typedef boost::char_separator<char> separator;
+typedef boost::tokenizer<separator> tokenizer;

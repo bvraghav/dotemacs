@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: r
+# key: r
+# --
+From: B.V. Raghav <r@bvraghav.com>
+Gcc: nnimap+r-bvr:INBOX.Sent
+X-SMTP-Server: mail.bvraghav.com
+--text follows this line--
+$0
+
+-- 
+(B.V. Raghav)

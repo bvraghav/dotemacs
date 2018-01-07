@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: meta_mobile
+# key: meta
+# --
+<!-- Viewport Meta Data for Mobile
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta name="viewport" content="width=device-width, initial-scale=1">

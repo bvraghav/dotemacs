@@ -1,0 +1,6 @@
+# -*- mode:snippet -*-
+# name: link_css
+# key: link
+# --
+<link rel="stylesheet" href="${1:res/css/styles.css}">
+$0

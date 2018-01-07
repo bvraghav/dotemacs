@@ -1,0 +1,40 @@
+# -*- mode: snippet -*-
+# name: GlapTestInclude
+# key: tinc
+# binding: C-, C-t
+# --
+// Library Includes
+#include <boost/bind.hpp>
+using boost::bind;
+
+// Glap Includes
+#include <glap/App.hpp>
+#include <glap/RenderUnit.hpp>
+using glap::RenderUnitPtr;
+
+// Test Includes
+#include "test_setup.h"
+
+// Subject Includes
+#include <${1:glap/}>
+
+int main(int argc, char *argv[])
+{
+  Glap::App app;
+
+  // Setup Scene
+  // contains functions like glEnable, DepthFunc, BlendFunc etc.
+  test_setup();
+
+  // Enqueue Render Setup for each loop
+  app.addRenderFunc(test_render_setup);
+
+  // Test Inject
+  $0
+
+  app.run();
+
+  // rely on RAII for cleanup.
+
+  return 0;
+}

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: exec
+# key: exec
+# --
+<!--#exec cmd="$1" -->$0

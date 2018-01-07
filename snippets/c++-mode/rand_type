@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: rand_type
+# key: rand
+# --
+// Typedefining Random
+typedef boost::random::mt19937 rng_type;
+template<typename T>
+using dist_type = boost::random::uniform_int_distribution<T>;

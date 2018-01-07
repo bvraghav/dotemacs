@@ -1,0 +1,7 @@
+# key: fav
+# name: fav-favicon
+# --
+<link rel="icon" 
+type="image/png" 
+href="$1" />
+$0

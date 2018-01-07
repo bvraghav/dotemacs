@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: try
+# key: try
+# binding: C-, t
+# a bit too intrusive now still, not always I want to do this
+# --
+try {
+    `(or yas/selected-text (car kill-ring))`$2
+} catch (${1:std::exception const&}) {
+  $0
+}

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: testinc
+# key: testinc
+# --
+#define BOOST_TEST_MODULE $1
+#include <boost/test/unit_test.hpp>
+$0

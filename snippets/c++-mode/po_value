@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: po_value
+# key: po
+# --
+po::value<${1:std::string}>(${2:&var})${3:->default_value($4)}$0

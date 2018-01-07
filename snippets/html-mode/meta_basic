@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: meta_basic
+# key: meta
+# --
+<!-- Basic Meta Data
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+<meta charset="utf-8">
+<title>$1</title>
+<meta name="description" content="$2">
+<meta name="author" content="$3">
+$0

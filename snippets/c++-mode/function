@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: function
+# key: f
+# --
+${1:type} ${2:${3:Class}::${4:name}}(${5:args})${6: const}
+{
+  $0
+}

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: rand_init
+# key: rand
+# --
+rng_type rng(std::time(0));
+dist_type<${1:uint64}> dist(${2:0}, ${3:255});
+$0

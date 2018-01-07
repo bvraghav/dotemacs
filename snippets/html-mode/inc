@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: inc
+# key: inc
+# --
+<!--#include
+virtual="$1"
+${2:onerror="$3"
+}-->$0

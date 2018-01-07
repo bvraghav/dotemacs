@@ -1,0 +1,7 @@
+# key: inc
+# name: include_boost_shared_ptr
+# --
+#include <boost/make_shared.hpp>
+#include <boost/shared_ptr.hpp>
+template<typename T>
+using ptr = boost::shared_ptr<T>;
