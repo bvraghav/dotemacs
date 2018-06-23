@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: logging
+# key: lg
+# --
+import logging as lg
+lg.basicConfig(level=lg.DEBUG, format='%(levelname)-8s: %(message)s')

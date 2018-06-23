@@ -6,12 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("/usr/share/info" "/usr/local/share/info")))
  '(Info-default-directory-list (quote ("/usr/share/info/" "~/.local/share/info/")))
+ '(Man-width 65)
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")))
- '(auto-save-file-name-transforms
-   (quote
-    (("\\`/[^/]*:\\([^/]*/\\)*\\([^/]*\\)\\'" "/tmp/\\2" t)
-     ("\\(.*\\)" "~/.emacs.d/autosaves/\\1" t))))
- '(backup-directory-alist (quote ((".*" . "~/.emacs.d/backups/"))))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(bookmark-save-flag 1)
  '(bookmark-version-control t)
@@ -19,9 +15,11 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
+    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
+ '(desktop-path (quote ("~/.emacs.d/" "~" "~/.emacs.d/dtp")))
+ '(desktop-save-mode t)
+ '(dired-isearch-filenames t)
  '(dired-listing-switches "-alh")
- '(display-time-day-and-date t)
  '(echo-bell-mode t)
  '(gnus-summary-line-format "%U%R%z%I%(%[%d: %-23,23f%]%) %s
 ")
@@ -437,19 +435,22 @@
  '(js-indent-level 2)
  '(lua-indent-level 2)
  '(mm-discouraged-alternatives (quote ("text/html" "text/richtext")))
+ '(nginx-indent-level 2)
  '(org-agenda-files (quote ("~/org")))
  '(org-babel-load-languages
    (quote
-    ((emacs-lisp . t)
+    ((js . t)
+     (http . t)
+     (emacs-lisp . t)
      (R . t)
      (shell . t)
-     (sh . t)
      (python . t)
      (perl . t)
      (dot . t)
      (gnuplot . t)
      (sql . t)
-     (lisp . t))))
+     (lisp . t)
+     (ipython . t))))
  '(org-default-notes-file "~/org/notes.org")
  '(org-export-backends (quote (ascii beamer html icalendar latex odt)))
  '(org-file-apps
@@ -469,8 +470,7 @@
      ("org" . "http://orgmode.org/elpa/"))))
  '(package-selected-packages
    (quote
-    (magit elpy ess-smart-equals ess echo-bell zenburn-theme yasnippet web-mode wc-mode w3m thingatpt+ synonyms smtpmail-multi smartparens slime python-info pydoc-info projectile-speedbar projectile-sift pp+ php-mode php+-mode pcomplete-extension org-wc org-ref org-plus-contrib multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode ggtags fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ csv-mode crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
- '(projectile-mode t nil (projectile))
+    (php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
  '(projectile-project-root-files
    (quote
     ("rebar.config" "project.clj" "build.boot" "SConstruct" "pom.xml" "build.sbt" "gradlew" "build.gradle" ".ensime" "Gemfile" "requirements.txt" "setup.py" "tox.ini" "gulpfile.js" "Gruntfile.js" "bower.json" "composer.json" "Cargo.toml" "mix.exs" "stack.yaml" "info.rkt" "DESCRIPTION" "TAGS" "GTAGS")))
@@ -480,7 +480,7 @@
  '(python-indent-offset 2)
  '(sh-basic-offset 2)
  '(sh-indentation 2)
- '(tramp-backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))))
+ '(tramp-backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))) nil (tramp))
  '(visible-bell t)
  '(w3m-cookie-accept-bad-cookies (quote ask))
  '(w3m-enable-google-feeling-lucky t)
@@ -552,8 +552,8 @@
      ("\\`archie:" w3m-search-uri-replace "iij-archie")
      ("\\`alc:" w3m-search-uri-replace "alc")
      ("\\`teld:" w3m-search-uri-replace "teld")
-     ("\\`urn:ietf:rfc:\\([0-9]+\\)" w3m-pattern-uri-replace "http://www.ietf.org/rfc/rfc\\1.txt"))))
- '(woman-fill-column 85))
+     ("\\`urn:ietf:rfc:\\([0-9]+\\)" w3m-pattern-uri-replace "http://www.ietf.org/rfc/rfc\\1.txt")))))
+
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

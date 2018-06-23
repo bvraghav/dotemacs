@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: log
+# key: lg
+# --
+lg.${1:$$(yas-choose-value '("info" "debug" "warning" "error" "critical" "log"))}('$0')

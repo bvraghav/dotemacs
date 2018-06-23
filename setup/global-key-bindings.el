@@ -47,4 +47,7 @@
 (global-set-key (kbd "C-z C-l") #'slug)
 (global-set-key (kbd "C-z l") #'slug-dwim)
 
+;; Reverse characters in a region
+(global-set-key (kbd "C-z C-r") #'bvr-reverse-region)
+
 (provide 'global-key-bindings)

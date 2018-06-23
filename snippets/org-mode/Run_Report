@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Run Report
+# key: Run
+# --
+** Run $1
+*** Output
+#+BEGIN_EXAMPLE
+$2
+#+END_EXAMPLE
+*** Feedback
+#+BEGIN_EXAMPLE
+$3
+#+END_EXAMPLE
+$0

@@ -17,4 +17,6 @@
 ;; Apache Indent Level
 (setq apache-indent-level 2)
 
+(add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
+
 (provide 'web-setup)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: parser.add_argument
+# key: pa
+# --
+parser.add_argument('$1', $0)

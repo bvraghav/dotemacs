@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: noweb-ref
+# key: nw
+# --
+:noweb-ref $0

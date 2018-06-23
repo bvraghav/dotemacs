@@ -78,7 +78,14 @@
 ;; Org Capture
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;; Org Babel Evaluate Confirmation not for ipython codes or shell:
+(setq bvr/org-babel-lang '("ipython" "python" "shell" "bash" "sh"))
+(defun bvr/org-confirm-babel-evaluate (lang body)
+  (not (member lang bvr/org-babel-lang)))
+(setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
+
 ;; org Babel Setup
 (require 'org)
 
 (provide 'org-setup)
+

@@ -7,9 +7,6 @@
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'load-path "~/.emacs.d/setup")
 
-;; Desktop Path
-(setq desktop-dirname "~/.emacs.d/dtp")
-
 (require 'basic-look-and-feel)
 (require 'org-setup)
 (require 'plumb)
@@ -32,6 +29,11 @@
 (require 'slug)
 (require 'caffe-mode-setup)
 
+(require 'trivial-functions)
+
 (require 'global-key-bindings)
+
+;; From .elisp
+(require 'vue-mode)
 
 (pinentry-start)
