@@ -24,7 +24,7 @@
 (require 'rectangle-replace)
 (require 'auto-insert-setup)
 (require 'w3m-ext)
-;; (require 'slime-setup)
+(require 'slime-setup)
 (require 'speedbar)
 (require 'slug)
 (require 'caffe-mode-setup)
