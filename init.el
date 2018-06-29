@@ -6,6 +6,9 @@
 ;; Elisp Path
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'load-path "~/.emacs.d/setup")
+(add-to-list 'load-path "~/.emacs.d/myelpa")
+
+(require 'myelpa-setup)
 
 (require 'basic-look-and-feel)
 (require 'org-setup)
