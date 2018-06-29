@@ -482,6 +482,8 @@
  '(python-indent-offset 2)
  '(sh-basic-offset 2)
  '(sh-indentation 2)
+ '(slime-auto-start (quote ask))
+ '(slime-fuzzy-completion-in-place nil)
  '(tramp-backup-directory-alist (quote ((".*" . "~/.emacs.d/backups"))) nil (tramp))
  '(visible-bell t)
  '(w3m-cookie-accept-bad-cookies (quote ask))
