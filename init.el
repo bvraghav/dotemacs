@@ -32,11 +32,10 @@
 (require 'slug)
 (require 'caffe-mode-setup)
 
-(require 'trivial-functions)
-
 (require 'global-key-bindings)
 
 ;; From .elisp
+(require 'trivial-functions)
 (require 'vue-mode)
 
 (pinentry-start)

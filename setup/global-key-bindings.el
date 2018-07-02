@@ -50,4 +50,7 @@
 ;; Reverse characters in a region
 (global-set-key (kbd "C-z C-r") #'bvr-reverse-region)
 
+;; Magit
+(global-set-key (kbd "C-x g") 'magit-status)
+
 (provide 'global-key-bindings)
