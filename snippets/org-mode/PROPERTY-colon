@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: PROPERTY-colon
+# key: prop
+# --
+#+PROPERTY: $0
