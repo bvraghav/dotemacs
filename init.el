@@ -3,6 +3,10 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(setq confidential-file "~/.emacs.d/confidential-setup.el")
+(when (file-exists-p confidential-file)
+  (load confidential-file))
+
 ;; Elisp Path
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'load-path "~/.emacs.d/setup")
@@ -31,6 +35,8 @@
 (require 'speedbar)
 (require 'slug)
 (require 'caffe-mode-setup)
+
+(require 'proxy-setup)
 
 (require 'global-key-bindings)
 

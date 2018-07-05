@@ -51,6 +51,9 @@
 (global-set-key (kbd "C-z C-r") #'bvr-reverse-region)
 
 ;; Magit
-(global-set-key (kbd "C-x g") 'magit-status)
+(global-set-key (kbd "C-x g") #'magit-status)
+
+;; Proxy
+(global-set-key (kbd "C-z p") #'bvr-proxy-toggle)
 
 (provide 'global-key-bindings)
