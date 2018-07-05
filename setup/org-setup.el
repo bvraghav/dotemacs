@@ -43,6 +43,7 @@
   (org-indent-mode t)
   (auto-fill-mode t)
   (flyspell-mode t)
+  (yas-minor-mode-on)
   (setq org-log-done 'time))
 (add-hook 'org-mode-hook 'bvr-org-setup)
 
