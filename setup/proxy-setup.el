@@ -20,6 +20,7 @@
 ;; Define script vars
 (defvar bvr-proxy-is-active nil)
 
+;; Define functions
 (defun bvr-proxy-enable ()
   (interactive)
   (dolist (var bvr-proxy-vars)
