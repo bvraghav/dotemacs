@@ -13,10 +13,10 @@
          (address "bvraghav@iitk.ac.in")
          (organization "Indian Institute of Technology, Kanpur")
          (signature "(B.V. Raghav)")
-         ("Gcc" "nnimap+BVR:Sent"))
+         ("Gcc" "nnimap+iitk:Sent"))
 	(header "To" ".*\.iitk\.ac\.in"
 		(organization "Indian Institute of Technology Kanpur")
-		("Gcc" "nnimap+BVR:Sent"))
+		("Gcc" "nnimap+iitk:Sent"))
 		;; (signature-file "~/.signature.gnus")
 	(header "To" ".*\.bvraghav\.com"
 		(signature "(B.V. Raghav)")
