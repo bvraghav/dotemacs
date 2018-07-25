@@ -17,6 +17,11 @@
 ;; Apache Indent Level
 (setq apache-indent-level 2)
 
+;; ES6 based javascript mode
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
+
+;; Use mark multiple to edit sgml tag
+(define-key sgml-mode-map (kbd "C-c C-r") #'rename-sgml-tag)
+(define-key sgml-mode-map (kbd "C-c r") #'rename-sgml-tag)
 
 (provide 'web-setup)
