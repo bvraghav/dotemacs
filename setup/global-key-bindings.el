@@ -50,4 +50,7 @@
 ;; Reverse characters in a region
 (global-set-key (kbd "C-z C-r") #'bvr-reverse-region)
 
+;; Expand Region
+(global-set-key (kbd "C-M-]") #'er/expand-region)
+
 (provide 'global-key-bindings)
