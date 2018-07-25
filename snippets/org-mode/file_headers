@@ -1,0 +1,4 @@
+# key: #
+# name: file_headers
+# --
+#+${1:$$(yas-choose-value '("TITLE" "SUBTITLE" "AUTHOR" "DATE" "PROPERTY"))}: $0

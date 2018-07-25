@@ -50,6 +50,12 @@
 ;; Reverse characters in a region
 (global-set-key (kbd "C-z C-r") #'bvr-reverse-region)
 
+;; Magit
+(global-set-key (kbd "C-x g") #'magit-status)
+
+;; Proxy
+(global-set-key (kbd "C-z p") #'bvr-proxy-toggle)
+
 ;; Expand Region
 (global-set-key (kbd "C-M-]") #'er/expand-region)
 

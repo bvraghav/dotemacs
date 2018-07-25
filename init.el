@@ -3,9 +3,16 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 
+(setq confidential-file "~/.emacs.d/confidential-setup.el")
+(when (file-exists-p confidential-file)
+  (load confidential-file))
+
 ;; Elisp Path
 (add-to-list 'load-path "~/.elisp")
 (add-to-list 'load-path "~/.emacs.d/setup")
+(add-to-list 'load-path "~/.emacs.d/myelpa")
+
+(require 'myelpa-setup)
 
 (require 'basic-look-and-feel)
 (require 'org-setup)
@@ -29,11 +36,13 @@
 (require 'slug)
 (require 'caffe-mode-setup)
 
-(require 'trivial-functions)
+(require 'proxy-setup)
+(require 'openwith-setup)
 
 (require 'global-key-bindings)
 
 ;; From .elisp
+(require 'trivial-functions)
 (require 'vue-mode)
 
 (pinentry-start)

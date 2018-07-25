@@ -43,6 +43,7 @@
   (org-indent-mode t)
   (auto-fill-mode t)
   (flyspell-mode t)
+  (yas-minor-mode-on)
   (setq org-log-done 'time))
 (add-hook 'org-mode-hook 'bvr-org-setup)
 
@@ -79,7 +80,7 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
-(setq bvr/org-babel-lang '("ipython" "python" "shell" "bash" "sh"))
+(setq bvr/org-babel-lang '("ipython" "python" "shell" "bash" "sh" "lisp"))
 (defun bvr/org-confirm-babel-evaluate (lang body)
   (not (member lang bvr/org-babel-lang)))
 (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
