@@ -37,4 +37,7 @@
 (require 'wc-mode)
 (wc-mode t)
 
+;; Expand Region
+(require 'expand-region)
+
 (provide 'basic-look-and-feel)
