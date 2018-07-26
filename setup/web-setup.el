@@ -1,4 +1,6 @@
 ;; Php mode
+(require 'sgml-mode)
+
 (defun bvr-php-indentation()
   "Indent php to 2 spaces"
   (interactive)
