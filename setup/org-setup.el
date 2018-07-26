@@ -1,4 +1,6 @@
 ;; Org Mode
+(require 'yasnippet)
+
 ;; Define org mode for .org folder
 (add-to-list 'auto-mode-alist '("\\.org\\/[^.]*\(.org\)?\\'" . org-mode))
 (setq-default major-mode 'org-mode)
