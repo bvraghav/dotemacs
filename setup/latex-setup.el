@@ -37,6 +37,8 @@
 ;; (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
 (add-hook 'TeX-mode-hook 'reftex-mode)
 (add-hook 'TeX-mode-hook 'flyspell-mode) ;; use C-, and C-. for next-error and auto-correct
+(add-hook 'TeX-mode-hook (lambda ()
+			   (TeX-fold-mode 1)))
 (add-hook 'LaTeX-mode-hook 'bvr-latex-mode-hook)
 
 (require 'auctex-latexmk)
