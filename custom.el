@@ -7,6 +7,56 @@
  '(Info-additional-directory-list (quote ("/usr/share/info" "/usr/local/share/info")))
  '(Info-default-directory-list (quote ("/usr/share/info/" "~/.local/share/info/")))
  '(Man-width 65)
+ '(TeX-command-list
+   (quote
+    (("MultiFileLaTeX" "latexmk" TeX-run-shell nil t)
+     ("LatexMk" "latexmk %(-PDF)%S%(mode) %(file-line-error) %(extraopts) %t" TeX-run-latexmk nil
+      (plain-tex-mode latex-mode doctex-mode)
+      :help "Run LatexMk")
+     ("TeX" "%(PDF)%(tex) %(file-line-error) %(extraopts) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil
+      (plain-tex-mode texinfo-mode ams-tex-mode)
+      :help "Run plain TeX")
+     ("LaTeX" "%`%l%(mode)%' %t" TeX-run-TeX nil
+      (latex-mode doctex-mode)
+      :help "Run LaTeX")
+     ("Makeinfo" "makeinfo %(extraopts) %t" TeX-run-compile nil
+      (texinfo-mode)
+      :help "Run Makeinfo with Info output")
+     ("Makeinfo HTML" "makeinfo %(extraopts) --html %t" TeX-run-compile nil
+      (texinfo-mode)
+      :help "Run Makeinfo with HTML output")
+     ("AmSTeX" "amstex %(PDFout) %(extraopts) %`%S%(mode)%' %t" TeX-run-TeX nil
+      (ams-tex-mode)
+      :help "Run AMSTeX")
+     ("ConTeXt" "%(cntxcom) --once --texutil %(extraopts) %(execopts)%t" TeX-run-TeX nil
+      (context-mode)
+      :help "Run ConTeXt once")
+     ("ConTeXt Full" "%(cntxcom) %(extraopts) %(execopts)%t" TeX-run-TeX nil
+      (context-mode)
+      :help "Run ConTeXt until completion")
+     ("BibTeX" "bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX")
+     ("Biber" "biber %s" TeX-run-Biber nil t :help "Run Biber")
+     ("View" "%V" TeX-run-discard-or-function t t :help "Run Viewer")
+     ("Print" "%p" TeX-run-command t t :help "Print the file")
+     ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command)
+     ("File" "%(o?)dvips %d -o %f " TeX-run-dvips t t :help "Generate PostScript file")
+     ("Dvips" "%(o?)dvips %d -o %f " TeX-run-dvips nil t :help "Convert DVI file to PostScript")
+     ("Dvipdfmx" "dvipdfmx %d" TeX-run-dvipdfmx nil t :help "Convert DVI file to PDF with dvipdfmx")
+     ("Ps2pdf" "ps2pdf %f" TeX-run-ps2pdf nil t :help "Convert PostScript file to PDF")
+     ("Glossaries" "makeglossaries %s" TeX-run-command nil t :help "Run makeglossaries to create glossary file")
+     ("Index" "makeindex %s" TeX-run-index nil t :help "Run makeindex to create index file")
+     ("upMendex" "upmendex %s" TeX-run-index t t :help "Run upmendex to create index file")
+     ("Xindy" "texindy %s" TeX-run-command nil t :help "Run xindy to create index file")
+     ("Check" "lacheck %s" TeX-run-compile nil
+      (latex-mode)
+      :help "Check LaTeX file for correctness")
+     ("ChkTeX" "chktex -v6 %s" TeX-run-compile nil
+      (latex-mode)
+      :help "Check LaTeX file for common mistakes")
+     ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t :help "Spell-check the document")
+     ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
+     ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
+     ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(bookmark-save-flag 1)
@@ -15,7 +65,7 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
+    ("3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
  '(desktop-path (quote ("~/.emacs.d/" "~" "~/.emacs.d/dtp")))
  '(desktop-save-mode t)
  '(dired-isearch-filenames t)
@@ -436,7 +486,15 @@
  '(lua-indent-level 2)
  '(mm-discouraged-alternatives (quote ("text/html" "text/richtext")))
  '(nginx-indent-level 2)
- '(org-agenda-files (quote ("~/org")))
+ '(openwith-associations
+   (quote
+    (("\\.pdf\\'" "evince"
+      (file))
+     ("\\.mp4\\'" "mpv"
+      (file)))))
+ '(org-agenda-files
+   (quote
+    ("~/svr/dp/code/rivet/tests/test_losses.org" "/home/bvr/org/cdstudio.org" "/home/bvr/org/notes.org" "/home/bvr/org/random-string.org" "/home/bvr/org/research-notes.org")))
  '(org-babel-load-languages
    (quote
     ((js . t)
@@ -473,7 +531,7 @@
      ("org" . "http://orgmode.org/elpa/"))))
  '(package-selected-packages
    (quote
-    (openwith mark-multiple slime ox-mediawiki magit php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
+    (gitattributes-mode gitignore-mode gitconfig-mode openwith mark-multiple slime ox-mediawiki magit php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
  '(projectile-project-root-files
    (quote
     ("rebar.config" "project.clj" "build.boot" "SConstruct" "pom.xml" "build.sbt" "gradlew" "build.gradle" ".ensime" "Gemfile" "requirements.txt" "setup.py" "tox.ini" "gulpfile.js" "Gruntfile.js" "bower.json" "composer.json" "Cargo.toml" "mix.exs" "stack.yaml" "info.rkt" "DESCRIPTION" "TAGS" "GTAGS")))
