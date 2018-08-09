@@ -57,6 +57,7 @@
      ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
+ '(TeX-electric-math (quote ("$" . "$")))
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")))
  '(bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks")
  '(bookmark-save-flag 1)

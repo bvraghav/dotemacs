@@ -35,7 +35,13 @@
 )
 
 ;; (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
-(add-hook 'TeX-mode-hook 'reftex-mode)
+;; ^\^\^\
+;; Should be removed completely since zotelo depends upon XUL Runner
+;; based version of zotero. XUL Runner was discontinued by mozilla,
+;; upon which the front end of zotero is based!!
+
+;; (add-hook 'TeX-mode-hook 'reftex-mode)
+(add-hook 'TeX-mode-hook 'turn-on-reftex) ;; Official docs support this now... 
 (add-hook 'TeX-mode-hook 'flyspell-mode) ;; use C-, and C-. for next-error and auto-correct
 (add-hook 'TeX-mode-hook (lambda ()
 			   (TeX-fold-mode 1)))
