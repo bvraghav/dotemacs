@@ -524,6 +524,12 @@
      ("\\.png\\'" . "feh %s")
      ("\\.jpg\\'" . "feh %s")
      ("\\.gif\\'" . "feh %s"))))
+ '(org-html-head-extra
+   "<style>
+  pre.src {background: #3f3f3f; color: #dcdccc}
+  #content {max-width: 600px; margin: auto}
+  #text-table-of-contents ul {list-style: none; margin: 0; padding: 0}
+</style>")
  '(org-image-actual-width (quote (600)))
  '(package-archives
    (quote
