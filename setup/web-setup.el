@@ -21,6 +21,7 @@
 
 ;; ES6 based javascript mode
 (add-to-list 'auto-mode-alist '("\\.json\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 
 ;; Use mark multiple to edit sgml tag
 (define-key sgml-mode-map (kbd "C-c C-r") #'rename-sgml-tag)
