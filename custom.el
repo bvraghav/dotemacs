@@ -495,7 +495,8 @@
       (file)))))
  '(org-agenda-files
    (quote
-    ("~/svr/dp/code/rivet/tests/test_losses.org" "/home/bvr/org/cdstudio.org" "/home/bvr/org/notes.org" "/home/bvr/org/random-string.org" "/home/bvr/org/research-notes.org")))
+    ("~/code/vibex-p/rel-works.org" "~/svr/dp/code/rivet/tests/test_losses.org" "/home/bvr/org/cdstudio.org" "/home/bvr/org/notes.org" "/home/bvr/org/random-string.org" "/home/bvr/org/research-notes.org")))
+ '(org-babel-js-cmd "NODE_PATH=/home/bvr/.local/lib/node_modules node")
  '(org-babel-load-languages
    (quote
     ((js . t)
