@@ -484,6 +484,8 @@
        (quote lacarte-execute-menu-command))))))
  '(image-dired-external-viewer "/usr/bin/feh")
  '(js-indent-level 2)
+ '(js2-missing-semi-one-line-override t)
+ '(js2-strict-missing-semi-warning nil)
  '(lua-indent-level 2)
  '(mm-discouraged-alternatives (quote ("text/html" "text/richtext")))
  '(nginx-indent-level 2)
@@ -531,6 +533,25 @@
   #text-table-of-contents ul {list-style: none; margin: 0; padding: 0}
 </style>")
  '(org-image-actual-width (quote (600)))
+ '(org-src-lang-modes
+   (quote
+    (("jupyter-python" . python)
+     ("js" . js2)
+     ("http" . "ob-http")
+     ("ipython" . python)
+     ("ocaml" . tuareg)
+     ("elisp" . emacs-lisp)
+     ("ditaa" . artist)
+     ("asymptote" . asy)
+     ("dot" . fundamental)
+     ("sqlite" . sql)
+     ("calc" . fundamental)
+     ("C" . c)
+     ("cpp" . c++)
+     ("C++" . c++)
+     ("screen" . shell-script)
+     ("shell" . sh)
+     ("bash" . sh))))
  '(package-archives
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
@@ -539,7 +560,7 @@
      ("org" . "http://orgmode.org/elpa/"))))
  '(package-selected-packages
    (quote
-    (npm-mode erlang gitattributes-mode gitignore-mode gitconfig-mode openwith mark-multiple slime ox-mediawiki magit php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
+    (exec-path-from-shell json-mode flycheck stylus-mode npm-mode erlang gitattributes-mode gitignore-mode gitconfig-mode openwith mark-multiple slime ox-mediawiki magit php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
  '(projectile-project-root-files
    (quote
     ("rebar.config" "project.clj" "build.boot" "SConstruct" "pom.xml" "build.sbt" "gradlew" "build.gradle" ".ensime" "Gemfile" "requirements.txt" "setup.py" "tox.ini" "gulpfile.js" "Gruntfile.js" "bower.json" "composer.json" "Cargo.toml" "mix.exs" "stack.yaml" "info.rkt" "DESCRIPTION" "TAGS" "GTAGS")))
