@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: cv2
-# key: cv2
+# key: cv
 # --
-import cv2
+import cv2 as cv
 $0
