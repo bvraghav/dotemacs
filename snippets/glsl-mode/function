@@ -1,0 +1,8 @@
+# key: f
+# name: function
+# --
+function ${1:`(and (buffer-file-name) (file-name-base (buffer-file-name)))`}($2) {
+$0
+}
+
+#pragma glslify: export($1);
