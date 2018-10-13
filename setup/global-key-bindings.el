@@ -59,4 +59,8 @@
 ;; Expand Region
 (global-set-key (kbd "C-M-]") #'er/expand-region)
 
+;; Man
+(global-set-key (kbd "C-z C-m") #'man)
+(global-set-key (kbd "C-z m") #'man)
+
 (provide 'global-key-bindings)
