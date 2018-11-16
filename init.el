@@ -19,6 +19,7 @@
 (require 'plumb)
 (require 'yas-setup)
 (require 'c-setup)
+(require 'python-setup)
 (require 'web-setup)
 (require 'projectile-setup)
 (require 'gnus-setup)
