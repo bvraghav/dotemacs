@@ -6,6 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(Info-additional-directory-list (quote ("/usr/share/info" "/usr/local/share/info")))
  '(Info-default-directory-list (quote ("/usr/share/info/" "~/.local/share/info/")))
+ '(Man-notify-method (quote pushy))
  '(Man-width 65)
  '(TeX-command-list
    (quote
