@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: parser_add
+# key: parser
+# --
+parser.add_argument(${1:"-a", "--all"}${2:, default=${3:"hi"}}${4:, help=${5:"Say hi to all"}})$0
