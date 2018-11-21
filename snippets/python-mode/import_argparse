@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import_argparse
+# key: parser
+# --
+import argparse

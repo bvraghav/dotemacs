@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Namespace(from argparse)
+# key: ns
+# --
+from argparse import Namespace as NS
