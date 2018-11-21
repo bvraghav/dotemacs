@@ -69,7 +69,7 @@
    (quote
     ("3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
  '(desktop-path (quote ("~/.emacs.d/" "~" "~/.emacs.d/dtp")))
- '(desktop-save-mode t)
+ '(desktop-save-mode nil)
  '(dired-isearch-filenames t)
  '(dired-listing-switches "-alh")
  '(echo-bell-mode t)
