@@ -37,6 +37,9 @@
 (require 'wc-mode)
 (wc-mode t)
 
+;; Fundamental mode
+(add-to-list 'auto-mode-alist '("\\.ply\\'" . fundamental-mode))
+
 ;; Expand Region
 (require 'expand-region)
 
