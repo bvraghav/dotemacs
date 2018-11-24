@@ -40,6 +40,9 @@
 ;; Fundamental mode
 (add-to-list 'auto-mode-alist '("\\.ply\\'" . fundamental-mode))
 
+;; Wavefront Obj mode
+(add-to-list 'auto-mode-alist '("\\.obj\\'" . wavefront-obj-mode))
+
 ;; Expand Region
 (require 'expand-region)
 
