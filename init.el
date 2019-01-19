@@ -44,6 +44,6 @@
 
 ;; From .elisp
 (require 'trivial-functions)
-(require 'vue-mode)
+(require 'vue-mode-setup)
 
 (pinentry-start)
