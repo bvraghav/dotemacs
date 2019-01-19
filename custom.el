@@ -67,12 +67,27 @@
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
-    ("3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
+    ("ec5f697561eaf87b1d3b087dd28e61a2fc9860e4c862ea8e6b0b77bd4967d0ba" "3f44e2d33b9deb2da947523e2169031d3707eec0426e78c7b8a646ef773a2077" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" default)))
  '(desktop-path (quote ("~/.emacs.d/" "~" "~/.emacs.d/dtp")))
  '(desktop-save-mode nil)
  '(dired-isearch-filenames t)
  '(dired-listing-switches "-alh")
  '(echo-bell-mode t)
+ '(ediff-split-window-function (quote split-window-horizontally) t)
+ '(forge-alist
+   (quote
+    (("github.com" "api.github.com" "github.com" forge-github-repository)
+     ("gitlab" "gitlab.com/api/v4" "ssh:gitlab" forge-gitlab-repository)
+     ("gitlab.com" "gitlab.com/api/v4" "gitlab.com" forge-gitlab-repository)
+     ("salsa.debian.org" "salsa.debian.org/api/v4" "salsa.debian.org" forge-gitlab-repository)
+     ("codeberg.org" "codeberg.org/api/v1" "codeberg.org" forge-gitea-repository)
+     ("code.orgmode.org" "code.orgmode.org/api/v1" "code.orgmode.org" forge-gogs-repository)
+     ("bitbucket.org" "api.bitbucket.org/2.0" "bitbucket.org" forge-bitbucket-repository)
+     ("git.savannah.gnu.org" nil "git.savannah.gnu.org" forge-cgit*-repository)
+     ("git.kernel.org" nil "git.kernel.org" forge-cgit-repository)
+     ("repo.or.cz" nil "repo.or.cz" forge-repoorcz-repository)
+     ("git.suckless.org" nil "git.suckless.org" forge-stagit-repository)
+     ("git.sr.ht" nil "git.sr.ht" forge-srht-repository))))
  '(gnus-summary-line-format "%U%R%z%I%(%[%d: %-23,23f%]%) %s
 ")
  '(gnus-thread-indent-level 2)
@@ -498,7 +513,7 @@
       (file)))))
  '(org-agenda-files
    (quote
-    ("~/code/vibex-p/rel-works.org" "~/svr/dp/code/rivet/tests/test_losses.org" "/home/bvr/org/cdstudio.org" "/home/bvr/org/notes.org" "/home/bvr/org/random-string.org" "/home/bvr/org/research-notes.org")))
+    ("~/svr/dp/code/rivet/tests/test_losses.org" "/home/bvr/org/cdstudio.org" "/home/bvr/org/notes.org" "/home/bvr/org/random-string.org" "/home/bvr/org/research-notes.org")))
  '(org-babel-js-cmd "NODE_PATH=/home/bvr/.local/lib/node_modules node")
  '(org-babel-load-languages
    (quote
@@ -553,6 +568,9 @@
      ("screen" . shell-script)
      ("shell" . sh)
      ("bash" . sh))))
+ '(org-todo-keywords
+   (quote
+    ((sequence "TODO(t)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)"))))
  '(package-archives
    (quote
     (("gnu" . "https://elpa.gnu.org/packages/")
@@ -561,7 +579,7 @@
      ("org" . "http://orgmode.org/elpa/"))))
  '(package-selected-packages
    (quote
-    (exec-path-from-shell json-mode flycheck stylus-mode npm-mode erlang gitattributes-mode gitignore-mode gitconfig-mode openwith mark-multiple slime ox-mediawiki magit php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
+    (org-sync forge biblio biblio-core ghub helm helm-bibtex helm-core htmlize hydra key-chord org-plus-contrib org-ref parsebib pdf-tools request-deferred tablist treepy "graphql" graphql w3m wavefront-obj-mode exec-path-from-shell json-mode flycheck stylus-mode npm-mode erlang gitattributes-mode gitignore-mode gitconfig-mode openwith mark-multiple slime ox-mediawiki magit php-mode nginx-mode edit-indirect xah-css-mode pinentry org org-wc org-web-tools ob-http yatemplate yasnippet-snippets yasnippet ob-ipython elpy ess-smart-equals ess echo-bell zenburn-theme wc-mode thingatpt+ synonyms smtpmail-multi python-info pydoc-info projectile-speedbar projectile-sift pp+ php+-mode pcomplete-extension multi-term mc-extras mb-depth+ markdown-mode+ lua-mode lacarte jam-mode info+ icomplete+ icicles highlight graphviz-dot-mode gnuplot-mode glsl-mode fuzzy-match frame-cmds expand-region emmet-mode ein dot-mode doremi-mac doremi-frm doremi-cmd dired-narrow dired-filter dired+ crosshairs cmake-mode cmake-ide bookmark+ bbdb-csv-import aurel auctex-latexmk apropos-fn+var apache-mode)))
  '(projectile-project-root-files
    (quote
     ("rebar.config" "project.clj" "build.boot" "SConstruct" "pom.xml" "build.sbt" "gradlew" "build.gradle" ".ensime" "Gemfile" "requirements.txt" "setup.py" "tox.ini" "gulpfile.js" "Gruntfile.js" "bower.json" "composer.json" "Cargo.toml" "mix.exs" "stack.yaml" "info.rkt" "DESCRIPTION" "TAGS" "GTAGS")))
@@ -628,7 +646,7 @@
      ("de.wikipedia" "http://de.wikipedia.org/wiki/Spezial:Search?search=%s" utf-8)
      ("ja.wikipedia" "http://ja.wikipedia.org/wiki/Special:Search?search=%s" utf-8)
      ("msdn" "http://search.msdn.microsoft.com/search/default.aspx?query=%s" nil)
-     ("teld" "https://oag.iitk.ac.in/Tel/TelephoneDirectory1.php?Select0=S&Select=dept&FDept=%s" nil)
+     ("teld" "https://newoag.iitk.ac.in/Tel/TelephoneDirectory1.php?Select0=S&Select=dept&FDept=%s" nil)
      ("freshmeat" "http://freshmeat.net/search/?q=%s&section=projects" nil))))
  '(w3m-uri-replace-alist
    (quote
@@ -646,7 +664,8 @@
      ("\\`archie:" w3m-search-uri-replace "iij-archie")
      ("\\`alc:" w3m-search-uri-replace "alc")
      ("\\`teld:" w3m-search-uri-replace "teld")
-     ("\\`urn:ietf:rfc:\\([0-9]+\\)" w3m-pattern-uri-replace "http://www.ietf.org/rfc/rfc\\1.txt")))))
+     ("\\`urn:ietf:rfc:\\([0-9]+\\)" w3m-pattern-uri-replace "http://www.ietf.org/rfc/rfc\\1.txt"))))
+ '(whitespace-action nil))
 
 
 (custom-set-faces
@@ -656,4 +675,6 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "xos4 Terminus" :foundry "xos4" :slant normal :weight normal :height 105 :width normal))))
  '(col-highlight ((t (:background "#383838"))))
- '(highlight ((t (:background "dim gray")))))
+ '(highlight ((t (:background "dim gray"))))
+ '(whitespace-hspace ((t (:background "#555555" :foreground "#aaaaaa"))))
+ '(whitespace-space ((t (:foreground "dark gray")))))
