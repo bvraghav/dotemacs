@@ -1,0 +1,25 @@
+# key: sfc
+# name: sfc
+# --
+<template>
+  <div id="$1">
+    
+  </div>
+</template>
+
+<script>
+  export default {
+    props: {},
+    data: () => ({
+
+    }),
+    computed: {
+
+    },
+  };
+</script>
+
+<style lang="stylus">
+  #$1
+  
+</style>
