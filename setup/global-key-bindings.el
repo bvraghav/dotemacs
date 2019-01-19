@@ -63,4 +63,9 @@
 (global-set-key (kbd "C-z C-m") #'man)
 (global-set-key (kbd "C-z m") #'man)
 
+;; Whitespace mode
+;; view all whitespace characters in buffer.
+(global-set-key (kbd "C-c w") 'whitespace-mode)
+(global-set-key (kbd "C-c C-w") 'whitespace-mode)
+
 (provide 'global-key-bindings)
