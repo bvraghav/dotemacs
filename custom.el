@@ -533,6 +533,7 @@
  '(org-export-backends
    (quote
     (ascii beamer html icalendar latex md odt koma-letter)))
+ '(org-export-global-macros (quote (("sc" . "[[fm:sc][$1]]") ("tt" . "[[fm:tt][$1]]"))))
  '(org-file-apps
    (quote
     ((auto-mode . emacs)
@@ -548,6 +549,11 @@
   #content {max-width: 600px; margin: auto}
   #text-table-of-contents ul {list-style: none; margin: 0; padding: 0}
 </style>")
+ '(org-html-postamble-format
+   (quote
+    (("en" "<p class=\"date\">Updated <strong>%T</strong></p>
+<p class=\"author\">by <strong>%a</strong> (%e)</p>
+<p class=\"validation\">%v</p>"))))
  '(org-image-actual-width (quote (600)))
  '(org-src-lang-modes
    (quote

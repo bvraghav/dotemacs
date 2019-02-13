@@ -33,11 +33,11 @@
     "]]")))
 
 
-(eval-after-load 'org-mode
-  (lambda () 
-    (define-key org-mode-map (kbd "<f9> n") 'my-next-image)
-    (define-key org-mode-map (kbd "<f9> p") 'my-prev-image)
-    (define-key org-mode-map (kbd "<f9> i") 'my-insert-current-image-path)))
+;; (eval-after-load 'org-mode
+;;   (lambda () 
+;;     (define-key org-mode-map (kbd "<f9> n") 'my-next-image)
+;;     (define-key org-mode-map (kbd "<f9> p") 'my-prev-image)
+;;     (define-key org-mode-map (kbd "<f9> i") 'my-insert-current-image-path)))
 
 ;; Mode customizations for Org mode
 (defun bvr-org-setup ()
@@ -90,5 +90,32 @@
 ;; org Babel Setup
 (require 'org)
 
-(provide 'org-setup)
+;; Add org link for sc
+(org-add-link-type
+ "fm" nil
+ (lambda (path desc format)
+   (cond
+    ((eq format 'html)
+     (cond
+      ((equal path "sc")
+       (format "<span style=\"font-variant:small-caps;\">%s</span>"
+               desc))
+      ((equal path "it")
+       (format "<em>%s</em>" desc))
+      ((equal path "bf")
+       (format "<strong>%s</strong>" desc))
+      ((equal path "tt")
+       (format "<kbd>%s</kbd>" desc))
+      (t (format "%s" desc))))
+    ;; "</span>" )))
+    ((eq format 'latex)
+     (format "\\text%s{%s}" path desc))
+    ((eq format 'odt)
+     (cond
+      ((equal path "sc")
+       (format "<span style=\"font-variant:small-caps;\">hello</span>" desc))
+      ;; more code for it, bf, tt etc.
+      ))
+    (t Y))))
 
+(provide 'org-setup)
