@@ -1,6 +1,7 @@
 # key: html
 # name: htmlhead
 # --
+# -*- org-image-actual-width: (64 128 256 512); openwith-associations: (("\\.pdf\\'" "evince" (file))); -*-
 #+OPTIONS: num:nil html-postamble:t html-style:nil 
 #+TITLE: ${1:Page Title}
 #+DATE: ${2:`(progn (org-time-stamp-inactive '(16)) nil)`}
@@ -8,11 +9,15 @@
 #+EMAIL: ${4:bvraghav@iitk.ac.in}
 #+LANGUAGE: en
 
+#+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
+#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600|Source+Code+Pro:300,400,500" rel="stylesheet" />
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/skeleton.css" />
-#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,700,700i|Source+Sans+Pro:300" rel="stylesheet">
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/org-style.css" />
+#+HTML_HEAD: <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/034c3feded7a09f8a5c481a2bd35d676.png?s=16" />
 
 #+PROPERTY: header-args+ :exports both :eval never-export
 #+PROPERTY: header-args:python+ :results output replace verbatim
+
+#+MACRO: cnc {{{sc(cnc)}}}
 $0
