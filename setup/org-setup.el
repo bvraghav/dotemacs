@@ -1,5 +1,6 @@
 ;; Org Mode
 (require 'yasnippet)
+(require 'org-tempo)
 
 ;; Define org mode for .org folder
 (add-to-list 'auto-mode-alist '("\\.org\\/[^.]*\(.org\)?\\'" . org-mode))
