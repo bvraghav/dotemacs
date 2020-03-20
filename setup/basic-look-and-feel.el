@@ -15,8 +15,8 @@
 (when (graphic-p)
   (progn
     (tool-bar-mode -1)
-    (menu-bar-mode -1)
     (scroll-bar-mode -1)))    
+(menu-bar-mode -1)
 (global-linum-mode t)
 (global-reveal-mode t)
 (outline-minor-mode t)
