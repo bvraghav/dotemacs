@@ -1,12 +1,22 @@
+;; define toolbar reset
+(defun graphic-p ()
+  (if (< emacs-major-version 23)
+      (or window-system (getenv "DISPLAY"))
+    (display-graphic-p)))
+
+
+;; Basic reset
 (put 'set-goal-column 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
 ;; Basic look and feel
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
+(when (graphic-p)
+  (progn
+    (tool-bar-mode -1)
+    (menu-bar-mode -1)
+    (scroll-bar-mode -1)))    
 (global-linum-mode t)
 (global-reveal-mode t)
 (outline-minor-mode t)
