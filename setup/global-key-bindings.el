@@ -40,8 +40,13 @@
 (global-set-key (kbd "C-z C-;") #'w3m)
 
 ;; Speedbar
-(global-set-key (kbd "C-z C-s") #'speedbar-get-focus)
-(global-set-key (kbd "C-z s") #'speedbar-get-focus)
+;; -----------------------------------
+;; Unless already setup by other alternatives,
+;; use the speedbar...
+(unless (key-binding (kbd "C-z C-s"))
+  (global-set-key (kbd "C-z C-s") #'speedbar-get-focus))
+(unless (key-binding (kbd "C-z s"))
+  (global-set-key (kbd "C-z s") #'speedbar-get-focus))
 
 ;; Slug
 (global-set-key (kbd "C-z C-l") #'slug)
