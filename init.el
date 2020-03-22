@@ -24,6 +24,7 @@
 (require 'projectile-setup)
 (require 'gnus-setup)
 (require 'latex-setup)
+(require 'project-explorer-setup)
 
 (require 'icicles-setup)
 (require 'dired-setup)

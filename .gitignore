@@ -1,6 +1,10 @@
 # Ignore custom.el
 custom.el
 
+# Emacs local files
+elpa/
+transient/
+
 # Compiled
 *.elc
 

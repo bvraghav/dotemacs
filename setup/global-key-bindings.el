@@ -40,8 +40,17 @@
 (global-set-key (kbd "C-z C-;") #'w3m)
 
 ;; Speedbar
-(global-set-key (kbd "C-z C-s") #'speedbar-get-focus)
-(global-set-key (kbd "C-z s") #'speedbar-get-focus)
+;; -----------------------------------
+;; Unless already setup by other alternatives,
+;; use the speedbar...
+(defmacro f-if-exists (fname)
+  `(when (fboundp #',fname)
+     #',fname))
+(defun get-speedbar-fn ()
+  (or (f-if-exists project-explorer-open)
+      (f-if-exists speedbar-get-focus)))
+(global-set-key (kbd "C-z C-s") (get-speedbar-fn))
+(global-set-key (kbd "C-z s") (get-speedbar-fn))
 
 ;; Slug
 (global-set-key (kbd "C-z C-l") #'slug)

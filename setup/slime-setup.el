@@ -3,7 +3,7 @@
 
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 
-(setq inferior-lisp-program "/usr/bin/ecl")
+(setq inferior-lisp-program "/usr/bin/sbcl")
 ;; There is trouble running autodoc with ecl
 (remove-hook 'slime-mode-hook #'slime-autodoc--on)
 
