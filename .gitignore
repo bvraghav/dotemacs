@@ -1,3 +1,6 @@
+# Ignore custom.el
+custom.el
+
 # Compiled
 *.elc
 
