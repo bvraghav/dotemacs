@@ -7,7 +7,8 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
-(global-linum-mode t)
+;; ;; Inhibit Linum mode for non-text modes
+;; (global-linum-mode t)
 (global-reveal-mode t)
 (outline-minor-mode t)
 (column-number-mode t)
@@ -19,6 +20,31 @@
 (setq show-paren-delay 0)
 (toggle-word-wrap t)
 (global-subword-mode t)
+
+;; Inhibit Linum mode for non-text modes
+(defun inhibit-linum-mode ()
+  "Inhibit global linum mode"
+  (add-hook 'after-change-major-mode-hook
+	    (lambda () (linum-mode 0))
+	    :append :local))
+(setq non-text-modes
+      '(doc-view-mode-hook
+	doc-view-minor-mode-hook
+	image-mode-hook
+	image-dired-display-image-mode-hook
+	image-dired-minor-mode-hook
+	image-dired-thumbnail-mode-hook
+	image-minor-mode-hook))
+(dolist (mode-hook non-text-modes)
+  (add-hook 'mode-hook #'inhibit-linum-mode))
+
+;; Enable linum mode for text modes
+(setq text-mode-hook-list
+      '(text-mode-hook
+	prog-mode-hook
+	fundamental-mode-hook))
+(dolist (mode-hook text-mode-hook-list)
+  (add-hook mode-hook #'linum-mode))
 
 ;; Ediff Split Window Sensibly
 (setq ediff-split-window-function 'split-window-sensibly)
