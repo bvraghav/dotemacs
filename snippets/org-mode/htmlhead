@@ -10,10 +10,7 @@
 #+LANGUAGE: en
 
 #+HTML_HEAD: <meta name="viewport" content="width=device-width, initial-scale=1">
-#+HTML_HEAD: <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,600|Source+Code+Pro:300,400,500" rel="stylesheet" />
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/normalize.css" />
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/skeleton.css" />
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/org-style.css" />
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="/css/dhiw.css" />
 #+HTML_HEAD: <link rel="shortcut icon" type="image/png" href="https://www.gravatar.com/avatar/034c3feded7a09f8a5c481a2bd35d676.png?s=16" />
 
 #+PROPERTY: header-args+ :exports both :eval never-export
