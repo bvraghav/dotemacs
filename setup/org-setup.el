@@ -99,7 +99,7 @@
     ((eq format 'html)
      (cond
       ((equal path "sc")
-       (format "<span style=\"font-variant:small-caps;\">%s</span>"
+       (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>"
                desc))
       ((equal path "it")
        (format "<em>%s</em>" desc))
@@ -114,7 +114,7 @@
     ((eq format 'odt)
      (cond
       ((equal path "sc")
-       (format "<span style=\"font-variant:small-caps;\">hello</span>" desc))
+       (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>" desc))
       ;; more code for it, bf, tt etc.
       ))
     (t Y))))
