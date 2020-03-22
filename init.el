@@ -38,7 +38,7 @@
 (require 'caffe-mode-setup)
 
 (require 'proxy-setup)
-(require 'openwith-setup)
+;; (require 'openwith-setup)
 
 (require 'global-key-bindings)
 
