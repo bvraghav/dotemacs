@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: argument_group
+# key: arg
+# --
+${1:parser_parent}.add_argument_group(
+  title="${2:Global Params}"${3:,
+  description="$4"}
+)

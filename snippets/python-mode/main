@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: main
+# key: main
+# --
+def main() :
+  args = cli_args()
+  if args.verbose : lg.getLogger().setLevel(lg.DEBUG)
+  lg.debug('Args: %s', args)
+
+  $0

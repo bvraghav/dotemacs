@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: bpy_import
+# key: bpy
+# --
+import bpy
+from bpy import context as C, data as D

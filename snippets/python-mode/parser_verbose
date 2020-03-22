@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: parser_verbose
+# key: parser
+# --
+parser.add_argument("-v", "--verbose", action=store_true,
+	help="Verbose Logging.")

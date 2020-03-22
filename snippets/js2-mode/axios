@@ -1,0 +1,11 @@
+# key: axios
+# name: axios
+# --
+axios.get(${1:this.data_url})
+  .then(function(response) {
+    console.log('Response: ', response);
+    ${2:this.$3} = response.data;
+  }.bind(this))
+  .catch(function(error) {
+    console.log(error);
+  });

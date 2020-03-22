@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: arg_cli_parse_function
+# key: arg
+# --
+def cli_args() :
+  import argparse
+  parser = argparse.ArgumentParser(
+    description="$1",${2:
+    formatter_class=argparse.ArgumentDefaultsHelpFormatter,}
+  )
+
+  parser.add_argument("-v", "--verbose", action="store_true",
+                      help="Verbose logging.")
+  $0
+
+  return parser.parse_args()

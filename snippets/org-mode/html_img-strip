@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: html_img-strip
+# key: html
+# --
+#+html: <div class="flexbox img-strip"><div class="flexc">
+$0
+#+html: </div><div class="flexc">
+
+#+html: </div></div>
