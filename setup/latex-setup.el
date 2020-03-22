@@ -47,6 +47,12 @@
 			   (TeX-fold-mode 1)))
 (add-hook 'LaTeX-mode-hook 'bvr-latex-mode-hook)
 
+;; https://tex.stackexchange.com/a/183814 for synctex
+(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
+(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+(setq TeX-source-correlate-method 'synctex)
+(setq TeX-source-correlate-start-server t)
+
 (require 'auctex-latexmk)
 (auctex-latexmk-setup)
 
