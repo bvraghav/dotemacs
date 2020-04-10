@@ -1,6 +1,9 @@
 # Ignore custom.el
 custom.el
 
+# Ignore emacs folders
+image-dired/
+
 # Emacs local files
 elpa/
 transient/
