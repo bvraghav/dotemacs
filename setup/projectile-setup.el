@@ -1,10 +1,15 @@
 ;; Projectile Setup
 (require 'projectile)
-;; (setq
-;;  projectile-enable-caching t
-;;  projectile-completion-system 'default
-;;  )
-;;(projectile-global-mode t)
+
+(custom-set-variables
+ '(projectile-enable-caching t)
+ '(projectile-completion-system 'default)
+ '(projectile-project-search-path '("~/code"))
+ )
+
 (define-key projectile-mode-map (kbd "C-'") 'projectile-command-map)
+(define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
+
+(projectile-mode t)
 
 (provide 'projectile-setup)
