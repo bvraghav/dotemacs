@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: libertine
+# key: libertine
+# --
+\usepackage{libertine}
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
