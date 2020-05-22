@@ -37,6 +37,7 @@
 (require 'speedbar)
 (require 'slug)
 (require 'caffe-mode-setup)
+(require 'scheme-setup)
 
 (require 'proxy-setup)
 ;; (require 'openwith-setup)
