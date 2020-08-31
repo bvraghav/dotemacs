@@ -20,6 +20,7 @@
 (require 'yas-setup)
 (require 'c-setup)
 (require 'python-setup)
+(require 'js-setup)
 (require 'web-setup)
 (require 'projectile-setup)
 (require 'gnus-setup)
