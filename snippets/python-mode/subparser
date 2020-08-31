@@ -1,0 +1,7 @@
+# key: subparser
+# name: subparser
+# --
+parser.add_subparsers(
+  help="${1:Sub-command help}",
+${2:  dest="${4:command}"
+})
