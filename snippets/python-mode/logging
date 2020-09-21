@@ -3,5 +3,8 @@
 # key: lg
 # --
 import logging as lg
-lg.basicConfig(level=lg.${1:DEBUG}, format='%(levelname)-8s: %(message)s')
+lg.basicConfig(
+  level=lg.${1:DEBUG},
+  format='%(levelname)-8s: %(message)s'
+)
 $0
