@@ -5,6 +5,7 @@
  '(projectile-enable-caching t)
  '(projectile-completion-system 'default)
  '(projectile-project-search-path '("~/code"))
+ '(projectile-switch-project-action 'projectile-dired)
  )
 
 (define-key projectile-mode-map (kbd "C-'") 'projectile-command-map)
