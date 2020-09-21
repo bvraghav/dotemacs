@@ -10,30 +10,6 @@
 ;; (setq icicle-max-candidates 127)
 ;; (setq icicle-ido-like-mode 127)
 
-;; Icicle Enhancements
-(require 'crosshairs)
-(crosshairs-mode t)
-
-(require 'icomplete+)
-(icompletep-cycling-mode t)
-
-;; Dabbrev
-(require 'dabbrev)
-
-;; Dot Mode
-(require 'dot-mode)
-(dot-mode t)
-
-;; ThingsAtPt+
-(eval-after-load "thingatpt"
-  '(when (require 'thingatpt+)
-     (tap-redefine-std-fns)))
-
-;; Bookmark+
-(require 'bookmark+)
-
-;; Dired+
-(require 'dired+)
 ;; Icicle settings
 (custom-set-variables
  '(icicle-Completions-text-scale-decrease 0.0)

@@ -83,4 +83,33 @@
 ;; Expand Region
 (require 'expand-region)
 
+;;; Drew Adams' enhancements
+;;; ===================================================
+
+;; Crosshairs
+(require 'crosshairs)
+(crosshairs-mode t)
+
+(require 'icomplete+)
+(icompletep-cycling-mode t)
+
+;; Dabbrev
+(require 'dabbrev)
+
+;; Dot Mode
+(require 'dot-mode)
+(dot-mode t)
+
+;; ThingsAtPt+
+(eval-after-load "thingatpt"
+  '(when (require 'thingatpt+)
+     (tap-redefine-std-fns)))
+
+;; Bookmark+
+(require 'bookmark+)
+
+;; Dired+
+(require 'dired-x)
+(require 'dired+)
+;;; ===================================================
 (provide 'basic-look-and-feel)
