@@ -31,8 +31,8 @@
 ;; Icicles
 (global-set-key (kbd "C-z C-'") #'icy-mode)
 
-(global-unset-key (kbd "C-M-j"))
-(global-set-key (kbd "C-M-j") #'icicle-bookmark)
+;; (global-unset-key (kbd "C-M-j"))
+;; (global-set-key (kbd "C-M-j") #'icicle-bookmark)
 
 ;; W3m
 (global-unset-key (kbd "C-x m"))

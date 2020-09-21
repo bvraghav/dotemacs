@@ -27,7 +27,8 @@
 (require 'latex-setup)
 (require 'project-explorer-setup)
 
-(require 'icicles-setup)
+;; (require 'icicles-setup)
+(require 'helm-setup)
 (require 'dired-setup)
 (require 'functions)
 (require 'c-headers)
