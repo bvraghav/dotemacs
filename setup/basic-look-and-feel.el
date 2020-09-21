@@ -83,6 +83,10 @@
 ;; Expand Region
 (require 'expand-region)
 
+;; Smartparens
+(use-package smartparens :ensure t :config (require 'smartparens-config))
+
+
 ;;; Drew Adams' enhancements
 ;;; ===================================================
 
@@ -112,4 +116,5 @@
 (require 'dired-x)
 (require 'dired+)
 ;;; ===================================================
+
 (provide 'basic-look-and-feel)
