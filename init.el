@@ -44,6 +44,8 @@
 (require 'proxy-setup)
 ;; (require 'openwith-setup)
 
+;; (require 'lsp-setup)
+
 (require 'global-key-bindings)
 
 ;; From .elisp
