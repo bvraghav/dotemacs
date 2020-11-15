@@ -53,7 +53,26 @@
 (setq TeX-source-correlate-method 'synctex)
 (setq TeX-source-correlate-start-server t)
 
+;; Latexmk setup
 (require 'auctex-latexmk)
 (auctex-latexmk-setup)
+
+;; Setup SyncTex with Zathura
+(with-eval-after-load "tex"
+  ;; enable synctex support for latex-mode
+  (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+  ;; add a new view program
+  (add-to-list 'TeX-view-program-list
+        '(;; arbitrary name for this view program
+          "Zathura"
+          (;; zathura command (may need an absolute path)
+           "zathura"
+           ;; %o expands to the name of the output file
+           " %o"
+           ;; insert page number if TeX-source-correlate-mode
+           ;; is enabled
+           (mode-io-correlate " --synctex-forward %n:0:%b"))))
+  ;; use the view command named "Zathura" for pdf output
+  (setcdr (assq 'output-pdf TeX-view-program-selection) '("Zathura")))
 
 (provide 'latex-setup)
