@@ -15,7 +15,7 @@
 (require 'myelpa-setup)
 
 (require 'basic-look-and-feel)
-(provide 'indic-setup)
+(require 'indic-setup)
 (require 'org-setup)
 (require 'plumb)
 (require 'yas-setup)
