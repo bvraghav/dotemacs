@@ -11,4 +11,22 @@
 
 (add-hook 'python-mode-hook #'bvr-python-mode-hook)
 
+(use-package conda
+  :defer t
+  :init
+  (setq conda-anaconda-home (expand-file-name "~/miniconda3")
+        conda-env-home-directory (expand-file-name "~/miniconda3"))
+  :config
+  (conda-env-initialize-interactive-shells)
+  (conda-env-initialize-eshell))
+
+(use-package jupyter
+  :defer t
+  :init
+  (setq org-babel-default-header-args:jupyter-python
+        '((:async . "yes")
+          (:session . "py")))
+  :config
+  (org-babel-jupyter-override-src-block "python"))
+
 (provide 'python-setup)

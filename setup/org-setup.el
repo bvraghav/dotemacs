@@ -83,13 +83,30 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
-(setq bvr/org-babel-lang '("ipython" "python" "shell" "bash" "sh" "lisp" "js"))
+(setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
 (defun bvr/org-confirm-babel-evaluate (lang body)
   (not (member lang bvr/org-babel-lang)))
 (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
 
 ;; org Babel Setup
 (require 'org)
+
+;; Org Babel Load Languages
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((js . t)
+   (http . t)
+   (emacs-lisp . t)
+   (R . t)
+   (shell . t)
+   (python . t)
+   (jupyter . t)
+   (perl . t)
+   (dot . t)
+   (gnuplot . t)
+   (sql . t)
+   (lisp . t)
+   (scheme . t)))
 
 ;; Add org link for sc
 (org-add-link-type
