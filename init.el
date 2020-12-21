@@ -15,7 +15,6 @@
 (require 'myelpa-setup)
 
 (require 'basic-look-and-feel)
-(require 'indic-setup)
 (require 'org-setup)
 (require 'plumb)
 (require 'yas-setup)
@@ -52,5 +51,8 @@
 ;; From .elisp
 (require 'trivial-functions)
 (require 'vue-mode-setup)
+
+;; The last (Indic Setup)
+(require 'indic-setup)
 
 (pinentry-start)
