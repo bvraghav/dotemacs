@@ -55,4 +55,7 @@
 ;; The last (Indic Setup)
 (require 'indic-setup)
 
+;; Org Roam Setup
+(require 'org-roam-setup)
+
 (pinentry-start)
