@@ -94,6 +94,11 @@
 ;; org Babel Setup
 (require 'org)
 
+;; Org TODO Keywords
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)")
+        (sequence "DONOT(D)" "|")))
+
 ;; Org Babel Load Languages
 (org-babel-do-load-languages
  'org-babel-load-languages
