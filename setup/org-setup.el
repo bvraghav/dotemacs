@@ -77,7 +77,10 @@
              )
 
 ;; Org Ref
-(require 'org-ref)
+(use-package org-ref
+  :config
+  (setq org-ref-default-bibliography
+        '("~/bibliography.bib")))
 
 ;; Org Capture
 (global-set-key (kbd "C-c c") 'org-capture)
