@@ -6,7 +6,7 @@
 ;; Auto load browser
 ;; -----------------------------------
 ;; Set through customize-variable
-(setq browse-url-browser-function 'w3m-browse-url)
+;; (setq browse-url-browser-function 'w3m-browse-url)
 (autoload 'w3m-browse-url "w3m" "w3m Web Browser." t)
 
 (w3m-fb-mode)
