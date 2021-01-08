@@ -86,6 +86,8 @@
 ;; Smartparens
 (use-package smartparens :ensure t :config (require 'smartparens-config))
 
+;; Fill Column
+(setq-default fill-column 55)
 
 ;;; Drew Adams' enhancements
 ;;; ===================================================
