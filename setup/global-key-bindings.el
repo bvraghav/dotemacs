@@ -51,6 +51,7 @@
 (global-set-key (kbd "C-z s") #'get-speedbar)
 
 ;; Slug
+(require 'slug)
 (global-set-key (kbd "C-z C-l") #'slug)
 (global-set-key (kbd "C-z l") #'slug-dwim)
 
