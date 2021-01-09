@@ -134,6 +134,8 @@
   :init
   (pinentry-start))
 
+;; Fill Column
+(setq-default fill-column 55)
 
 ;;; Drew Adams' enhancements
 ;;; ===================================================
