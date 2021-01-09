@@ -1,66 +1,75 @@
 ;; Latex Mode
-(require 'tex)
+(use-package tex
+  :ensure auctex
+  :init
+  (defun bvr-latex-mode-hook ()
+    "Creates Latex Mode hook"
+    (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
+    (setq reftex-default-bibliography '("biblio.bib"))
+    ;; (reftex-mode t)
+    (auto-fill-mode t)
+    (local-set-key (kbd "'") 'TeX-insert-single-quote)
+    )
 
-(defadvice TeX-insert-quote (around wrap-region activate)
-  (cond
-   (mark-active
-    (let ((skeleton-end-newline nil))
-      (skeleton-insert `(nil ,TeX-open-quote _ ,TeX-close-quote) -1)))
-   ((looking-at (regexp-opt (list TeX-open-quote TeX-close-quote)))
-    (forward-char (length TeX-open-quote)))
-   (t
-    ad-do-it)))
-(put 'TeX-insert-quote 'delete-selection nil)
+  :hook
+  ((TeX-mode-hook . turn-on-reftex)
+   (TeX-mode-hook . flyspell-mode)
+   (TeX-mode-hook . (lambda () (TeX-fold-mode 1)))
+   (LaTeX-mode-hook . bvr-latex-mode-hook)
 
-(defun TeX-insert-single-quote (arg)
-  (interactive "p")
-  (cond
-   (mark-active
-    (let ((skeleton-end-newline nil))
-      (skeleton-insert
-       `(nil ?` _ ?') -1)))
-   ((or (looking-at "\\<")
-	(looking-back "^\\|\\s-\\|`"))
-    (insert "`"))
-   (t
-    (self-insert-command arg))))
+   ;; for synctex integration
+   (LaTeX-mode-hook . TeX-PDF-mode)
+   (LaTeX-mode-hook . TeX-source-correlate-mode))
 
-(defun bvr-latex-mode-hook ()
-  "Creates Latex Mode hook"
-  (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
-  (setq reftex-default-bibliography '("biblio.bib"))
-  ;; (reftex-mode t)
-  (auto-fill-mode t)
-  (local-set-key (kbd "'") 'TeX-insert-single-quote)
-)
+  :config
+  (setq TeX-source-correlate-method 'synctex
+	TeX-source-correlate-start-server t
+	TeX-electric-math '("$" . "$"))
+  
+  (defadvice TeX-insert-quote (around wrap-region activate)
+    (cond
+     (mark-active
+      (let ((skeleton-end-newline nil))
+	(skeleton-insert `(nil ,TeX-open-quote _ ,TeX-close-quote) -1)))
+     ((looking-at (regexp-opt (list TeX-open-quote TeX-close-quote)))
+      (forward-char (length TeX-open-quote)))
+     (t
+      ad-do-it)))
+  (put 'TeX-insert-quote 'delete-selection nil)
 
-;; (add-hook 'TeX-mode-hook 'zotelo-minor-mode)
-;; ^\^\^\
-;; Should be removed completely since zotelo depends upon XUL Runner
-;; based version of zotero. XUL Runner was discontinued by mozilla,
-;; upon which the front end of zotero is based!!
+  (defun TeX-insert-single-quote (arg)
+    (interactive "p")
+    (cond
+     (mark-active
+      (let ((skeleton-end-newline nil))
+	(skeleton-insert
+	 `(nil ?` _ ?') -1)))
+     ((or (looking-at "\\<")
+	  (looking-back "^\\|\\s-\\|`"))
+      (insert "`"))
+     (t
+      (self-insert-command arg)))))
 
-;; (add-hook 'TeX-mode-hook 'reftex-mode)
-(add-hook 'TeX-mode-hook 'turn-on-reftex) ;; Official docs support this now... 
-(add-hook 'TeX-mode-hook 'flyspell-mode) ;; use C-, and C-. for next-error and auto-correct
-(add-hook 'TeX-mode-hook (lambda ()
-			   (TeX-fold-mode 1)))
-(add-hook 'LaTeX-mode-hook 'bvr-latex-mode-hook)
 
-;; https://tex.stackexchange.com/a/183814 for synctex
-(add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
-(add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
-(setq TeX-source-correlate-method 'synctex)
-(setq TeX-source-correlate-start-server t)
+
+
+
+;; ;; https://tex.stackexchange.com/a/183814 for synctex
+;; (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
+;; (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
+;; (setq TeX-source-correlate-method 'synctex)
+;; (setq TeX-source-correlate-start-server t)
 
 ;; Latexmk setup
-(require 'auctex-latexmk)
-(auctex-latexmk-setup)
+(use-package auctex-latexmk
+  :ensure t
+
+  :config
+  (auctex-latexmk-setup))
+
 
 ;; Setup SyncTex with Zathura
 (with-eval-after-load "tex"
-  ;; enable synctex support for latex-mode
-  (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
   ;; add a new view program
   (add-to-list 'TeX-view-program-list
         '(;; arbitrary name for this view program

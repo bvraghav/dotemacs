@@ -45,4 +45,8 @@
 (define-key dired-mode-map (kbd "C-c C-t") #'bvr-dired-open-tmux-here)
 (define-key dired-mode-map (kbd "C-c C-t") #'bvr-dired-open-tmux-here)
 
+;; Variables
+(setq  dired-isearch-filenames t
+       dired-listing-switches "-alh")
+
 (provide 'dired-setup)

@@ -21,8 +21,10 @@
 (add-hook 'web-mode-hook #'bvr-web-mode-indentation)
 (add-hook 'web-mode-hook #'css-completion-minor-mode)
 
-;; Apache Indent Level
-(setq apache-indent-level 2)
+;; Indent Levels
+(setq apache-indent-level 2
+      nginx-indent-level 2
+      css-indent-offset 2)
 
 ;; Use mark multiple to edit sgml tag
 (define-key sgml-mode-map (kbd "C-c C-r") #'rename-sgml-tag)

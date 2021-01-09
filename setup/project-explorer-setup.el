@@ -1,8 +1,8 @@
-(defun disable-linum ()
-  (linum-mode -1))
-
-(when (require 'project-explorer nil 'noerror)
-  (add-hook 'project-explorer-mode-hook
-	    #'disable-linum))
+(use-package project-explorer
+  :ensure t
+  :hook (project-explorer-mode . bvr-disable-linum)
+  :config
+  (defun bvr-disable-linum ()
+    (linum-mode -1)))
 
 (provide 'project-explorer-setup)

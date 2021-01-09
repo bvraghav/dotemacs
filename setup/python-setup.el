@@ -1,15 +1,14 @@
 ;; Run ggtags if projectile root folder available
 ;; ====================================================
-(defun bvr-run-ggtags-may-be ()
-  (interactive)
-  nil)
-
-(defun bvr-python-mode-hook ()
-  (customize-set-variable 'indent-tabs-mode nil)
-  (ggtags-mode 1)
-  (projectile-mode 1))
-
-(add-hook 'python-mode-hook #'bvr-python-mode-hook)
+(use-package python-mode
+  :ensure t
+  :hook (python-mode . bvr-python-mode-hook)
+  :init
+  (setq python-indent-offset 2)
+  (defun bvr-python-mode-hook ()
+    (customize-set-variable 'indent-tabs-mode nil)
+    (ggtags-mode 1)
+    (projectile-mode 1)))
 
 (use-package conda
   :defer t

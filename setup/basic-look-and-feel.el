@@ -57,9 +57,51 @@
 (dolist (mode-hook text-mode-hook-list)
   (add-hook mode-hook #'linum-mode))
 
-;; Ediff Split Window Sensibly
-(setq ediff-split-window-function 'split-window-sensibly)
-(setq ediff-merge-split-window-function 'split-window-sensibly)
+
+;; Other basic customizations
+(setq
+
+ ;; Info
+ Info-additional-directory-list (quote ("/usr/share/info" "/usr/local/share/info"))
+ Info-default-directory-list (quote ("/usr/share/info/" "~/.local/share/info/"))
+
+ ;; Man
+ Man-notify-method (quote pushy)
+ Man-width 65
+
+ ;; Auth Sources
+ auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
+
+ ;; Bookmarks
+ bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks"
+ bookmark-save-flag 1
+ bookmark-version-control t
+
+ ;; Theme
+ custom-enabled-themes (quote (zenburn))
+
+ ;; Desktop Saving
+ desktop-path (quote ("~/.emacs.d/" "~" "~/.emacs.d/dtp"))
+ desktop-save-mode nil
+
+ ;; Warning
+ echo-bell-mode t
+ visible-bell t
+
+ ;; Ediff
+ ediff-split-window-function 'split-window-right
+ ediff-merge-split-window-function 'split-window-right
+
+ ;; External apps
+ image-dired-external-viewer "/usr/bin/feh"
+
+ ;; Indents
+ lua-indent-level 2
+ sh-basic-offset 2
+ sh-indentation 2
+
+ ;; Whitespaces
+ whitespace-action nil)
 
 ;; Pairing
 (setq skeleton-pair t)
@@ -71,8 +113,7 @@
 (setq confirm-nonexistent-file-or-buffer nil)
 
 ;; Wc Mode
-(require 'wc-mode)
-(wc-mode t)
+(use-package wc-mode :ensure t)
 
 ;; Fundamental mode
 (add-to-list 'auto-mode-alist '("\\.ply\\'" . fundamental-mode))
@@ -81,10 +122,17 @@
 (add-to-list 'auto-mode-alist '("\\.obj\\'" . wavefront-obj-mode))
 
 ;; Expand Region
-(require 'expand-region)
+(use-package expand-region :ensure t)
 
 ;; Smartparens
 (use-package smartparens :ensure t :config (require 'smartparens-config))
+
+;; Pinentry
+(use-package pinentry
+  :ensure t
+
+  :init
+  (pinentry-start))
 
 
 ;;; Drew Adams' enhancements
@@ -101,7 +149,7 @@
 (require 'dabbrev)
 
 ;; Dot Mode
-(require 'dot-mode)
+(use-package dot-mode :ensure t)
 (dot-mode t)
 
 ;; ThingsAtPt+

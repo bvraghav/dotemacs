@@ -1,13 +1,203 @@
 ;; Org Mode
-(require 'yasnippet)
-(require 'org-tempo)
+(require 'yas-setup)
 
-;; Define org mode for .org folder
-(add-to-list 'auto-mode-alist '("\\.org\\/[^.]*\(.org\)?\\'" . org-mode))
-(setq-default major-mode 'org-mode)
-(global-set-key (kbd "C-c l") #'org-store-link)
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "C-c C-a") #'org-agenda)
+
+;; Org Mode Latex Export Syntax Highlighting
+;; Include the latex-exporter
+;; (require 'ox-latex)
+;; ;; Add minted to the defaults packages to include when exporting.
+;; (add-to-list 'org-latex-packages-alist '("" "minted"))
+;; ;; Tell the latex export to use the minted package for source
+;; ;; code coloration.
+;; (setq org-latex-listings 'minted)
+;; ;; Let the exporter use the -shell-escape option to let latex
+;; ;; execute external programs.
+;; ;; This obviously and can be dangerous to activate!
+;; (setq org-latex-pdf-process
+;;       '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+;; ;; Org latex documentclass
+;; (add-to-list 'org-latex-classes
+;;              `("booksansparts"
+;;                "\\documentclass{book}"
+;;                ("\\chapter{%s}" . "\\chapter*{%s}")
+;;                ("\\section{%s}" . "\\section*{%s}")
+;;                ("\\subsection{%s}" . "\\subsection*{%s}")
+;;                ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+;; 	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
+;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
+;;              )
+
+
+;; Org Mode Latex Export Syntax Highlighting
+;; Include the latex-exporter
+(use-package ox-latex
+  :ensure org
+
+  :config
+  ;; Add minted to be exported by default
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  ;; Notify latex exporter about minted for source coloration
+  (setq org-latex-listings 'minted
+
+	;; latex exporter cli
+	org-latex-pdf-process
+	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+	;; latex document class(es)
+	org-latex-classes
+	`("booksansparts"
+	  "\\documentclass{book}"
+	  ("\\chapter{%s}" . "\\chapter*{%s}")
+	  ("\\section{%s}" . "\\section*{%s}")
+	  ("\\subsection{%s}" . "\\subsection*{%s}")
+	  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+
+
+;; Mode customizations for Org mode
+(defun bvr-org-setup ()
+  "Basic Setup for Org Mode --- BVR"
+  (org-indent-mode t)
+  (auto-fill-mode t)
+  (flyspell-mode t)
+  (yas-minor-mode-on)
+  (setq org-log-done 'time))
+;; (add-hook 'org-mode-hook 'bvr-org-setup)
+
+(use-package org-tempo
+  :ensure org)
+
+(use-package org
+  :ensure t
+  :after (org-tempo jupyter)
+  :mode "\\.org\\/[^.]*\(.org\)?\\'"
+  :hook (org-mode . bvr-org-setup)
+
+  :bind (("C-c l"	. org-store-link)
+	 ("C-c a"	. org-agenda)
+	 ("C-c C-a"	. org-agenda)
+	 ("C-c c"	. org-capture))
+
+  :config
+
+  ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
+  (setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
+  (defun bvr/org-confirm-babel-evaluate (lang body)
+    (not (member lang bvr/org-babel-lang)))
+  (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
+
+  ;; Org TODO Keywords
+  (setq org-todo-keywords
+	'((sequence "TODO(t)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)")
+	  (sequence "DONOT(D)" "|")))
+
+  ;; Org Babel Load Languages
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((js . t)
+     (http . t)
+     (emacs-lisp . t)
+     (R . t)
+     (shell . t)
+     (python . t)
+     (jupyter . t)
+     (perl . t)
+     (dot . t)
+     (gnuplot . t)
+     (sql . t)
+     (lisp . t)
+     (scheme . t)))
+
+  ;; Add org link for sc
+  (org-add-link-type
+   "fm" nil
+   (lambda (path desc format)
+     (cond
+      ((eq format 'html)
+       (cond
+	((equal path "sc")
+	 (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>"
+		 desc))
+	((equal path "it")
+	 (format "<em>%s</em>" desc))
+	((equal path "bf")
+	 (format "<strong>%s</strong>" desc))
+	((equal path "tt")
+	 (format "<kbd>%s</kbd>" desc))
+	(t (format "%s" desc))))
+      ;; "</span>" )))
+      ((eq format 'latex)
+       (format "\\text%s{%s}" path desc))
+      ((eq format 'odt)
+       (cond
+	((equal path "sc")
+	 (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>" desc))
+	;; more code for it, bf, tt etc.
+	))
+      (t Y))))
+
+  ;; Define org mode as default
+  (setq-default major-mode 'org-mode)
+
+  ;; Variables
+  (setq org-default-notes-file "~/org/notes.org" ; notes
+
+	;; Exporter
+	org-export-backends
+	(quote
+	 (ascii beamer html icalendar latex md odt koma-letter))
+	org-export-global-macros (quote (("sc" . "[[fm:sc][$1]]") ("tt" . "[[fm:tt][$1]]")))
+
+	;; HTML Exporter
+	org-html-head-extra
+	"<style>
+  pre.src {background: #3f3f3f; color: #dcdccc}
+  #content {max-width: 600px; margin: auto}
+  #text-table-of-contents ul {list-style: none; margin: 0; padding: 0}
+</style>"
+	org-html-postamble-format
+	(quote
+	 (("en" "<p class=\"date\">Updated <strong>%T</strong></p>
+<p class=\"author\">by <strong>%a</strong> (%e)</p>
+<p class=\"validation\">%v</p>")))
+
+	;; Apps
+	org-file-apps
+	(quote
+	 ((auto-mode . emacs)
+	  ("\\.mm\\'" . default)
+	  ("\\.x?html?\\'" . default)
+	  ("\\.pdf\\'" . "zathura %s")
+	  ("\\.png\\'" . "feh %s")
+	  ("\\.jpg\\'" . "feh %s")
+	  ("\\.gif\\'" . "feh %s")))
+
+	;; Images
+	org-image-actual-width (quote (600))
+
+	;; Babel languages
+	org-src-lang-modes
+	(quote
+	 (("jupyter-python" . python)
+	  ("js" . js2)
+	  ("http" . "ob-http")
+	  ("ipython" . python)
+	  ("ocaml" . tuareg)
+	  ("elisp" . emacs-lisp)
+	  ("ditaa" . artist)
+	  ("asymptote" . asy)
+	  ("dot" . fundamental)
+	  ("sqlite" . sql)
+	  ("calc" . fundamental)
+	  ("C" . c)
+	  ("cpp" . c++)
+	  ("C++" . c++)
+	  ("screen" . shell-script)
+	  ("shell" . sh)
+	  ("bash" . sh)))))
+
+
 ;; Org Mode Keymap
 (defun my-next-image ()
   (interactive)
@@ -40,108 +230,14 @@
 ;;     (define-key org-mode-map (kbd "<f9> p") 'my-prev-image)
 ;;     (define-key org-mode-map (kbd "<f9> i") 'my-insert-current-image-path)))
 
-;; Mode customizations for Org mode
-(defun bvr-org-setup ()
-  "Basic Setup for Org Mode --- BVR"
-  (org-indent-mode t)
-  (auto-fill-mode t)
-  (flyspell-mode t)
-  (yas-minor-mode-on)
-  (setq org-log-done 'time))
-(add-hook 'org-mode-hook 'bvr-org-setup)
-
-;; Org Mode Latex Export Syntax Highlighting
-;; Include the latex-exporter
-(require 'ox-latex)
-;; Add minted to the defaults packages to include when exporting.
-(add-to-list 'org-latex-packages-alist '("" "minted"))
-;; Tell the latex export to use the minted package for source
-;; code coloration.
-(setq org-latex-listings 'minted)
-;; Let the exporter use the -shell-escape option to let latex
-;; execute external programs.
-;; This obviously and can be dangerous to activate!
-(setq org-latex-pdf-process
-      '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-
-;; Org latex documentclass
-(add-to-list 'org-latex-classes
-             `("booksansparts"
-               "\\documentclass{book}"
-               ("\\chapter{%s}" . "\\chapter*{%s}")
-               ("\\section{%s}" . "\\section*{%s}")
-               ("\\subsection{%s}" . "\\subsection*{%s}")
-               ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	       ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
-             )
-
 ;; Org Ref
+(use-package ob-http :ensure t)
 (use-package org-ref
+  :ensure t
+  :after ob-http
   :config
   (setq org-ref-default-bibliography
         '("~/bibliography.bib")))
 
-;; Org Capture
-(global-set-key (kbd "C-c c") 'org-capture)
-
-;; Org Babel Evaluate Confirmation not for ipython codes or shell:
-(setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
-(defun bvr/org-confirm-babel-evaluate (lang body)
-  (not (member lang bvr/org-babel-lang)))
-(setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
-
-;; org Babel Setup
-(require 'org)
-
-;; Org TODO Keywords
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)")
-        (sequence "DONOT(D)" "|")))
-
-;; Org Babel Load Languages
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((js . t)
-   (http . t)
-   (emacs-lisp . t)
-   (R . t)
-   (shell . t)
-   (python . t)
-   (jupyter . t)
-   (perl . t)
-   (dot . t)
-   (gnuplot . t)
-   (sql . t)
-   (lisp . t)
-   (scheme . t)))
-
-;; Add org link for sc
-(org-add-link-type
- "fm" nil
- (lambda (path desc format)
-   (cond
-    ((eq format 'html)
-     (cond
-      ((equal path "sc")
-       (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>"
-               desc))
-      ((equal path "it")
-       (format "<em>%s</em>" desc))
-      ((equal path "bf")
-       (format "<strong>%s</strong>" desc))
-      ((equal path "tt")
-       (format "<kbd>%s</kbd>" desc))
-      (t (format "%s" desc))))
-    ;; "</span>" )))
-    ((eq format 'latex)
-     (format "\\text%s{%s}" path desc))
-    ((eq format 'odt)
-     (cond
-      ((equal path "sc")
-       (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>" desc))
-      ;; more code for it, bf, tt etc.
-      ))
-    (t Y))))
 
 (provide 'org-setup)
