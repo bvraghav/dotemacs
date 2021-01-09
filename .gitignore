@@ -19,3 +19,12 @@ transient/
 
 # Undo-tree save-files
 *.~undo-tree
+
+# Projectile
+/projectile*
+
+# Bookmarks
+/bookmarks*
+
+# Org Roam
+/org-roam*
