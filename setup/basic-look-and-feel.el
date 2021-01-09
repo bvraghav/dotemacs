@@ -166,7 +166,7 @@
 (require 'bookmark+)
 
 ;; Dired+
-(require 'dired-x)
+(require 'dired-setup)
 (require 'dired+)
 ;;; ===================================================
 
