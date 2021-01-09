@@ -6,8 +6,7 @@
   (interactive)
   (if (minibufferp)
       (slug (car kill-ring))
-    (slug (completing read "String for slug: " kill-ring nil t (car kill-ring)))))
-
+    (slug (completing-read "String for slug: " kill-ring nil t (car kill-ring)))))
 
 (defun slug-random-string (N alphabet)
   (let (str)
