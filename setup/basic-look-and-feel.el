@@ -59,49 +59,49 @@
 
 
 ;; Other basic customizations
-(setq
+;; Info
+(setq Info-additional-directory-list
+      '("/usr/share/info" "/usr/local/share/info")
+      Info-default-directory-list
+      '("/usr/share/info/" "~/.local/share/info/")
 
- ;; Info
- Info-additional-directory-list (quote ("/usr/share/info" "/usr/local/share/info"))
- Info-default-directory-list (quote ("/usr/share/info/" "~/.local/share/info/"))
+      ;; Man
+      Man-notify-method 'pushy
+      Man-width 65
 
- ;; Man
- Man-notify-method (quote pushy)
- Man-width 65
+      ;; Auth Sources
+      auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")
 
- ;; Auth Sources
- auth-sources (quote ("~/.authinfo.gpg" "~/.authinfo" "~/.netrc"))
+      ;; Bookmarks
+      bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks"
+      bookmark-save-flag 1
+      bookmark-version-control t
 
- ;; Bookmarks
- bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks"
- bookmark-save-flag 1
- bookmark-version-control t
+      ;; Theme
+      custom-enabled-themes '(zenburn)
 
- ;; Theme
- custom-enabled-themes (quote (zenburn))
+      ;; Desktop Saving
+      desktop-path '("~/.emacs.d/" "~" "~/.emacs.d/dtp")
+      desktop-save-mode nil
 
- ;; Desktop Saving
- desktop-path (quote ("~/.emacs.d/" "~" "~/.emacs.d/dtp"))
- desktop-save-mode nil
+      ;; Warning
+      echo-bell-mode t
+      visible-bell t
 
- ;; Warning
- echo-bell-mode t
- visible-bell t
+      ;; Ediff
+      ediff-split-window-function 'split-window-right
+      ediff-merge-split-window-function 'split-window-right
 
- ;; Ediff
- ediff-split-window-function 'split-window-right
- ediff-merge-split-window-function 'split-window-right
+      ;; External apps
+      image-dired-external-viewer "/usr/bin/feh"
 
- ;; External apps
- image-dired-external-viewer "/usr/bin/feh"
+      ;; Indents
+      lua-indent-level 2
+      sh-basic-offset 2
+      sh-indentation 2
 
- ;; Indents
- lua-indent-level 2
- sh-basic-offset 2
- sh-indentation 2
-
- ;; Whitespaces
- whitespace-action nil)
+      ;; Whitespaces
+      whitespace-action nil)
 
 ;; Pairing
 (setq skeleton-pair t)
@@ -125,7 +125,11 @@
 (use-package expand-region :ensure t)
 
 ;; Smartparens
-(use-package smartparens :ensure t :config (require 'smartparens-config))
+(use-package smartparens
+  :ensure t
+
+  :config
+  (require 'smartparens-config))
 
 ;; Pinentry
 (use-package pinentry
@@ -139,7 +143,6 @@
 
 ;;; Drew Adams' enhancements
 ;;; ===================================================
-
 ;; Crosshairs
 (require 'crosshairs)
 (crosshairs-mode t)
