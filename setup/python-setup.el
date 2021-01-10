@@ -26,6 +26,8 @@
         '((:async . "yes")
           (:session . "py")))
   :config
-  (org-babel-jupyter-override-src-block "python"))
+  ;; Push this to org-setup
+  ;; (org-babel-jupyter-override-src-block "python")
+  )
 
 (provide 'python-setup)

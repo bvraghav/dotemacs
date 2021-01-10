@@ -61,6 +61,7 @@
   ;; (add-hook 'org-mode-hook #'bvr-org-setup)
 
   :config
+  (require 'ob)
   (require 'org-tempo)
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
@@ -90,6 +91,9 @@
      (sql . t)
      (lisp . t)
      (scheme . t)))
+
+  ;; Use python as language for `#begin_src jupyter' blocks
+  (org-babel-jupyter-override-src-block "python")
 
   ;; Add org link for sc
   (org-add-link-type
