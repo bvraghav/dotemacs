@@ -29,57 +29,30 @@
 ;;              )
 
 
-;; Org Mode Latex Export Syntax Highlighting
-;; Include the latex-exporter
-(use-package ox-latex
-  :ensure org
-
-  :config
-  ;; Add minted to be exported by default
-  (add-to-list 'org-latex-packages-alist '("" "minted"))
-  ;; Notify latex exporter about minted for source coloration
-  (setq org-latex-listings 'minted
-
-	;; latex exporter cli
-	org-latex-pdf-process
-	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
-	;; latex document class(es)
-	org-latex-classes
-	`("booksansparts"
-	  "\\documentclass{book}"
-	  ("\\chapter{%s}" . "\\chapter*{%s}")
-	  ("\\section{%s}" . "\\section*{%s}")
-	  ("\\subsection{%s}" . "\\subsection*{%s}")
-	  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
-
-
-;; Mode customizations for Org mode
-(defun bvr-org-setup ()
-  "Basic Setup for Org Mode --- BVR"
-  (org-indent-mode t)
-  (auto-fill-mode t)
-  (flyspell-mode t)
-  (yas-minor-mode-on)
-  (setq org-log-done 'time))
-;; (add-hook 'org-mode-hook 'bvr-org-setup)
-
-(use-package org-tempo
-  :ensure org)
-
 (use-package org
   :ensure t
-  :after (org-tempo jupyter)
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
-  :hook (org-mode . bvr-org-setup)
 
   :bind (("C-c l"	. org-store-link)
 	 ("C-c a"	. org-agenda)
 	 ("C-c C-a"	. org-agenda)
 	 ("C-c c"	. org-capture))
 
+  :init
+  (require 'org-tempo)
+  (require 'jupyter)
+
   :config
+
+  ;; Mode customizations for Org mode
+  (defun bvr-org-setup ()
+    "Basic Setup for Org Mode --- BVR"
+    (org-indent-mode t)
+    (auto-fill-mode t)
+    (flyspell-mode t)
+    (yas-minor-mode-on)
+    (setq org-log-done 'time))
+  (add-hook 'org-mode-hook 'bvr-org-setup)
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
   (setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
@@ -196,6 +169,32 @@
 	  ("screen" . shell-script)
 	  ("shell" . sh)
 	  ("bash" . sh)))))
+
+
+;; Org Mode Latex Export Syntax Highlighting
+;; Include the latex-exporter
+(use-package ox-latex
+  :ensure org
+
+  :config
+  ;; Add minted to be exported by default
+  (add-to-list 'org-latex-packages-alist '("" "minted"))
+  ;; Notify latex exporter about minted for source coloration
+  (setq org-latex-listings 'minted
+
+	;; latex exporter cli
+	org-latex-pdf-process
+	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+	;; latex document class(es)
+	org-latex-classes
+	`("booksansparts"
+	  "\\documentclass{book}"
+	  ("\\chapter{%s}" . "\\chapter*{%s}")
+	  ("\\section{%s}" . "\\section*{%s}")
+	  ("\\subsection{%s}" . "\\subsection*{%s}")
+	  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+	  ("\\paragraph{%s}" . "\\paragraph*{%s}")
+	  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
 
 ;; Org Mode Keymap
