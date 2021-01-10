@@ -128,6 +128,11 @@
   :init
   (pinentry-start))
 
+;; Unfill
+(use-package unfill
+  :ensure t
+  :bind ("M-Q" . unfill-toggle))
+
 ;; Fill Column
 (setq-default fill-column 55)
 
