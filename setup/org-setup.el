@@ -28,9 +28,9 @@
 ;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
 ;;              )
 
-
 (use-package org
   :ensure t
+
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
   :hook (org-mode . bvr-org-setup)
 
@@ -40,8 +40,11 @@
 	 ("C-c c"	. org-capture))
 
   :init
-  (require 'org-tempo)
   (require 'jupyter)
+
+  ;; Define org mode as default
+  (setq-default major-mode 'org-mode)
+
 
   ;; Mode customizations for Org mode
   (defun bvr-org-setup ()
@@ -55,6 +58,7 @@
   ;; (add-hook 'org-mode-hook 'bvr-org-setup)
 
   :config
+  (require 'org-tempo)
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
   (setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
@@ -111,9 +115,6 @@
 	;; more code for it, bf, tt etc.
 	))
       (t Y))))
-
-  ;; Define org mode as default
-  (setq-default major-mode 'org-mode)
 
   ;; Variables
   (setq org-default-notes-file "~/org/notes.org" ; notes
