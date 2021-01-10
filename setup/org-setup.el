@@ -32,6 +32,7 @@
 (use-package org
   :ensure t
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
+  :hook (org-mode . bvr-org-setup)
 
   :bind (("C-c l"	. org-store-link)
 	 ("C-c a"	. org-agenda)
@@ -42,17 +43,18 @@
   (require 'org-tempo)
   (require 'jupyter)
 
-  :config
-
   ;; Mode customizations for Org mode
   (defun bvr-org-setup ()
     "Basic Setup for Org Mode --- BVR"
+    (interactive)
     (org-indent-mode t)
     (auto-fill-mode t)
     (flyspell-mode t)
     (yas-minor-mode-on)
     (setq org-log-done 'time))
-  (add-hook 'org-mode-hook 'bvr-org-setup)
+  ;; (add-hook 'org-mode-hook 'bvr-org-setup)
+
+  :config
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
   (setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
