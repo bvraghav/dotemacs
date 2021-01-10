@@ -49,6 +49,14 @@
 
   :hook (after-init . org-roam-mode)
 
+  :bind (("C-z C-d C-d" . org-roam-dailies-find-date)
+         ("C-z C-d d"   . org-roam-dailies-find-date)
+         ("C-z C-d C-z" . org-roam-dailies-find-today)
+         ("C-z C-d C-f" . org-roam-dailies-find-tomorrow)
+         ("C-z C-d C-b" . org-roam-dailies-find-yesterday)
+         ("C-z C-d C-n" . org-roam-dailies-find-next-note)
+         ("C-z C-d C-p" . org-roam-dailies-find-previous-note))
+
   :config
   (setq org-roam-directory "~/org-roam")
   (make-directory org-roam-directory t))
