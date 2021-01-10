@@ -29,6 +29,8 @@
 (require 'basic-look-and-feel)
 (require 'global-key-bindings)
 
+(require 'gui-setup)
+
 (require 'dired-setup)
 (require 'functions)
 (require 'speedbar)

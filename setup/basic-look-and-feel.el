@@ -1,9 +1,3 @@
-;; define toolbar reset
-(defun graphic-p ()
-  (if (< emacs-major-version 23)
-      (or window-system (getenv "DISPLAY"))
-    (display-graphic-p)))
-
 
 ;; Basic reset
 (put 'set-goal-column 'disabled nil)
@@ -12,10 +6,6 @@
 (put 'narrow-to-region 'disabled nil)
 
 ;; Basic look and feel
-(when (graphic-p)
-  (progn
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1)))    
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 ;; ;; Inhibit Linum mode for non-text modes
