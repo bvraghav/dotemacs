@@ -48,10 +48,26 @@
 	  (looking-back "^\\|\\s-\\|`"))
       (insert "`"))
      (t
-      (self-insert-command arg)))))
+      (self-insert-command arg))))
 
+  (dolist (command '(("LatexMk" "latexmk %(-PDF)%S%(mode) %(file-line-error) %(extraopts) %t"
+                      TeX-run-latexmk nil
+                      (plain-tex-mode latex-mode doctex-mode)
+                      :help "Run LatexMk")
+                     ("MultiFileLaTeX" "latexmk" TeX-run-shell nil t)))
+    (add-to-list 'TeX-command-list command))
 
+  (add-to-list 'bibtex-BibTeX-entry-alist
+               '("patent" "Patent"
+                 (("author") ("title"))
+                 (("year"))
+                 (("number") ("type"))))
 
+  (add-to-list 'bibtex-biblatex-entry-alist
+               '("patent" ""
+                 (("author") ("title"))
+                 (("year") ("number"))
+                 (("type")))))
 
 
 ;; ;; https://tex.stackexchange.com/a/183814 for synctex
