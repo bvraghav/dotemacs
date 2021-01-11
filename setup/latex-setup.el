@@ -55,7 +55,12 @@
                       (plain-tex-mode latex-mode doctex-mode)
                       :help "Run LatexMk")
                      ("MultiFileLaTeX" "latexmk" TeX-run-shell nil t)))
-    (add-to-list 'TeX-command-list command))
+    (add-to-list 'TeX-command-list command)))
+
+(use-package bibtex
+  :ensure auctex
+  :after tex
+  :config
 
   (add-to-list 'bibtex-BibTeX-entry-alist
                '("patent" "Patent"
@@ -69,7 +74,6 @@
                  (("year") ("number"))
                  (("type")))))
 
-
 ;; ;; https://tex.stackexchange.com/a/183814 for synctex
 ;; (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
 ;; (add-hook 'LaTeX-mode-hook 'TeX-source-correlate-mode)
@@ -79,6 +83,8 @@
 ;; Latexmk setup
 (use-package auctex-latexmk
   :ensure t
+
+  :after (tex bibtex)
 
   :config
   (auctex-latexmk-setup))
