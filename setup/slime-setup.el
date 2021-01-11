@@ -7,6 +7,8 @@
 ;; There is trouble running autodoc with ecl
 (remove-hook 'slime-mode-hook #'slime-autodoc--on)
 
-(setq slime-contribs '(slime-fancy))
+(setq slime-contribs '(slime-fancy)
+      slime-auto-start 'ask
+      slime-fuzzy-completion-in-place nil)
 
 (provide 'slime-setup)
