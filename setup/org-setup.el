@@ -126,6 +126,9 @@
   ;; Variables
   (setq org-default-notes-file "~/org/notes.org" ; notes
 
+        ;; Agenda Files (and folders)
+        org-agenda-files '("~/org" "~/org-roam")
+
 	;; Exporter
 	org-export-backends
 	(quote
