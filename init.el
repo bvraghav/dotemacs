@@ -32,6 +32,7 @@
 (require 'gui-setup)
 
 (require 'dired-setup)
+(require 'dired-file-associations)
 (require 'functions)
 (require 'speedbar)
 (require 'slug)
@@ -54,7 +55,7 @@
 (require 'projectile-setup)
 
 (require 'org-setup)
-;; (require 'gnus-setup)
+(require 'gnus-setup)
 (require 'project-explorer-setup)
 
 ;; (require 'icicles-setup)
