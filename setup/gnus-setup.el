@@ -35,4 +35,12 @@
 (setq bbdb/news-auto-create-p t)
 ;; (require 'message-x)
 
+
+;; Summary Formatting 
+(setq gnus-summary-line-format "%U%R%z%I%(%[%d: %-23,23f%]%) %s
+"
+      gnus-thread-indent-level 2
+      mm-discouraged-alternatives '("text/html" "text/richtext"))
+
+
 (provide 'gnus-setup)
