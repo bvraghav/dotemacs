@@ -136,6 +136,9 @@
 ;; Fill Column
 (setq-default fill-column 55)
 
+;; Debug on Error
+(setq debug-on-error t)
+
 ;;; Drew Adams' enhancements
 ;;; ===================================================
 ;; Crosshairs
