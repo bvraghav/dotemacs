@@ -40,7 +40,13 @@
   :bind (:map org-mode-map
               (("s-Y" . org-download-screenshot)
                ("s-y" . org-download-yank)))
-  :hook (dired-mode . org-download-enable))
+  :hook (dired-mode . org-download-enable)
+
+  :config
+
+  ;; Variables
+  (setq org-download-screenshot-method "gm import %s"
+        org-download-image-dir "org-download-images"))
 
 ;; Org Roam
 ;; -----------------------------------
