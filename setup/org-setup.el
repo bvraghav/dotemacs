@@ -127,7 +127,7 @@
   (setq org-default-notes-file "~/org/notes.org" ; notes
 
         ;; Agenda Files (and folders)
-        org-agenda-files '("~/org" "~/org-roam")
+        org-agenda-files '("~/org" "~/org-roam" "~/org-roam/daily")
 
 	;; Exporter
 	org-export-backends
