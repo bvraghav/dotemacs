@@ -187,6 +187,8 @@
         org-refile-targets '((org-agenda-files :maxlevel . 1))
         org-archive-location "::* Archived Tasks"
 
+        ;; Org Node Properties 
+        org-use-property-inheritance t))
 
 ;; Org Mode Latex Export Syntax Highlighting
 ;; Include the latex-exporter
