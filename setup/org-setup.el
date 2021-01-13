@@ -181,7 +181,11 @@
 	  ("C++" . c++)
 	  ("screen" . shell-script)
 	  ("shell" . sh)
-	  ("bash" . sh)))))
+	  ("bash" . sh)))
+
+        ;; Org Refile
+        org-refile-targets '((org-agenda-files :maxlevel . 1))
+        org-archive-location "::* Archived Tasks"
 
 
 ;; Org Mode Latex Export Syntax Highlighting
