@@ -65,7 +65,7 @@
   (require 'org-tempo)
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
-  (setq bvr/org-babel-lang '("jupyter" "python" "shell" "bash" "sh" "lisp" "js"))
+  (setq bvr/org-babel-lang '("jupyter" "jupyter-python" "python" "shell" "bash" "sh" "lisp" "js"))
   (defun bvr/org-confirm-babel-evaluate (lang body)
     (not (member lang bvr/org-babel-lang)))
   (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
