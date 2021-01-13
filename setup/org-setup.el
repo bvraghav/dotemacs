@@ -190,6 +190,12 @@
         ;; Org Node Properties 
         org-use-property-inheritance t))
 
+(use-package org-attach
+  :after org
+  :config
+  (setq org-attach-use-inheritance t))
+
+
 ;; Org Mode Latex Export Syntax Highlighting
 ;; Include the latex-exporter
 (use-package ox-latex
