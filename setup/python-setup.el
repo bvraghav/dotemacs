@@ -1,6 +1,6 @@
 ;; Run ggtags if projectile root folder available
 ;; ====================================================
-(use-package python-mode
+(use-package python
   :ensure t
   :hook (python-mode . bvr-python-mode-hook)
   :init
