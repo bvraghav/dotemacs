@@ -85,7 +85,10 @@
   (setq bibtex-completion-bibliography
         '("~/bibliography.bib")
 
-        bibtex-completion-pdf-field "file"))
+        bibtex-completion-pdf-field "file"
+
+        bibtex-completion-pdf-open-function
+        (lambda (fpath) (call-process "zathura" nil 0 nil fpath))))
 
 ;; Org Roam Bibtex
 ;; -----------------------------------
