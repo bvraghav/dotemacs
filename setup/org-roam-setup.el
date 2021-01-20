@@ -36,6 +36,7 @@
 ;; Org Download
 ;; -----------------------------------
 (use-package org-download
+  :demand
   :ensure t
   :after org
   :bind (:map org-mode-map
