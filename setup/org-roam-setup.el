@@ -47,8 +47,8 @@
   :config
 
   ;; Variables
-  (setq org-download-screenshot-method "gm import %s"
-        org-download-image-dir "org-download-images"))
+  (setq org-download-screenshot-method "gm import %s")
+  (setq-default org-download-image-dir "org-download-images"))
 
 ;; Org Roam
 ;; -----------------------------------
