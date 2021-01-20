@@ -41,7 +41,6 @@
 (require 'rectangle-replace)
 (require 'auto-insert-setup)
 (require 'w3m-ext)
-(require 'functions)
 (require 'latex-setup)
 (require 'plumb)
 (require 'c-setup)
