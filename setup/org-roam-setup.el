@@ -69,6 +69,12 @@
   (setq org-roam-directory "~/org-roam")
   (make-directory org-roam-directory t))
 
+;; Org Roam Protocol
+;; -----------------------------------
+(use-package org-roam-protocol
+  :ensure org
+  :after org)
+
 ;; Bibtex completion
 ;; -----------------------------------
 (use-package helm-bibtex
