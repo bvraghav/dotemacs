@@ -12,7 +12,8 @@
   :config
   (require 'pdf-tools)
   (require 'pdf-occur)
-  (pdf-tools-install))
+  ;; (pdf-tools-install)
+  )
 
 ;; Epub Reader
 (use-package nov
