@@ -67,9 +67,6 @@
       bookmark-save-flag 1
       bookmark-version-control t
 
-      ;; Theme
-      custom-enabled-themes '(zenburn)
-
       ;; Desktop Saving
       desktop-path '("~/.emacs.d/" "~" "~/.emacs.d/dtp")
       desktop-save-mode nil
@@ -92,6 +89,13 @@
 
       ;; Whitespaces
       whitespace-action nil)
+
+;; Theme
+(use-package zenburn-theme
+  :ensure t
+  :demand
+  :config
+  (setq custom-enabled-themes '(zenburn)))
 
 ;; Pairing
 (setq skeleton-pair t)
