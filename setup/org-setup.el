@@ -263,5 +263,9 @@
   (setq org-ref-default-bibliography
         '("~/bibliography.bib")))
 
+;; Org Rifle
+(use-package helm-org-rifle
+  :ensure t
+  :after (helm dash f s))
 
 (provide 'org-setup)
