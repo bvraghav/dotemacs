@@ -11,6 +11,7 @@
     (projectile-mode 1)))
 
 (use-package conda
+  :ensure t
   :defer t
   :init
   (setq conda-anaconda-home (expand-file-name "~/miniconda3")
@@ -20,6 +21,7 @@
   (conda-env-initialize-eshell))
 
 (use-package jupyter
+  :ensure t
   :defer t
   :init
   (setq org-babel-default-header-args:jupyter-python
