@@ -143,6 +143,9 @@
 ;; Debug on Error
 (setq debug-on-error t)
 
+;; Typographical editing. (eg. smart quotes)
+(use-package typo :ensure t)
+
 ;; GNU Global (gtags)
 (use-package ggtags :ensure t)
 
