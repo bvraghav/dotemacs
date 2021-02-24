@@ -53,6 +53,7 @@
     (org-indent-mode t)
     (auto-fill-mode t)
     (flyspell-mode t)
+    (typo-mode t)
 
     (require 'yasnippet)
     (yas-minor-mode-on)
