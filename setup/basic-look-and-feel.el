@@ -143,6 +143,9 @@
 ;; Debug on Error
 (setq debug-on-error t)
 
+;; GNU Global (gtags)
+(use-package ggtags :ensure t)
+
 ;;; Drew Adams' enhancements
 ;;; ===================================================
 ;; Crosshairs
