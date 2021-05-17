@@ -28,8 +28,14 @@
 ;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
 ;;              )
 
+;; Ob-Http
+(use-package ob-http :ensure t)
+
+;; Org
 (use-package org
   :ensure t
+
+  :after ob-http
 
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
   :hook (org-mode . bvr-org-setup)
@@ -256,7 +262,6 @@
 ;;     (define-key org-mode-map (kbd "<f9> i") 'my-insert-current-image-path)))
 
 ;; Org Ref
-(use-package ob-http :ensure t)
 (use-package org-ref
   :ensure t
   :after ob-http
