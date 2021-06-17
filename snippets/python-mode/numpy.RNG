@@ -1,5 +1,5 @@
+# -*- mode: snippet -*-
+# name: numpy
 # key: np
-# name: numpy.RNG
 # --
-from numpy.random import default_rng as RNG
-rng = RNG()
+import numpy as np
