@@ -28,8 +28,14 @@
 ;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
 ;;              )
 
+;; Ob-Http
+(use-package ob-http :ensure t)
+
+;; Org
 (use-package org
   :ensure t
+
+  :after ob-http
 
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
   :hook (org-mode . bvr-org-setup)
@@ -53,6 +59,7 @@
     (org-indent-mode t)
     (auto-fill-mode t)
     (flyspell-mode t)
+    (typo-mode t)
 
     (require 'yasnippet)
     (yas-minor-mode-on)
@@ -255,7 +262,6 @@
 ;;     (define-key org-mode-map (kbd "<f9> i") 'my-insert-current-image-path)))
 
 ;; Org Ref
-(use-package ob-http :ensure t)
 (use-package org-ref
   :ensure t
   :after ob-http
@@ -263,5 +269,9 @@
   (setq org-ref-default-bibliography
         '("~/bibliography.bib")))
 
+;; Org Rifle
+(use-package helm-org-rifle
+  :ensure t
+  :after (helm dash f s))
 
 (provide 'org-setup)

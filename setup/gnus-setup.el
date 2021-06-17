@@ -30,6 +30,7 @@
 (add-hook 'message-mode-hook 'turn-on-orgtbl)
 
 ;; Gnus BBDB Setup
+(use-package bbdb :ensure t)
 (bbdb-initialize 'gnus 'message)
 (add-hook 'gnus-startup-hook 'bbdb-insinuate-gnus)
 (setq bbdb/news-auto-create-p t)

@@ -4,8 +4,13 @@
 
 ;;; Set up helm first (will load helm-autoloads.el)
 
+(use-package dash :ensure t :demand)
+(use-package f :ensure t :demand)
+(use-package s :ensure t :demand)
+
 (use-package helm
   :ensure t
+  :after (dash f s)
   :config
   (require 'helm-config)
   (setq helm-input-idle-delay                     0.01

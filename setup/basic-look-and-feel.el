@@ -115,6 +115,11 @@
 ;; Wavefront Obj mode
 (add-to-list 'auto-mode-alist '("\\.obj\\'" . wavefront-obj-mode))
 
+;; Yaml Mode
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.ya?ml\\'")
+
 ;; Expand Region
 (use-package expand-region :ensure t)
 
@@ -142,6 +147,12 @@
 
 ;; Debug on Error
 (setq debug-on-error t)
+
+;; Typographical editing. (eg. smart quotes)
+(use-package typo :ensure t)
+
+;; GNU Global (gtags)
+(use-package ggtags :ensure t)
 
 ;;; Drew Adams' enhancements
 ;;; ===================================================
