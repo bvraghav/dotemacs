@@ -7,19 +7,19 @@
     (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
     (setq reftex-default-bibliography '("biblio.bib"))
     ;; (reftex-mode t)
-    (auto-fill-mode t)
+    (auto-fill-mode)
     (local-set-key (kbd "'") 'TeX-insert-single-quote)
     )
 
   :hook
-  ((TeX-mode-hook . turn-on-reftex)
-   (TeX-mode-hook . flyspell-mode)
-   (TeX-mode-hook . (lambda () (TeX-fold-mode 1)))
-   (LaTeX-mode-hook . bvr-latex-mode-hook)
+  ((TeX-mode . turn-on-reftex)
+   (TeX-mode . flyspell-mode)
+   (TeX-mode . (lambda () (TeX-fold-mode 1)))
+   (LaTeX-mode . bvr-latex-mode-hook)
 
    ;; for synctex integration
-   (LaTeX-mode-hook . TeX-PDF-mode)
-   (LaTeX-mode-hook . TeX-source-correlate-mode))
+   (LaTeX-mode . TeX-PDF-mode)
+   (LaTeX-mode . TeX-source-correlate-mode))
 
   :config
   (setq TeX-source-correlate-method 'synctex
