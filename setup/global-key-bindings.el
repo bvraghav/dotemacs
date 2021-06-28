@@ -73,4 +73,8 @@
 (global-set-key (kbd "C-c w") 'whitespace-mode)
 (global-set-key (kbd "C-c C-w") 'whitespace-mode)
 
+;; Line wrapping
+(global-set-key (kbd "C-z $") 'toggle-truncate-lines)
+(global-set-key (kbd "C-z C-$") 'toggle-truncate-lines)
+
 (provide 'global-key-bindings)
