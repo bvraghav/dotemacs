@@ -1,0 +1,60 @@
+# -*- mode: snippet -*-
+# name: CMT Paper Review
+# key: CMT
+# --
+* WACV ${1:2022} Review
+:PROPERTIES:
+:PAPER_ID: ${2:1168}
+:PAPER_TITLE: ${3:[Algorithm] Late-resizing}
+:PAPER_TRACK: ${4:Algorithms}
+:END:
+** PAPER SUMMARY
+:PROPERTIES:
+:DESCRIPTION: What is the paper about? Please, be concise (2 to 3 sentences). *
+:SHOWN_TO: authors during feedback/ after notification; other reviewers; meta-reviewers
+:END:
+
+$0
+
+** PAPER STRENGTHS
+:PROPERTIES:
+:DESCRIPTION: Justify with appropriate level of details [novelty, theoretical approach and/or technical correctness, adequate evaluation, clarity, etc]
+:SHOWN_TO: authors during feedback/ after notification; other reviewers; meta-reviewers
+:END:
+
+** PAPER WEAKNESSES
+:PROPERTIES:
+:DESCRIPTION: lack of novelty – given references to prior work, technical errors, or/and insufficient evaluation etc.
+:SHOWN_TO: authors during feedback/ after notification; other reviewers; meta-reviewers
+:END:
+
+** RECOMMENDATION
+:PROPERTIES:
+:SHOWN_TO: authors during feedback/ after notification; other reviewers; meta-reviewers
+:END:
+
++ [ ] Strong Reject
++ [ ] Weak Reject
++ [ ] Borderline
++ [ ] Weak Accept
++ [ ] Strong Accept
+  
+** JUSTIFICATION
+:PROPERTIES:
+:DESCRIPTION: constructive feedback based on the strengths and weaknesses
+:SHOWN_TO: authors during feedback/ after notification; other reviewers; meta-reviewers
+:END:
+
+** BEST PAPER CANDIDATE
+:PROPERTIES:
+:SHOWN_TO: meta-viewers
+:END:
+
++ [ ] DEFINITELY - This is a fantastic paper!
++ [ ] POSSIBLY - This is a pretty good paper, consider it.
++ [ ] NO - Not award candidate.
+
+** CONFIDENTIAL TO AC/PCs
+:PROPERTIES:
+:DESCRIPTION: Confidential comments to the Area Chair and Program Chairs
+:END:
