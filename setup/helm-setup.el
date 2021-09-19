@@ -168,11 +168,13 @@
           (write-region . helm-read-file-name-handler-1))))
 
 (use-package helm-adaptive
+  :after (helm)
   :config
   (setq helm-adaptive-history-file nil)
   (helm-adaptive-mode 1))
 
 (use-package helm-utils
+  :after (helm)
   :config
   ;; Popup buffer-name or filename in grep/moccur/imenu-all etc...
                                         ;(helm-popup-tip-mode 1)
@@ -181,10 +183,11 @@
   (add-hook 'find-file-hook 'helm-save-current-pos-to-mark-ring))
 
 (use-package helm-sys
+  :after (helm)
   :commands (helm-top)
   :config (helm-top-poll-mode 1))
 
-(use-package helm-info)
+(use-package helm-info :after (helm))
 ;; :bind ("C-h r" . helm-info-emacs)
 
 ;; (use-package helm-ipython
@@ -197,6 +200,7 @@
 ;;                           (add-hook 'inferior-python-mode-hook 'tv/bind-tab-in-inf-python)))
 
 (use-package helm-ring
+  :after (helm)
   :config
   (setq helm-kill-ring-threshold 1)
   ;; Action for helm kill-ring
@@ -211,6 +215,7 @@
               ("C-d" . helm-kill-ring-run-persistent-delete)))
 
 (use-package helm-recoll
+  :after (helm)
   :disabled t
   :commands helm-recoll
   ;; Use the HFF actions to setup directories, then run
@@ -219,6 +224,7 @@
                                 '(("work" . "~/.recoll-work"))))
 
 (use-package helm-ls-git
+  :after (helm)
   :ensure t
   :config
   ;; Use `magit-status-setup-buffer' instead of
@@ -237,6 +243,7 @@
      1)))
 
 (use-package helm-buffers
+  :after (helm)
   :config
   (setq helm-buffers-favorite-modes
         (append helm-buffers-favorite-modes '(picture-mode artist-mode))
@@ -276,6 +283,7 @@
      1)))
 
 (use-package helm-files
+  :after (helm)
   :config
   (setq helm-ff-auto-update-initial-value        t
         helm-ff-allow-non-existing-file-at-point t
@@ -444,6 +452,7 @@ new directory."
      3)))
 
 (use-package helm-dictionary ; Its autoloads are already loaded.
+  :after (helm)
   :commands helm-dictionary
   :config
   (setq helm-dictionary-database
@@ -456,30 +465,35 @@ new directory."
            "http://translate.reference.com/translate?query=%s&src=fr&dst=en"))))
 
 (use-package helm-descbinds
+  :after (helm)
   :ensure t
   :config
   ;; C-h b, C-x C-h etc...
   (helm-descbinds-mode 1))
 
 (use-package helm-lib
+  :after (helm)
   :config
   (setq helm-scroll-amount 4)
   (helm-help-define-key "C-x" 'exchange-point-and-mark)
   (helm-help-define-key "C-l" 'recenter-top-bottom))
 
 (use-package helm-net
+  :after (helm)
   :config
   (setq helm-net-prefer-curl           t
         helm-surfraw-duckduckgo-url    "https://duckduckgo.com/?q=%s&ke=-1&kf=fw&kl=fr-fr&kr=b&k1=-1&k4=-1"
         helm-google-suggest-search-url helm-surfraw-duckduckgo-url))
 
 (use-package helm-external
+  :after (helm)
   :config
   (setq helm-raise-command                 "wmctrl -xa %s"
         helm-default-external-file-browser "thunar"))
 
 (use-package helm-grep
-  :bind  (("C-z C-x" . helm-grep)
+  :after (helm)
+  :bind  (("C-z C-x" . bvr/helm-grep)
 	  :map helm-grep-map
           ("C-M-a" . 'helm/occur-which-func))
 
@@ -497,14 +511,22 @@ new directory."
         helm-grep-ag-pipe-cmd-switches
         '("--colors 'match:bg:yellow' --colors 'match:fg:black'")
         helm-grep-git-grep-command
-        "git --no-pager grep -n%cH --color=always --exclude-standard --no-index --full-name -e %p -- %f"))
+        "git --no-pager grep -n%cH --color=always --exclude-standard --no-index --full-name -e %p -- %f")
+
+  (defun bvr/helm-grep (arg)
+    (interactive "P")
+    (call-interactively
+     (if arg #'helm-grep-do-git-grep
+       #'helm-do-grep-ag))))
 
 (use-package helm-occur
+  :after (helm)
   :config
   (add-hook 'helm-occur-mode-hook 'hl-line-mode)
   (define-key helm-occur-map (kbd "C-M-a") 'helm/occur-which-func))
 
 (use-package helm-elisp
+  :after (helm)
   :config
   (setq helm-show-completion-display-function #'helm-display-buffer-in-own-frame
         helm-apropos-fuzzy-match              t
@@ -520,29 +542,35 @@ First call indent, second complete symbol, third complete fname."
   (define-key lisp-interaction-mode-map (kbd "TAB") 'helm-multi-lisp-complete-at-point))
 
 (use-package helm-locate
+  :after (helm)
   :config
   (setq helm-locate-fuzzy-match t))
 
 (use-package helm-org
+  :after (helm)
   :ensure t
   :config
   (setq helm-org-headings-fontify t))
 
 (use-package helm-emms
+  :after (helm)
   :after 'emms
   :config
   (setq helm-emms-use-track-description-function nil))
 
 (use-package helm-find
+  :after (helm)
   :config
   (setq helm-find-noerrors t))
 
 (use-package helm-elisp-package
+  :after (helm)
   :config
   (setq helm-el-package-autoremove-on-start t
         helm-el-package-upgrade-on-start t))
 
 (use-package helm-imenu
+  :after (helm)
   :config
   (add-to-list 'helm-imenu-type-faces '("^Use package$" . font-lock-keyword-face))
   (customize-set-variable 'helm-imenu-lynx-style-map t))
@@ -565,6 +593,7 @@ First call indent, second complete symbol, third complete fname."
 ;;              )
 
 (use-package helm-misc
+  :after (helm)
   :config
   ;; Minibuffer history (Rebind to M-s).
   (customize-set-variable 'helm-minibuffer-history-key [remap next-matching-history-element])
