@@ -55,7 +55,7 @@
 (use-package org-roam
   :ensure t
 
-  :hook (after-init . org-roam-mode)
+  :hook (after-init . org-roam-db-autosync-mode)
 
   :bind (("C-z C-d C-d" . org-roam-dailies-find-date)
          ("C-z C-d d"   . org-roam-dailies-find-date)
@@ -67,7 +67,8 @@
 
   :config
   (setq org-roam-directory "~/org-roam")
-  (make-directory org-roam-directory t))
+  (make-directory org-roam-directory t)
+  (setq org-roam-v2-ack t))
 
 ;; Org Roam Protocol
 ;; -----------------------------------
@@ -96,8 +97,8 @@
 ;; Install anystyle-cli: gem install anystyle-cli
 (use-package org-roam-bibtex
   :ensure t
-  :after org-roam
-  :hook (org-roam-mode . org-roam-bibtex-mode)
+  :requires org-roam
+  :hook (org-mode . org-roam-bibtex-mode)
 
   :config (setq
 
