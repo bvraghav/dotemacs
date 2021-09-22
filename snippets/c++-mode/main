@@ -1,0 +1,370 @@
+# -*- mode: snippet -*-
+# name: main
+# key: main
+# --
+#include <bits/stdc++.h>
+using namespace std;
+
+// ====================================================
+// Data Types
+// ====================================================
+
+typedef unsigned long ul;
+typedef unsigned int uint;
+typedef signed char schar;
+
+typedef vector<int> VecI;
+typedef queue<int> QueI;
+typedef unordered_set<int> SetI;
+
+typedef unordered_multimap<int,int> Hmul;
+typedef unordered_map<int,int> Hmap;
+
+enum DfsOrder { PRE, IN, POST };
+// ====================================================
+
+
+
+
+// ====================================================
+// Associative containers to sequence
+// ====================================================
+
+// Keys
+template <class A>
+vector<typename A::key_type> keys(A const&);
+
+// Values
+template <class A>
+vector<typename A::mapped_type> values(A const&);
+
+// Items
+template <class A>
+vector<typename A::value_type> items(A const&);
+
+// Multiple Items
+template <class A>
+vector<pair<
+	 typename A::key_type,
+	 vector<typename A::mapped_type>
+	 > >
+multems(A const&);
+
+// List of values for a key in multimap
+template <class A>
+vector<typename A::mapped_type>
+values_at(A const&, typename A::key_type);
+
+// ====================================================
+
+
+
+
+// ====================================================
+// Container IO
+// ====================================================
+
+// Output vector
+template <typename T>
+ostream& operator << (ostream&, vector<T> const&);
+
+// Output Pair
+template <typename T, typename U>
+ostream& operator << (ostream&, pair<T,U> const&);
+
+// ====================================================
+
+
+
+
+// ====================================================
+// BFS
+// ====================================================
+void BFS (Hmul const& adj, QueI& q, Hmap& L, Hmap& P);
+Hmap labels(Hmul const& adj, Hmul::key_type s=0);
+// ====================================================
+
+
+
+
+// ====================================================
+// DFS
+// ====================================================
+template <DfsOrder T> void DFS (
+  Hmul const&, Hmul::key_type,
+  VecI&, SetI&);
+template <DfsOrder T>
+VecI traverse(Hmul const&, Hmul::key_type=0);
+// ====================================================
+
+
+
+
+/******************************************************
+ * Function Declarations
+ * ------------------------------------------------- */
+
+/* ------------------------------------------------- */
+
+
+
+
+/******************************************************
+ * Main Function
+ * ------------------------------------------------- */
+int main(int argc, char *argv[])
+{
+  ios_base::sync_with_stdio(false);
+  cin.tie(NULL);
+
+  $0
+  
+  return 0;
+}
+/* ------------------------------------------------- */
+
+
+
+
+/******************************************************
+ * Function Definitions
+ * ------------------------------------------------- */
+
+/* ------------------------------------------------- */
+
+
+
+
+// ====================================================
+// BFS Implementation
+// ====================================================
+void BFS (Hmul const& adj, QueI& q, Hmap& L, Hmap& P) {
+  if (q.empty()) return;
+
+  auto u = q.front();
+  q.pop();
+
+  int lp = 0;
+  if (P.find(u) != P.end()) lp = 1+L[P[u]];
+  L[u] = lp;
+
+  for (auto v: values_at(adj, u)) {
+    if (L.find(v) == L.end()) {
+      q.push(v);
+      P[v] = u;
+    }
+  }
+
+  BFS(adj, q, L, P);
+}
+
+Hmap labels(Hmul const& adj, Hmul::key_type s) {
+  Hmap L(adj.size()), P(adj.size());
+  QueI q; q.push(s);
+  BFS(adj, q, L, P);
+  return L;
+}
+// ====================================================
+
+
+
+
+// ====================================================
+// DFS Implementation
+// ====================================================
+
+template <> void DFS<DfsOrder::PRE>(
+  Hmul const& adj,
+  Hmul::key_type s,
+  VecI & order,
+  SetI & history
+  ) {
+  history.insert(s);
+  order.push_back(s);
+
+  for (auto v: values_at(adj, s))
+    if (history.find(v) == history.end())
+      DFS<DfsOrder::PRE>(adj, v, order, history);
+
+}
+
+template <> void DFS<DfsOrder::IN>(
+  Hmul const& adj,
+  Hmul::key_type s,
+  VecI & order,
+  SetI & history
+  ) {
+
+  auto vs = values_at(adj, s);
+  auto it = vs.begin();
+
+  bool s_visited = false;
+  auto visit_s = [&] () {
+    s_visited = true;
+    history.insert(s);
+    order.push_back(s);
+  };
+
+  for (auto v: values_at(adj, s)) {
+    if (history.find(v) == history.end())
+      DFS<DfsOrder::IN>(adj, v, order, history);
+
+    if (! s_visited ) visit_s();
+  }
+
+  if (! s_visited ) visit_s();
+}
+
+template <> void DFS<DfsOrder::POST>(
+  Hmul const& adj,
+  Hmul::key_type s,
+  VecI & order,
+  SetI & history
+  ) {
+
+  for (auto v: values_at(adj, s))
+    if (history.find(v) == history.end())
+      DFS<DfsOrder::POST>(adj, v, order, history);
+
+  history.insert(s);
+  order.push_back(s);
+}
+
+template <DfsOrder T>
+VecI traverse(Hmul const& adj, Hmul::key_type s) {
+  VecI order;
+  order.reserve(adj.size());
+
+  SetI history(adj.size());
+
+  DFS<T>(adj, s, order, history);
+
+  return order;
+}
+
+// ====================================================
+
+
+
+// ====================================================
+// Associative containers to sequence
+// ====================================================
+
+// Keys
+template <class A>
+vector<typename A::key_type> keys(A const& assoc) {
+  vector<typename A::key_type> ks;
+  ks.reserve(assoc.size());
+
+  unordered_set<typename A::key_type> ks_uniq;
+  // ks_uniq.reserve(assoc.size());
+
+  transform(assoc.begin(), assoc.end(), back_inserter(ks),
+	    [](auto p) {return p.first;});
+
+  ks_uniq.insert(ks.begin(), ks.end());
+
+  ks.clear();
+  ks.insert(ks.end(), ks_uniq.begin(), ks_uniq.end());
+
+  // for (auto kv_pair: assoc) {
+  //   ks.push_back(kv_pair.first);
+  // }
+
+  return ks;
+}
+
+// Values
+template <class A>
+vector<typename A::mapped_type> values(A const& assoc) {
+  vector<typename A::mapped_type> val;
+  val.reserve(assoc.size());
+
+  for (auto kv_pair: assoc) {
+    val.push_back(kv_pair.second);
+  }
+
+  return val;
+}
+
+// Items
+template <class A>
+vector<typename A::value_type> items(A const& assoc) {
+  vector<typename A::value_type> kvs;
+  kvs.reserve(assoc.size());
+
+  for (auto kv_pair: assoc) {
+    kvs.push_back(kv_pair);
+  }
+
+  return kvs;
+}
+
+
+// Multiple Items
+template <class A>
+vector<pair<
+	 typename A::key_type,
+	 vector<typename A::mapped_type>
+	 > >
+multems(A const& assoc) {
+  vector<pair<typename A::key_type,
+	      vector<typename A::mapped_type>
+	      > > kvs;
+  kvs.reserve(assoc.size());
+
+  auto ks = keys(assoc);
+
+  transform(ks.begin(), ks.end(), back_inserter(kvs),
+	    [&assoc](typename A::key_type k) {
+	      return make_pair(k, values_at(assoc, k));
+	    });
+
+  return kvs;
+}
+
+
+// List of values for a key in multimap
+template <class A>
+vector<typename A::mapped_type>
+values_at(A const& assoc, typename A::key_type key) {
+
+  vector<typename A::mapped_type> V;
+
+  auto range = assoc.equal_range(key);
+  transform(
+    range.first, range.second, back_inserter(V),
+    [] (typename A::value_type p) { return p.second; }
+    );
+
+  return V;
+}
+
+// ====================================================
+
+
+
+
+// ====================================================
+// Container IO
+// ====================================================
+
+template <typename T>
+ostream& operator << (ostream& strm, vector<T> const& vec) {
+  string sep = "";
+  for (auto const& r: vec) {
+    strm << sep << r;
+    if (sep == "") sep = " ";
+  }
+  
+  return strm;
+}
+
+template <typename T, typename U>
+ostream& operator << (ostream& strm, pair<T,U> const& pair) {
+  strm << '(' << pair.first << ':' << pair.second << ')';
+  return strm;
+}
+
+// ====================================================
+
