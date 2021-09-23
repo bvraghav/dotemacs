@@ -2,14 +2,17 @@
 (use-package tex
   :ensure auctex
   :init
-  (defun bvr-latex-mode-hook ()
-    "Creates Latex Mode hook"
-    (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
-    (setq reftex-default-bibliography '("biblio.bib"))
-    ;; (reftex-mode t)
-    (auto-fill-mode)
-    (local-set-key (kbd "'") 'TeX-insert-single-quote)
-    )
+  (progn (defun bvr-latex-mode-hook ()
+           "Creates Latex Mode hook"
+           (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource"))
+           (setq reftex-default-bibliography '("biblio.bib"))
+           ;; (reftex-mode t)
+           (auto-fill-mode)
+           (local-set-key (kbd "'") 'TeX-insert-single-quote))
+
+         (defun bvr/reftex-mode-hook ()
+           (define-key reftex-mode-map (kbd "C-c [") nil)))
+  
 
   :hook
   ((TeX-mode . turn-on-reftex)
@@ -19,7 +22,11 @@
 
    ;; for synctex integration
    (LaTeX-mode . TeX-PDF-mode)
-   (LaTeX-mode . TeX-source-correlate-mode))
+   (LaTeX-mode . TeX-source-correlate-mode)
+
+   ;; Use helm-bibtex instead of reftex citation
+   (reftex-mode . bvr/reftex-mode-hook)
+   )
 
   :config
   (setq TeX-source-correlate-method 'synctex
