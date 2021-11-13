@@ -8,7 +8,7 @@
   :init
   (setq smerge-command-prefix ""))
 
-(use-package gitignore-mode
+(use-package git-modes
   :ensure t)
 
 (use-package forge
