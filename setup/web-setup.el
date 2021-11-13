@@ -41,6 +41,10 @@
               ("C-c C-r" . rename-sgml-tag)
               ("C-c r" . rename-sgml-tag)))
 
+(use-package emmet-mode
+  :ensure t
+  :hook (sgml-mode html-mode css-mode))
+
 ;; (require 'sgml-mode)
 ;; (define-key sgml-mode-map (kbd "C-c C-r") #'rename-sgml-tag)
 ;; (define-key sgml-mode-map (kbd "C-c r") #'rename-sgml-tag)
