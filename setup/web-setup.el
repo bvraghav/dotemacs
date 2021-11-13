@@ -36,7 +36,8 @@
 ;; Use mark multiple to edit sgml tag
 (use-package sgml-mode
   :ensure t
-  :hook (sgml-mode . css-completion-minor-mode)
+  :hook ((sgml-mode . css-completion-minor-mode)
+	 (sgml-mode . auto-fill-mode))
   :bind (:map sgml-mode-map
               ("C-c C-r" . rename-sgml-tag)
               ("C-c r" . rename-sgml-tag)))
