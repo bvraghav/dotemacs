@@ -1,0 +1,41 @@
+# key: main
+# name: leetcode_main_with_pair_input
+# --
+$0// ----------------------------------------------------
+// Main
+// ----------------------------------------------------
+
+typedef vector<int> Vi;
+typedef pair<int,Vi> Input;
+typedef vector<Input> Inputs;
+
+Inputs read_input();
+
+int main() {
+  Solution sol;
+  for(auto &[t, nums] : read_input()) {
+    cout << sol.${1:func_name}(nums, t) << endl;
+  }
+}
+
+Inputs read_input() {
+  Inputs inputs;
+  Vi nums;
+  int T, t, N, n;
+
+  cin >> T;
+
+  inputs.reserve(T);
+  while(T--) {
+    cin >> t >> N;
+    nums.clear();
+    nums.reserve(N);
+    while (N--) {
+      cin >> n;
+      nums.push_back(n);
+    }
+    inputs.push_back(make_pair(t, nums));
+  }
+
+  return inputs;
+}

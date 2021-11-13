@@ -1,0 +1,40 @@
+# key: main
+# name: leetcode_main_with_vector_input
+# --
+$0// ----------------------------------------------------
+// Main
+// ----------------------------------------------------
+
+typedef vector<int> Vi;
+typedef vector<Vi> Inputs;
+
+Inputs read_input();
+
+int main() {
+  Solution sol;
+  for(auto &nums : read_input()) {
+    cout << sol.${1:func_name}(nums) << endl;
+  }
+}
+
+Inputs read_input() {
+  Inputs inputs;
+  Vi nums;
+  int T, N, n;
+
+  cin >> T;
+
+  inputs.reserve(T);
+  while(T--) {
+    cin >> N;
+    nums.clear();
+    nums.reserve(N);
+    while (N--) {
+      cin >> n;
+      nums.push_back(n);
+    }
+    inputs.push_back(nums);
+  }
+
+  return inputs;
+}

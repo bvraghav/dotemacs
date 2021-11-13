@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: include_stdc++
+# key: inc
+# --
+#include<bits/stdc++.h>
+using namespace std;

@@ -1,0 +1,79 @@
+# -*- mode: snippet -*-
+# name: io_specialization
+# key: io
+# --
+// ----------------------------------------------------
+// IO Specialization
+// ----------------------------------------------------
+
+enum NumEncl { PAR, SQ, MUS };
+template <size_t N> struct Encl {
+  static const char *start, *end;
+};
+
+template<> const char *Encl<PAR>::start = "(";
+template<> const char *Encl<PAR>::end   = ")";
+
+template<> const char *Encl<SQ> ::start = "[";
+template<> const char *Encl<SQ> ::end   = "]";
+
+template<> const char *Encl<MUS>::start = "{";
+template<> const char *Encl<MUS>::end   = "}";
+
+enum NumSep { SP, TB, NL, COMMA, CMSP };
+template <size_t N> struct Sep {
+  static const char *sep;
+};
+template<> const char *Sep<SP   >::sep   = " ";
+template<> const char *Sep<TB   >::sep   = "\t";
+template<> const char *Sep<NL   >::sep   = "\n";
+template<> const char *Sep<COMMA>::sep   = ",";
+template<> const char *Sep<CMSP >::sep   = ", ";
+
+template <typename T> struct PR {
+  typedef Encl<PAR>   encl_type;
+  typedef Sep <SP>    sep_type;
+};
+
+template <typename T> struct PR<vector<T> > {
+  typedef Encl<MUS>   encl_type;
+  typedef Sep <CMSP>  sep_type;
+};
+
+template <typename T, size_t N>
+struct PR<array<T,N> > {
+  typedef Encl<MUS>   encl_type;
+  typedef Sep <CMSP>  sep_type;
+};
+
+template <typename T, typename Encl, typename Sep>
+ostream& put_seq(ostream& strm, T const& seq)  {
+
+  bool flag=false;
+  strm << Encl::start;
+  for (auto el: seq) {
+    if (flag) strm << Sep::sep;
+    flag=true;
+    strm << el;
+  }
+  strm << Encl::end;
+
+  return strm;
+}
+
+template <typename T,
+          typename Encl = typename PR<T>::encl_type,
+          typename Sep  = typename PR<T>::sep_type>
+ostream& operator <<(
+  ostream&strm, vector<T> const& vec) {
+  return put_seq<vector<T>,Encl,Sep>(strm, vec);
+}
+
+template <typename T,
+          size_t N,
+          typename Encl = Encl<SQ>,
+          typename Sep  = Sep<COMMA> >
+ostream& operator <<(
+  ostream&strm, array<T,N> const& arr){
+  return put_seq<array<T,N>,Encl,Sep>(strm, arr);
+}

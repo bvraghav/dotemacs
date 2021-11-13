@@ -1,0 +1,77 @@
+# -*- mode: snippet -*-
+# name: leetcode_tree
+# key: tree
+# --
+// ----------------------------------------------------
+// Tree in leetcode
+// ----------------------------------------------------
+
+// Definition for a binary tree node.
+template <typename T=int>
+struct _TreeNode {
+  typedef T value_type;
+  value_type val;
+  _TreeNode<T> *left;
+  _TreeNode<T> *right;
+  _TreeNode<T>()
+    : val(0), left(nullptr), right(nullptr) {}
+  _TreeNode<T>(int x)
+    : val(x), left(nullptr), right(nullptr) {}
+  _TreeNode<T>(
+    int x, _TreeNode<T> *left, _TreeNode<T> *right
+    ) : val(x), left(left), right(right) {}
+  ~_TreeNode<T>() {
+    if (this->left) delete this->left;
+    if (this->right) delete this->right;
+  }
+};
+typedef _TreeNode<int> TreeNode;
+
+template<typename T=int>
+void _treelc(_TreeNode<T>* root, vector<T>& lc) {
+  if (!root) return;
+  lc.push_back(
+    ((root->left) ? (root->left->val) : -1));
+  lc.push_back(
+    ((root->right) ? (root->right->val) : -1)
+    );
+  _treelc(root->left, lc);
+  _treelc(root->right, lc);
+}
+
+template<typename T=int, int N=(1<<16)>
+vector<T> treelc(_TreeNode<T>* root, T sentinel=-1) {
+  vector<T> lc; lc.reserve(N>>4);
+  lc.push_back((root ? root->val : sentinel));
+  _treelc(root, lc);
+
+  // trim right sentinels
+  auto it=lc.rbegin();
+  for (;
+    it != lc.rend() && (*it == sentinel);
+    ++it );
+  lc.erase(it.base(), lc.end());
+
+  return lc;
+}
+
+template <typename T=int>
+_TreeNode<T>* treelc(
+  vector<T> const& tree, T sentinel=-1) {
+  _TreeNode<T> *root=nullptr, *t;
+
+  queue<_TreeNode<T>**> fillqueue;
+  fillqueue.push(&root);
+  
+  for (auto val: tree) {
+    if (val != sentinel) {
+      t = new _TreeNode<T>(val);
+      fillqueue.push(&(t->left));
+      fillqueue.push(&(t->right));
+      *(fillqueue.front()) = t;
+    }
+
+    fillqueue.pop();
+  }
+  return root;
+}

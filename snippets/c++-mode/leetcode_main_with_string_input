@@ -1,0 +1,36 @@
+# -*- mode: snippet -*-
+# name: leetcode_main_with_string_input
+# key: main
+# --
+$0// ----------------------------------------------------
+// Main
+// ----------------------------------------------------
+
+typedef vector<string> Inputs;
+
+Inputs read_input();
+
+int main() {
+  Solution sol;
+  for(auto s : read_input()) {
+    cout << sol.${1:func_name}(s) << endl;
+  }
+}
+
+Inputs read_input() {
+  Inputs inputs;
+  string s;
+  int T;
+
+  cin >> T;
+  getline(cin, s);
+
+  inputs.reserve(T);
+  while(T--) {
+    s.clear();
+    getline(cin, s);
+    inputs.push_back(s);
+  }
+
+  return inputs;
+}
