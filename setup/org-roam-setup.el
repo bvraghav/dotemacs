@@ -86,7 +86,7 @@
 
   :config
   (setq bibtex-completion-bibliography
-        '("~/bibliography.bib")
+        '("~/bibliography.bib" "~/.bibliography.bib")
 
         bibtex-completion-pdf-field "file"
 
@@ -105,7 +105,9 @@
   :config (setq
 
            orb-preformat-keywords
-           '("citekey" "title" "url" "author-or-editor" "keywords" "file")
+           '("citekey" "entry-type" "date" "pdf?" "note?" "file" "author"
+	     "editor" "author-abbrev" "editor-abbrev" "author-or-editor-abbrev"
+	     "author-or-editor" "date" "booktitle" "keywords" "url" "year")
 
            orb-process-file-keyword t
 
@@ -126,6 +128,34 @@
 :AUTHOR: ${author-or-editor}
 :NOTER_DOCUMENT: ${file}
 :NOTER_PAGE:
-:END:"))))
+:END:"))
+	   org-roam-capture-ref-templates
+	   '(("r" "bibliography reference" plain
+              "%?
+%^{author} published %^{entry-type} in %^{date}: fullcite:%\\1."
+
+	      :target
+	      (file+head "ref/${citekey}.org"
+			 "#+title: ${title}\n")
+	      :unnarrowed t)))
+
+  (add-to-list 'org-roam-capture-templates
+	       '("r" "bibliography reference" plain
+		  "%?"
+		  :target
+		  (file+head "ref/${citekey}.org"
+			     "#+title: ${title}
+#+PROPERTY: NOTER_DOCUMENT: ${file}
+
+- tags :: 
+- keywords :: ${keywords}
+- author :: ${author-or-editor}
+- url :: ${url}
+- date :: ${year}
+- booktitle :: ${booktitle}
+- file :: [[${file}][PDF File]]
+
+")
+		  :unnarrowed t)))
 
 (provide 'org-roam-setup)

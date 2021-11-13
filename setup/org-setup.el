@@ -267,7 +267,7 @@
   :after ob-http
   :config
   (setq org-ref-default-bibliography
-        '("~/bibliography.bib")))
+        '("~/bibliography.bib" "~/.bibliography.bib")))
 
 ;; Org Rifle
 (use-package helm-org-rifle
