@@ -1,0 +1,49 @@
+# -*- mode: snippet -*-
+# name: leetcode_main_with_singly_list_input
+# key: main
+# --
+$0
+// ----------------------------------------------------
+// Main
+// ----------------------------------------------------
+typedef ListNodeP Input;
+typedef vector<Input> Inputs;
+
+Inputs read_input();
+ListNodeP read_list();
+
+int main() {
+  Solution sol;
+  for(auto head : read_input()) {
+    cout << sol.${1:func_name}(head) << endl;
+  }
+}
+
+Inputs read_input() {
+  Inputs inputs;
+  int T;
+
+  cin >> T;
+
+  inputs.reserve(T);
+  while(T--)
+    inputs.push_back(read_list());
+
+  return inputs;
+}
+
+ListNodeP read_list() {
+  int N, n;
+  ListNodeP head, cur;
+  cin >> N;
+  while (N--){
+    cin >> n;
+
+    cur = (cur ? cur->next : head)
+      = make_shared<ListNode>(n);
+
+    if (!head) head = cur;
+  }
+
+  return head;
+}

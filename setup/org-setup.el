@@ -216,17 +216,17 @@
 
 	;; latex exporter cli
 	org-latex-pdf-process
-	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 	;; latex document class(es)
-	org-latex-classes
-	`("booksansparts"
-	  "\\documentclass{book}"
-	  ("\\chapter{%s}" . "\\chapter*{%s}")
-	  ("\\section{%s}" . "\\section*{%s}")
-	  ("\\subsection{%s}" . "\\subsection*{%s}")
-	  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
-	  ("\\paragraph{%s}" . "\\paragraph*{%s}")
-	  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+  (add-to-list 'org-latex-classes
+	       `("booksansparts"
+		 "\\documentclass{book}"
+		 ("\\chapter{%s}" . "\\chapter*{%s}")
+		 ("\\section{%s}" . "\\section*{%s}")
+		 ("\\subsection{%s}" . "\\subsection*{%s}")
+		 ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
+		 ("\\paragraph{%s}" . "\\paragraph*{%s}")
+		 ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
 
 
 ;; Org Mode Keymap

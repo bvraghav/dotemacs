@@ -1,0 +1,35 @@
+# key: list
+# name: leetcode_list_node
+# --
+// ----------------------------------------------------
+// Singly Linked List Node Definition
+// ----------------------------------------------------
+
+// Definition for singly-linked list.
+struct ListNode;
+typedef shared_ptr<ListNode> ListNodeP;
+
+struct ListNode {
+  int val;
+  ListNodeP next;
+  ListNode() : val(0), next(nullptr) {}
+  ListNode(int x) : val(x), next(nullptr) {}
+  ListNode(int x, ListNodeP next) : val(x), next(next) {}
+};
+
+// IO for ListNode
+ostream& operator <<(ostream& strm, ListNodeP head) {
+  if (!head) { strm << "()"; return strm; }
+
+  strm << '(' << head->val;
+  while (head->next) {
+    head = head->next;
+    strm << ' ' << head->val;
+  }
+  strm << ')';
+
+  return strm;  
+}
+
+// ----------------------------------------------------
+

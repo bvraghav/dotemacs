@@ -1,0 +1,63 @@
+# -*- mode: snippet -*-
+# name: leetcode_main_with_data_image_pair
+# key: main
+# --
+// ----------------------------------------------------
+// Main
+// ----------------------------------------------------
+
+typedef vector<int> Vi;
+typedef vector<Vi> Image;
+typedef ${1:${2:tuple}<${3:int,int,int}>} Args;
+typedef pair<Args,Image> Input;
+typedef vector<Input> Inputs;
+
+Inputs read_input();
+Vi read_vector(int n);
+Image read_image(int m, int n);
+
+int main() {
+  Solution sol;
+  $for(auto $0&[t, image] : read_input()) {
+    auto &[sr,sc,newColor] = t;
+    cout << sol.FUNC_NAME(image, sr, sc, newColor)
+	 << endl;
+  }
+}
+
+Inputs read_input() {
+  Inputs inputs;
+  Image I;
+  int T, ${4:r, c, t, }m, n;
+
+  cin >> T;
+
+  inputs.reserve(T);
+  while(T--) {
+    cin >> ${5:r >> c >> t >> }m >> n;
+    inputs.push_back(
+      make_pair(
+	${6:make_tuple(r,c,t)},
+	read_image(m,n)
+	));
+  }
+
+  return inputs;
+}
+
+Image read_image(int m, int n) {
+  Image image; image.reserve(m);
+  while (m--) image.push_back(read_vector(n));
+  return image;
+}
+
+Vi read_vector(int n) {
+  Vi vec; vec.reserve(n);
+  int i;
+  while (n--) {
+    cin >> i;
+    vec.push_back(i);
+  }
+
+  return vec;
+}

@@ -55,6 +55,8 @@
 (use-package org-roam
   :ensure t
 
+  :init (setq org-roam-v2-ack t)
+
   :hook (after-init . org-roam-db-autosync-mode)
 
   :bind (("C-z C-d C-d" . org-roam-dailies-find-date)
@@ -67,8 +69,7 @@
 
   :config
   (setq org-roam-directory "~/org-roam")
-  (make-directory org-roam-directory t)
-  (setq org-roam-v2-ack t))
+  (make-directory org-roam-directory t))
 
 ;; Org Roam Protocol
 ;; -----------------------------------

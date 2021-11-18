@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: type_image
+# key: type
+# --
+typedef vector<vector<${1:int}> > Image;
