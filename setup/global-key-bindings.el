@@ -5,7 +5,7 @@
 (global-set-key (kbd "C-c C-i") #'ibuffer)
 (global-set-key (kbd "C-z C-a") #'align-regexp)
 (global-set-key (kbd "C-z C-k") #'keep-lines)
-(global-set-key (kbd "C-z C-f") #'flush-lines)
+;; (global-set-key (kbd "C-z C-f") #'flush-lines)
 (global-set-key (kbd "C-z C-c") #'calc)
 ;; (global-set-key (kbd "C-z C-d") #'desktop-save)
 (global-set-key (kbd "C-z d") #'desktop-save)
