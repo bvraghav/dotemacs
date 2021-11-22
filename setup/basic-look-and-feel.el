@@ -145,6 +145,9 @@
 ;; Fill Column
 (setq-default fill-column 55)
 
+;; No tabs on indentation
+(setq-default indent-tabs-mode nil)
+
 ;; Debug on Error
 (setq debug-on-error t)
 
