@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: col_beamer
+# key: col
+# --
+\begin{columns}
+  \begin{column}{${1:\linewidth}}
+  \end{column}
+  \begin{column}{${2:\linewidth}}
+  \end{column}
+\end{columns}
