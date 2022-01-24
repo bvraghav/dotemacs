@@ -65,7 +65,7 @@
 ;; (require 'proxy-setup)
 ;; (require 'openwith-setup)
 
-;; (require 'lsp-setup)
+(require 'lsp-setup)
 
 ;; From .elisp
 (require 'trivial-functions)

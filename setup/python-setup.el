@@ -7,7 +7,7 @@
   (setq python-indent-offset 2)
   (defun bvr-python-mode-hook ()
     (customize-set-variable 'indent-tabs-mode nil)
-    (ggtags-mode 1)
+    ;; (ggtags-mode 1)
     (projectile-mode 1)))
 
 (use-package conda

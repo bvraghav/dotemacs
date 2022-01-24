@@ -2,9 +2,15 @@
 
 (use-package lsp-mode
   :ensure t
-  :hook ((prog-mode . lsp)
-         (lsp-mode . lsp-enable-which-key-integration))
+  :hook (lsp-mode . lsp-enable-which-key-integration)
   :commands lsp)
+
+;; Python Language Server
+(use-package lsp-pyright
+  :ensure t
+  :hook (python-mode . (lambda ()
+                          (require 'lsp-pyright)
+                          (lsp))))  ; or lsp-deferred
 
 (use-package lsp-ui :ensure t :commands lsp-ui-mode)
 (use-package helm-lsp :ensure t :commands lsp-ui-mode)
