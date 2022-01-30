@@ -265,9 +265,14 @@
 (use-package org-ref
   :ensure t
   :after ob-http
+  :hook (org-mode . ref-link-keymap)
   :config
   (setq org-ref-default-bibliography
-        '("~/bibliography.bib" "~/.bibliography.bib")))
+        '("~/bibliography.bib" "~/.bibliography.bib"))
+
+  (defun ref-link-keymap ()
+      (define-key org-mode-map (kbd "C-c C-x [")
+        #'org-ref-insert-link)))
 
 ;; Org Rifle
 (use-package helm-org-rifle
