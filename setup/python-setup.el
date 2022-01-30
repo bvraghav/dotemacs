@@ -8,7 +8,12 @@
   (defun bvr-python-mode-hook ()
     (customize-set-variable 'indent-tabs-mode nil)
     ;; (ggtags-mode 1)
-    (projectile-mode 1)))
+    (projectile-mode 1))
+  :bind
+  (("C-M-t" . treemacs-select-window)
+   ("M-." . lsp-goto-type-definition)
+   ("M-]" . lsp-find-references)
+   ))
 
 (use-package conda
   :ensure t
