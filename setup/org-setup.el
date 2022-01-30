@@ -167,7 +167,7 @@
 	  ("\\.gif\\'" . "feh %s")))
 
 	;; Images
-	org-image-actual-width 320
+	org-image-actual-width '(320)
 
 	;; Babel languages
 	org-src-lang-modes
