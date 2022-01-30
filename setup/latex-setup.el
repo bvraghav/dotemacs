@@ -79,7 +79,28 @@
                '("patent" ""
                  (("author") ("title"))
                  (("year") ("number"))
-                 (("type")))))
+                 (("type"))))
+
+
+  ;; From John Kitchin's Configuration
+  ;; https://github.com/jkitchin/org-ref#configuration
+  (setq bibtex-completion-bibliography '("~/bibliography.bib"
+					 "~/.bibliography.bib")
+	bibtex-completion-notes-path "~/org-roam/ref/"
+	bibtex-completion-notes-template-multiple-files "* ${author-or-editor}, ${title}, ${journal}, (${year}) :${=type=}: \n\nSee [[cite:&${=key=}]]\n"
+
+	bibtex-completion-additional-search-fields '(keywords tags)
+	bibtex-completion-display-formats
+	'((t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:16} ${title:*}"))
+	;; '((article       . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:16} ${title:*} ${journal:40}")
+	;;   (inbook        . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:16} ${title:*} Chapter ${chapter:32}")
+	;;   (incollection  . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:16} ${title:*} ${booktitle:40}")
+	;;   (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:16} ${title:*} ${booktitle:40}")
+	;;   (t             . "${=has-pdf=:1}${=has-note=:1} ${year:4} ${author:16} ${title:*}"))
+	;; bibtex-completion-pdf-open-function
+	;; (lambda (fpath)
+	;;   (call-process "open" nil 0 nil fpath))
+        ))
 
 ;; ;; https://tex.stackexchange.com/a/183814 for synctex
 ;; (add-hook 'LaTeX-mode-hook 'TeX-PDF-mode)
