@@ -65,8 +65,8 @@
     (add-to-list 'TeX-command-list command)))
 
 (use-package bibtex
-  :ensure auctex
-  :after tex
+  ;; :ensure auctex
+  ;; :after tex
   :config
 
   (add-to-list 'bibtex-BibTeX-entry-alist
