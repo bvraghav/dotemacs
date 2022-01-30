@@ -56,4 +56,7 @@
 (add-to-list 'auto-mode-alist '("^[Jj]am\(root|file|base\)\\'" . jam-mode))
 (add-to-list 'auto-mode-alist '("\\.jam\\'" . jam-mode))
 
+;; Cuda mode
+(use-package cuda-mode :ensure t)
+
 (provide 'c-setup)
