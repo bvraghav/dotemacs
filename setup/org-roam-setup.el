@@ -113,6 +113,7 @@
            orb-process-file-keyword t
 
            orb-file-field-extensions '("pdf")
+           orb-attached-file-extensions '("pdf")
 
            orb-templates '(("r" "ref" plain (function org-roam-capture--get-point)
                             ""
