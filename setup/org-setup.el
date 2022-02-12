@@ -218,10 +218,13 @@
   ;; Notify latex exporter about minted for source coloration
   (setq org-latex-listings 'minted
 
-	;; latex exporter cli
+	;; ;; latex exporter cli
+	;; org-latex-pdf-process
+	;; '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 	org-latex-pdf-process
-	'("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
-	;; latex document class(es)
+	'("latexmk -f -interaction=nonstopmode -output-directory=%o %f"))
+
+  ;; latex document class(es)
   (add-to-list 'org-latex-classes
 	       `("booksansparts"
 		 "\\documentclass{book}"
