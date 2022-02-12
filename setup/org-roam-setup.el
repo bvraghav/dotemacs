@@ -83,7 +83,7 @@
   :ensure t
   :after helm
 
-  :bind (("C-c [" . helm-bibtex))
+  ;; :bind (("C-c [" . helm-bibtex))
 
   :config
   (setq bibtex-completion-bibliography
