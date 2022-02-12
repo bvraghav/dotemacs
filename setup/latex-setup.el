@@ -1,4 +1,74 @@
 ;; Latex Mode
+
+;; ====================================================
+;; CITATION
+;; ----------------------------------------------------
+
+(use-package helm-bibtex :ensure t)
+(require 'helm-bibtex)
+
+(defvar bvr/latex-cite-source
+  (helm-build-sync-source
+      "BibTeX entries for LaTeX (BVR)"
+    :header-name
+    (lambda (name)
+      (format "%s%s: " name (if helm-bibtex-local-bib
+                                " (local)"
+                              "")))
+    :candidates 'helm-bibtex-candidates
+    :filtered-candidate-transformer
+    #'helm-bibtex-candidates-formatter
+
+    :action #'helm-bibtex-insert-citation)
+  "Source for searching in BibTeX files.")
+
+
+;;;###autoload
+(defun bvr/latex-cite (&optional arg local-bib input)
+  "Insert citation into a LaTeX source after searching
+amongst BibTeX entries. Adapted from HELM-BIBTEX.
+
+
+With a prefix ARG, the cache is invalidated and the
+bibliography reread.
+
+If LOCAL-BIB is non-nil, display that the BibTeX
+entries are read from the local bibliography.
+
+If INPUT is non-nil and a string, that value is going
+to be used as a predefined search term.  Can be used to
+define functions for frequent searches (e.g. your own
+publications)."
+  (interactive "P")
+  (when arg
+    (bibtex-completion-clear-cache))
+  (bibtex-completion-init)
+  (let* ((candidates (bibtex-completion-candidates))
+         (key (bibtex-completion-key-at-point))
+         (preselect
+          (and key (cl-position-if
+                    (lambda (cand)
+                      (member (cons "=key=" key)
+                              (cdr cand)))
+                    candidates))))
+
+    (helm :sources (list bvr/latex-cite-source)
+          :full-frame nil       ;helm-bibtex-full-frame
+          :buffer "*BVR LaTeX Cite*"
+          :input input
+          :preselect
+          (lambda () (and preselect
+                          (> preselect 0)
+                          (helm-next-line preselect)))
+          :candidate-number-limit
+          (max 500 (1+ (or preselect 0)))
+
+          ;; The following are forwarded to :SOURCES
+          :bibtex-candidates candidates
+          :bibtex-local-bib local-bib)))
+
+;; ====================================================
+
 (use-package tex
   :ensure auctex
   :init
@@ -27,6 +97,8 @@
    ;; Use helm-bibtex instead of reftex citation
    (reftex-mode . bvr/reftex-mode-hook)
    )
+
+  :bind ("C-c [" . bvr/latex-cite)
 
   :config
   (setq TeX-source-correlate-method 'synctex
