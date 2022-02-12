@@ -196,7 +196,10 @@
         org-archive-location "::* Archived Tasks"
 
         ;; Org Node Properties 
-        org-use-property-inheritance t))
+        org-use-property-inheritance t
+
+        ;; Org user labels
+        org-latex-prefer-user-labels t))
 
 (use-package org-attach
   :after org
