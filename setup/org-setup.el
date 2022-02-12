@@ -43,7 +43,8 @@
   :bind (("C-c l"	. org-store-link)
 	 ("C-c a"	. org-agenda)
 	 ("C-c C-a"	. org-agenda)
-	 ("C-c c"	. org-capture))
+	 ("C-c c"	. org-capture)
+         ("C-c b"       . org-backward-heading-same-level))
 
   :init
   (require 'jupyter)
