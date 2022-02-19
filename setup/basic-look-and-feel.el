@@ -190,8 +190,4 @@
 ;; ====================================================
 (winner-mode t)
 
-;; Activate recentf mode
-;; ====================================================
-(recentf-mode t)
-
 (provide 'basic-look-and-feel)

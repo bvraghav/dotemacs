@@ -35,6 +35,7 @@
 (require 'dired-setup)
 (require 'dired-file-associations)
 (require 'functions)
+(require 'recentf-setup)
 (require 'speedbar)
 (require 'slug)
 (require 'caffe-mode-setup)
