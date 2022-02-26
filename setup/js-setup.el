@@ -24,15 +24,6 @@
         js-comint-program-arguments
         '("--experimental-json-modules" "--experimental-repl-await")))
 
-(use-package typescript-mode
-  :ensure t
-
-  :hook ((typescript-mode . auto-revert-mode)
-	 (typescript-mode . ggtags-mode))
-
-  :config
-  (setq typescript-indent-level 2))
-
 
 ;; (require 'js2-mode)
 

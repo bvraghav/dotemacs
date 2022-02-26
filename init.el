@@ -48,6 +48,7 @@
 (require 'c-setup)
 (require 'python-setup)
 (require 'js-setup)
+(require 'typescript-setup)
 (require 'web-setup)
 (require 'yas-setup)
 (require 'magit-setup)
