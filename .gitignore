@@ -28,3 +28,9 @@ transient/
 
 # Org Roam
 /org-roam*
+
+# Sqlite databases (eg. Magit Forge)
+*.sqlite
+
+# Recentf
+recentf
