@@ -178,12 +178,12 @@
   '(when (require 'thingatpt+)
      (tap-redefine-std-fns)))
 
-;; Bookmark+
-(require 'bookmark+)
+;; ;; Bookmark+
+;; (require 'bookmark+)
 
 ;; Dired+
 (require 'dired-setup)
-(require 'dired+)
+;; (require 'dired+)
 ;;; ===================================================
 
 ;; Activate winner mode
