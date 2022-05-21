@@ -1,0 +1,11 @@
+name: emacs
+channels:
+  - defaults
+dependencies:
+  - opencv
+  - torchvision
+  - pytorch
+  - jupyter
+  - python
+  - numpy
+
