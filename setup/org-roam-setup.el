@@ -1,19 +1,19 @@
 ;; Document viewers setup
 ;; -----------------------------------
 ;; PDF Tools
-(use-package pdf-tools
-  :ensure t
-  :pin manual
+;; (use-package pdf-tools
+;;   :ensure t
+;;   :pin manual
 
-  :demand
+;;   :demand
 
-  :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
+;;   :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
 
-  :config
-  (require 'pdf-tools)
-  (require 'pdf-occur)
-  ;; (pdf-tools-install)
-  )
+;;   :config
+;;   (require 'pdf-tools)
+;;   (require 'pdf-occur)
+;;   ;; (pdf-tools-install)
+;;   )
 
 ;; Epub Reader
 (use-package nov
