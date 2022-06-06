@@ -32,6 +32,7 @@
 
 (require 'gui-setup)
 
+(require 'docker-setup)
 (require 'dired-setup)
 (require 'dired-file-associations)
 (require 'functions)
