@@ -21,7 +21,8 @@
 
 (defun indic-fonts-setup ()
   (interactive)
-  (devanagari-setup))
+  (devanagari-setup)
+  (define-key 'iso-transl-ctl-x-8-map "r" [?₹]))
 
 (indic-fonts-setup)
 
