@@ -34,3 +34,6 @@ transient/
 
 # Recentf
 recentf
+
+# Ignore LSP session files
+.lsp-session-*
