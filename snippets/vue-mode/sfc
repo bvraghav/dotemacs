@@ -7,19 +7,22 @@
   </div>
 </template>
 
-<script>
-  export default {
-    props: {},
-    data: () => ({
+<script setup>
+  import { ref, onMounted } from 'vue'
 
-    }),
-    computed: {
+  const props = defineProps({
+  
+  });
 
-    },
-  };
+  const some_num = ref(0);
+
+  onMounted(() => {
+    // TODO: do something
+  })
 </script>
 
-<style lang="stylus">
-  #$1
+<style lang="css">
+  #$1 {
   
+  }
 </style>
