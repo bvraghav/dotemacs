@@ -1,4 +1,5 @@
 (require 'sgml-mode)
+(require 'edit-indirect)
 
 (defvar vue-constants nil)
 
