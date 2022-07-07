@@ -91,7 +91,7 @@
 
     ;; TODO Try to restore point without this dirty hack
     (goto-char (- (1+ current-point) part-beg)))
-  (call-interactively 'delete-window))
+  (call-interactively 'delete-other-windows))
 
 (defun vue-edit-template ()
   (interactive)
