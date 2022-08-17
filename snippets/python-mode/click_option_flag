@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: click_option_flag
+# key: click
+# --
+@click.option('-${2:}', '--${1:verbose}', is_flag=True, default=${3:False})
+$0

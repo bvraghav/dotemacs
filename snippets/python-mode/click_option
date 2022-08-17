@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: click_option
+# key: click
+# --
+@click.option('--${1:out-file}', 
+              help='${2:File to ouput contents to.}')
+$0

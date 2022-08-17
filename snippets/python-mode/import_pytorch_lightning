@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import_pytorch_lightning
+# key: pl
+# --
+import pytorch_lightning as pl

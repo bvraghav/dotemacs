@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: click_option_count
+# key: click
+# --
+@click.option('-${2:v}', --${1:verbose}', count=True)
+$0

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: click_option_file
+# key: click
+# --
+@click.option('--${1:out-file}',
+              type=click.File('${2:w}'), metavar='FILE',
+              help='${3:File to ouput contents to.}')
+$0

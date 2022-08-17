@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: click_argument
+# key: click
+# --
+@click.argument('${1:IN_FILE}', ${2:type=${3:click.File('r')}})
+$0
