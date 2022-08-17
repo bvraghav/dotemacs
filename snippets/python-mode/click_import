@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: click_import
+# key: click
+# --
+import click
+$0
