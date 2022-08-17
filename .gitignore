@@ -1,3 +1,11 @@
+# Other ignores
+
+.cache/
+
+
+### github/gitignore.git
+### Elisp.gitignore
+
 # Ignore custom.el
 custom.el
 
