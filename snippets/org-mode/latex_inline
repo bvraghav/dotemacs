@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: latex_inline
+# key: latex
+# --
+@@latex:${1:any arbitrary LaTeX code}@@

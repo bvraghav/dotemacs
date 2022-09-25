@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: tqdm
+# key: tqdm
+# --
+${1:from tqdm }import tqdm
+$0

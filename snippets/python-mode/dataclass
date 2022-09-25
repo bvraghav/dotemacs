@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dataclass
+# key: dataclass
+# --
+from dataclasses import dataclass as Dc

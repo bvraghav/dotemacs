@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: torch_import
+# key: torch
+# --
+import torch

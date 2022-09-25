@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lg_getLogger
+# key: lg
+# --
+lg = LG.getLogger(__name__)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: tvf
+# key: tvf
+# --
+from torchvision.transforms import functional as Tvf

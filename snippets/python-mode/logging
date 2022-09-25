@@ -2,9 +2,9 @@
 # name: logging
 # key: lg
 # --
-import logging as lg
-lg.basicConfig(
-  level=lg.${1:DEBUG},
-  format='%(levelname)-8s: %(message)s'
+import logging as LG
+LG.basicConfig(
+  level=LG.${1:DEBUG},
+  format='%(levelname)-8s: [%(name)s] %(message)s'
 )
 $0

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mlflow_pyfunc_import
+# key: mlflow
+# --
+from mlflow.pyfunc import PythonModel, save_model

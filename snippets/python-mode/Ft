@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: Ft
+# key: Ft
+# --
+import functools as Ft

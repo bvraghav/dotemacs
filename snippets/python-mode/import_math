@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: import_math
+# key: import
+# --
+import math as m

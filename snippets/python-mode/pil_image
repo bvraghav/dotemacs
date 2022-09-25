@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pil_image
+# key: pil
+# --
+from PIL import Image

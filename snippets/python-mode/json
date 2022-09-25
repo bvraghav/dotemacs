@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: json
+# key: json
+# --
+import json

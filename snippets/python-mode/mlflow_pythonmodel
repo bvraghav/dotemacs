@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: mlflow_pythonmodel
+# key: mlflow
+# --
+class ${1:MyPythonModel}(PythonModel) :
+  def load_context(self, context) :
+    $0pass
+
+  def predict(self, context, model_input) :
+    pass

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lg_import
+# key: lg
+# --
+import logging as LG

@@ -1,0 +1,4 @@
+# key: id
+# name: id
+# --
+_id: ${1:`(slug-insert-random-string-from-alphabet 8 "0123456789abcdef")`}

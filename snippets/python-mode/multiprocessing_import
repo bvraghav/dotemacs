@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: multiprocessing_import
+# key: multiprocessing
+# --
+import multiprocessing as Mp

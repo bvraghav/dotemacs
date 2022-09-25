@@ -2,4 +2,7 @@
 # name: click_command
 # key: click
 # --
-@click.command()
+@click.command(context_settings = dict(
+  show_default                  = True,
+  help_option_names             = ['-h','--help']
+))

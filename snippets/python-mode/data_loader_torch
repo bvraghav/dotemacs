@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: dataloader_torch
+# key: dataloader
+# --
+from torch.utils.data import DataLoader
