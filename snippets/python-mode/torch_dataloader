@@ -2,4 +2,4 @@
 # name: torch_dataloader
 # key: torch
 # --
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Dataset
