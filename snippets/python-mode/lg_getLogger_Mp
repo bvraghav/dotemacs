@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: lg_getLogger_Mp
+# key: lg
+# --
+lg = LG.getLogger(Mp.current_process().name)
