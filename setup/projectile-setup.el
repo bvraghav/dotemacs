@@ -30,6 +30,12 @@
 (use-package helm-projectile
   :ensure t)
 
+;; Required for projectile-search-ripgrep
+(use-package rg
+  :ensure t
+  :config
+  (rg-enable-default-bindings))
+
 ;; (require 'projectile)
 
 ;; (custom-set-variables
