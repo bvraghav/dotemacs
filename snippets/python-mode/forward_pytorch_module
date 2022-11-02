@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: forward_pytorch_module
+# key: forward
+# --
+def forward(self, x) :
+  return ${1:self.model(x)}
+$0

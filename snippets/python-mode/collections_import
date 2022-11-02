@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: collections_import
+# key: coll
+# --
+from collections import OrderedDict
