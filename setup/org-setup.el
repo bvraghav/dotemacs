@@ -80,7 +80,7 @@
 
   ;; Org TODO Keywords
   (setq org-todo-keywords
-	'((sequence "TODO(t)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)")
+	'((sequence "TODO(t)" "TOREAD(r)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)")
 	  (sequence "DONOT(D)" "|")))
 
   ;; Org Babel Load Languages
