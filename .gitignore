@@ -1,7 +1,7 @@
 # Other ignores
 
 .cache/
-
+/socket
 
 ### github/gitignore.git
 ### Elisp.gitignore
