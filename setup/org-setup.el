@@ -278,8 +278,10 @@
         '("~/bibliography.bib" "~/.bibliography.bib"))
 
   (defun ref-link-keymap ()
-      (define-key org-mode-map (kbd "C-c C-x [")
-        #'org-ref-insert-link)))
+    (define-key org-mode-map (kbd "C-c C-x [")
+      #'org-ref-insert-link)
+    (define-key org-mode-map (kbd "C-c C-x )")
+      #'org-ref-insert-ref-link)))
 
 ;; Org Rifle
 (use-package helm-org-rifle
