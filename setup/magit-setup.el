@@ -6,7 +6,19 @@
   :bind ("C-x g" . magit-status)
 
   :init
-  (setq smerge-command-prefix ""))
+  (setq smerge-command-prefix "")
+
+  :config
+  (setq magit-clone-name-alist
+        '(("\\`\\(?:github:\\|gh:\\)?\\([^:]+\\)\\'"
+           "github.com"
+           "github.user")
+          ("\\`\\(?:gitlab:\\|gl:\\)\\([^:]+\\)\\'"
+           "gitlab.com"
+           "gitlab.user")
+          ("\\`\\(?:ghbath:\\)?\\([^:]+\\)\\'"
+           "github.bath.ac.uk"
+           "github.user"))))
 
 (use-package git-modes
   :ensure t)
