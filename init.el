@@ -46,6 +46,7 @@
 (require 'w3m-ext)
 
 (require 'plumb)
+(require 'gnuplot-setup)
 (require 'c-setup)
 (require 'python-setup)
 (require 'js-setup)
