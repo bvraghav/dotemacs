@@ -12,7 +12,7 @@
   :ensure t
   :after (dash f s)
   :config
-  (require 'helm-config)
+  ;; (require 'helm-config)
   (setq helm-input-idle-delay                     0.01
         helm-reuse-last-window-split-state        t
         helm-always-two-windows                   t
