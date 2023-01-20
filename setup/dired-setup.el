@@ -41,10 +41,10 @@
 
   ;; Dired Mode archive handler
   (add-to-list 'dired-compress-file-suffixes
-               '("\\.zip\\'" ".zip" "unzip"))
+               '("\\.zip\\'" ".zip" "unzip")))
 
-  ;; Variables
+(with-eval-after-load 'dired
   (setq  dired-isearch-filenames t
-         dired-listing-switches "-alh")  )
+         dired-listing-switches "-alh"))
 
 (provide 'dired-setup)
