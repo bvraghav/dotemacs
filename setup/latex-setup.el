@@ -134,7 +134,17 @@ publications)."
                       (plain-tex-mode latex-mode doctex-mode)
                       :help "Run LatexMk")
                      ("MultiFileLaTeX" "latexmk" TeX-run-shell nil t)))
-    (add-to-list 'TeX-command-list command)))
+    (add-to-list 'TeX-command-list command))
+
+  ;; Scaling latex preview for hidpi
+  ;; https://emacs.stackexchange.com/a/30310
+  (require 'get-dpi)
+  ;; (and (< 192 (string-to-number (shell-command-to-string "get_dpi")))
+  ;;      (setq preview-scale-function (lambda () 0.6)))
+  (and (< 192 (get-dpi))
+       (setq preview-scale-function (lambda () 0.6)))
+
+  )
 
 (use-package bibtex
   ;; :ensure auctex
@@ -205,5 +215,6 @@ publications)."
            (mode-io-correlate " --synctex-forward %n:0:%b"))))
   ;; use the view command named "Zathura" for pdf output
   (setcdr (assq 'output-pdf TeX-view-program-selection) '("Zathura")))
+
 
 (provide 'latex-setup)
