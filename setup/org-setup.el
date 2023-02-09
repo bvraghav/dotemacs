@@ -208,7 +208,13 @@
         org-use-property-inheritance t
 
         ;; Org user labels
-        org-latex-prefer-user-labels t))
+        org-latex-prefer-user-labels t
+
+        ;; Latex preview scale
+        ;; https://emacs.stackexchange.com/a/30318
+        org-format-latex-options (plist-put org-format-latex-options :scale 1.2)
+
+        ))
 
 (use-package org-attach
   :after org
