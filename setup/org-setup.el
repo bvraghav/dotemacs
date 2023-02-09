@@ -80,8 +80,17 @@
 
   ;; Org TODO Keywords
   (setq org-todo-keywords
-	'((sequence "TODO(t)" "TOREAD(r)" "URGENT(u)" "|" "DONE(d)" "ABANDONED(a!)" "CANCELLED(c!)")
+	'((sequence "TODO(t)"
+                    "TOREAD(r)"
+                    "URGENT(u)"
+                    "PROCESSING(p)"
+                    "|"
+                    "DONE(d)"
+                    "ABANDONED(a!)"
+                    "CANCELLED(c!)")
 	  (sequence "DONOT(D)" "|")))
+
+  (setq org-todo-keyword-faces '(("PROCESSING" . "#55aaff")))
 
   ;; Org Babel Load Languages
   (org-babel-do-load-languages
