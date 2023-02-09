@@ -21,6 +21,7 @@
 (setq show-paren-delay 0)
 (toggle-word-wrap t)
 (global-subword-mode t)
+(setq ring-bell-function 'ignore)
 
 ;; Inhibit Linum mode for non-text modes
 (defun inhibit-linum-mode ()
