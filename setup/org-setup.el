@@ -212,7 +212,26 @@
 
         ;; Latex preview scale
         ;; https://emacs.stackexchange.com/a/30318
-        org-format-latex-options (plist-put org-format-latex-options :scale 1.2)
+        ;; --------------------------------------------
+        ;; Using DVIPNG
+        ;; ---------------
+        org-preview-latex-default-process 'dvipng
+        ;; ---------------
+        org-format-latex-options
+        (plist-put org-format-latex-options
+                   :scale 1.8)
+        ;; --------------------------------------------
+        ;; Using DVISVGM
+        ;; ---------------
+        ;; When using with dvisvgm the scale required,
+        ;; is much smaller.
+        ;; ---------------
+        ;; org-preview-latex-default-process 'dvisvgm
+        ;; ---------------
+        ;; org-format-latex-options
+        ;; (plist-put org-format-latex-options
+        ;;            :scale 1.2)
+        ;; --------------------------------------------
 
         ))
 
