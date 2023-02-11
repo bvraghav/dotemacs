@@ -31,6 +31,11 @@
 ;; Ob-Http
 (use-package ob-http :ensure t)
 
+;; Org-Autolist
+(use-package org-autolist
+  :ensure t
+  :hook org-mode)
+
 ;; Org
 (use-package org
   :ensure t
