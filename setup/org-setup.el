@@ -1,6 +1,6 @@
 ;; Org Mode
 (require 'yas-setup)
-
+(require 'get-dpi)
 
 ;; Org Mode Latex Export Syntax Highlighting
 ;; Include the latex-exporter
@@ -31,10 +31,31 @@
 ;; Ob-Http
 (use-package ob-http :ensure t)
 
+;; Ob-Async
+(use-package ob-async
+  :ensure t
+  :config
+  (setq ob-async-no-async-languages-alist '("python")))
+  
+
 ;; Org-Autolist
 (use-package org-autolist
-  :ensure t
-  :hook org-mode)
+  :ensure t)
+
+;; ;; Org-Beautify
+;; ----------------------------------------------------
+;; Update: [2023-02-11 Sat]
+;; ----------------------------------------------------
+;; This one is really problematic with daemon
+;; invocation, because it invokes x-font-list, which
+;; in-turn painfully requires a display.
+;; ----------------------------------------------------
+;; Also, a prior installation shows that font
+;; customisations are not allowed. So wait until
+;; org-mode implements this functionality all by
+;; itself!
+;; ----------------------------------------------------
+;; (use-package org-beautify-theme :ensure t)
 
 ;; Org
 (use-package org
@@ -78,7 +99,7 @@
   (require 'org-tempo)
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
-  (setq bvr/org-babel-lang '("jupyter" "jupyter-python" "python" "shell" "bash" "sh" "lisp" "js"))
+  (setq bvr/org-babel-lang '("jupyter" "jupyter-python" "python" "shell" "bash" "sh" "emacs-lisp" "elisp" "lisp" "js"))
   (defun bvr/org-confirm-babel-evaluate (lang body)
     (not (member lang bvr/org-babel-lang)))
   (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
@@ -146,10 +167,10 @@
       (t Y))))
 
   ;; Variables
-  (setq org-default-notes-file "~/org/notes.org" ; notes
+  (setq org-default-notes-file "~/code/org/notes.org" ; notes
 
         ;; Agenda Files (and folders)
-        org-agenda-files '("~/org" "~/org-roam" "~/org-roam/daily")
+        org-agenda-files '("~/code/org" "~/code/org-roam" "~/code/org-roam/daily")
 
 	;; Exporter
 	org-export-backends
@@ -182,7 +203,9 @@
 	  ("\\.gif\\'" . "feh %s")))
 
 	;; Images
-	org-image-actual-width '(320)
+	org-image-actual-width (if (< 192 (get-dpi))
+                                   '(768)
+                                 '(320))
 
 	;; Babel languages
 	org-src-lang-modes
@@ -243,7 +266,10 @@
         org-startup-with-latex-preview t
         ;; --------------------------------------------
 
-        ))
+        )
+
+  ;; Require ob-async
+  (require 'ob-async))
 
 (use-package org-attach
   :after org
