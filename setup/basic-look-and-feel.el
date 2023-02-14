@@ -191,4 +191,7 @@
 ;; ====================================================
 (winner-mode t)
 
+;; Require uuidgen
+(use-package uuidgen :ensure t)
+
 (provide 'basic-look-and-feel)
