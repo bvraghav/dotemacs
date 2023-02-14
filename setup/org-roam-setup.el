@@ -68,7 +68,7 @@
          ("C-z C-d C-p" . org-roam-dailies-find-previous-note))
 
   :config
-  (setq org-roam-directory "~/org-roam")
+  (setq org-roam-directory "~/code/org-roam")
   (make-directory org-roam-directory t))
 
 ;; Org Roam Protocol
