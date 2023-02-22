@@ -44,3 +44,5 @@ import datetime as Dt
 from datetime import timedelta as Tdelta
 
 from PyGnuplot import gp
+
+from tqdm import tqdm

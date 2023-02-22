@@ -1,0 +1,4 @@
+# key: sh
+# name: sh
+# --
+SHELL           := ${1:/usr/bin/zsh}

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: lg_config_logging
+# key: lg
+# --
+${2:import logging as LG
+}LG.basicConfig(
+  level=LG.`(completing-read "Level: " '("INFO" "DEBUG" "WARNING" "ERROR" "CRITICAL" "NOTSET") nil t nil nil "INFO" nil)`,
+  format='%(levelname)-8s: [%(name)s] %(message)s'
+)
+$0

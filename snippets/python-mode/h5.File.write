@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: h5.File.write
+# key: h5
+# --
+with h5.File(${1:hpath}, '${2:w}') as H :
+   H.swmr_mode = True
+   
