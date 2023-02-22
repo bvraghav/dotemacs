@@ -28,14 +28,16 @@
 ;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
 ;;              )
 
-;; Ob-Http
-(use-package ob-http :ensure t)
-
 ;; Ob-Async
 (use-package ob-async
   :ensure t
   :config
-  (setq ob-async-no-async-languages-alist '("python")))
+  (setq ob-async-no-async-languages-alist '("python"))
+  )
+
+;; Ob-Http
+(use-package ob-http
+  :ensure t)
   
 
 ;; Org-Autolist
@@ -213,7 +215,7 @@
 	(quote
 	 (("jupyter-python" . python)
 	  ("js" . js2)
-	  ("http" . "ob-http")
+	  ("http" . ob-http)
 	  ("ipython" . python)
 	  ("ocaml" . tuareg)
 	  ("elisp" . emacs-lisp)
@@ -269,8 +271,19 @@
 
         )
 
-  ;; Require ob-async
-  (require 'ob-async))
+  ;; Default Properties
+  (add-to-list 'org-default-properties
+               '("header-args"
+                 "header-args+"
+                 "header-args:sh"
+                 "header-args:sh+"
+                 "header-args:elisp"
+                 "header-args:elisp+"
+                 "header-args:python"
+                 "header-args:python+"))
+  ;; Ob async
+  (require 'ob-async)
+  )
 
 (use-package org-attach
   :after org
