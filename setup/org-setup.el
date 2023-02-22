@@ -40,7 +40,8 @@
 
 ;; Org-Autolist
 (use-package org-autolist
-  :ensure t)
+  :ensure t
+  :hook org-mode)
 
 ;; ;; Org-Beautify
 ;; ----------------------------------------------------
