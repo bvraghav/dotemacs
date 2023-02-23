@@ -7,11 +7,11 @@
 
   :config
   (setq yas-prompt-functions
-	'(yas-ido-prompt
-	  yas-completing-prompt
-	  yas-x-prompt
-	  yas-dropdown-prompt
-	  yas-no-prompt))
+	'( yas-completing-prompt
+           yas-ido-prompt
+	   yas-x-prompt
+	   yas-dropdown-prompt
+	   yas-no-prompt))
   (yas-reload-all))
 
 
