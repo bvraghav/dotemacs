@@ -272,15 +272,16 @@
         )
 
   ;; Default Properties
-  (add-to-list 'org-default-properties
-               '("header-args"
-                 "header-args+"
-                 "header-args:sh"
-                 "header-args:sh+"
-                 "header-args:elisp"
-                 "header-args:elisp+"
-                 "header-args:python"
-                 "header-args:python+"))
+  (setq org-default-properties
+        (append org-default-properties
+                '("header-args"
+                  "header-args+"
+                  "header-args:sh"
+                  "header-args:sh+"
+                  "header-args:elisp"
+                  "header-args:elisp+"
+                  "header-args:python"
+                  "header-args:python+")))
   ;; Ob async
   (require 'ob-async)
   )
