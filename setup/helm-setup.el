@@ -600,6 +600,23 @@ First call indent, second complete symbol, third complete fname."
   (helm-epa-mode 1))
 
 
+
+;; ----------------------------------------------------
+;; Helm Colors
+;; ----------------------------------------------------
+;; Insert Helm Color
+(defun bvr/helm/insert-color-at-point-or-reigon (arg)
+  "Insert Color with interactive selector by helm-colors"
+  (interactive "P")
+  (let* ((beg (use-region-beginning))
+         (end (use-region-end))
+         (color (helm-colors)))
+    (and beg
+         (goto-char beg)
+         (delete-region beg end))
+    (insert color)))
+
+
 ;;; Ctl-x-5 map
 ;;
 (define-key ctl-x-5-map (kbd "C-x c t") 'helm-top-in-frame)
@@ -662,6 +679,7 @@ First call indent, second complete symbol, third complete fname."
 (define-key global-map (kbd "C-x r p")               'helm-projects-history)
 (define-key global-map (kbd "C-x r c")               'helm-addressbook-bookmarks)
 (define-key global-map (kbd "C-c t r")               'helm-dictionary)
+(define-key global-map (kbd "C-x c c")               #'bvr/helm/insert-color-at-point-or-reigon)
 
 ;; Indent or complete with completion-at-point
 ;; (setq tab-always-indent 'complete)
