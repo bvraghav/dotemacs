@@ -12,7 +12,7 @@ import functools as Ft
 import math as m
 
 from argparse import Namespace as NS
-from collections import OrderedDict
+from collections import (OrderedDict, namedtuple)
 
 import json
 import operator as Op
@@ -22,3 +22,5 @@ import random
 import time
 import datetime as Dt
 from datetime import timedelta as Tdelta
+
+from dataclasses import dataclass

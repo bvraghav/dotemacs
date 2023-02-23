@@ -29,7 +29,7 @@ from matplotlib import pyplot as plt
 from matplotlib import ticker
 
 from argparse import Namespace as NS
-from collections import OrderedDict
+from collections import (OrderedDict, namedtuple)
 
 import json
 import operator as Op
@@ -46,3 +46,5 @@ from datetime import timedelta as Tdelta
 from PyGnuplot import gp
 
 from tqdm import tqdm
+
+from dataclasses import dataclass

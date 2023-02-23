@@ -2,6 +2,6 @@
 # name: guarded_comment
 # key: ####
 # --
-## ----------------------------------------------------
+## `(setq guarded-comment--top-line (fill-line-get-filler))`
 ## $0
-## ----------------------------------------------------
+## `guarded-comment--top-line`

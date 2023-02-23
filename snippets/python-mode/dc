@@ -2,4 +2,6 @@
 # name: dc
 # key: dc
 # --
-from dataclasses import dataclass as Dc
+@dataclass
+class ${1:Data} :
+$0
