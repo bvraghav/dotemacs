@@ -77,4 +77,10 @@
 (global-set-key (kbd "C-z $") 'toggle-truncate-lines)
 (global-set-key (kbd "C-z C-$") 'toggle-truncate-lines)
 
+;; Fill Line
+;; ----------------------------------------------------
+(require 'fill-line)
+(global-set-key (kbd "M-#") #'fill-line)
+
+
 (provide 'global-key-bindings)
