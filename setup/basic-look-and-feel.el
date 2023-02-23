@@ -92,11 +92,18 @@
       whitespace-action nil)
 
 ;; Theme
+(defun bvr/set-theme-colors ()
+  "BVR Customisations over the base theme"
+  (set-face-foreground 'font-lock-string-face "Dodgerblue2")
+  (set-face-foreground 'font-lock-comment-face "gray50")
+  (set-face-foreground 'font-lock-comment-delimiter-face "gray50")
+  (set-face-foreground 'font-lock-doc-face "#987878"))
 (use-package zenburn-theme
   :ensure t
   :demand
   :config
-  (setq custom-enabled-themes '(zenburn)))
+  (setq custom-enabled-themes '(zenburn))
+  (bvr/set-theme-colors))
 
 ;; Pairing
 (setq skeleton-pair t)
