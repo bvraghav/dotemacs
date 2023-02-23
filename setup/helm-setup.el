@@ -606,7 +606,8 @@ First call indent, second complete symbol, third complete fname."
 ;; ----------------------------------------------------
 ;; Insert Helm Color
 (defun bvr/helm/insert-color-at-point-or-reigon (arg)
-  "Insert Color with interactive selector by helm-colors"
+  "Insert Color Name with interactive selector
+by helm-colors. With prefix ARG insert RGB instead."
   (interactive "P")
   (let* ((beg (use-region-beginning))
          (end (use-region-end))
