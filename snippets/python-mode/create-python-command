@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: create-python-command
+# key: click
+# --
+`(call-interactively #'bvr/create-python-command)`

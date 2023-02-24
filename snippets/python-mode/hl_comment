@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: hl_comment
-# key: ####
+# key: #-
 # --
-## ----------------------------------------------------
+## `(fill-line-get-filler)`
