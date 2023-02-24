@@ -10,6 +10,7 @@ from torch.nn import functional as F
 
 from torch.utils.data import DataLoader, Dataset
 
+from torchvision import utils as Tvu
 from torchvision import models as Tvm
 from torchvision import transforms as Tvt
 from torchvision.transforms import functional as Tvf
@@ -29,7 +30,7 @@ from matplotlib import pyplot as plt
 from matplotlib import ticker
 
 from argparse import Namespace as NS
-from collections import (OrderedDict, namedtuple)
+from collections import (abc, OrderedDict, namedtuple)
 
 import json
 import operator as Op
