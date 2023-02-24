@@ -102,8 +102,11 @@
 (use-package zenburn-theme
   :ensure t
   :demand
-  :config
+
+  :init
   (setq custom-enabled-themes '(zenburn))
+
+  :config
   (bvr/set-theme-colors))
 
 ;; Pairing
