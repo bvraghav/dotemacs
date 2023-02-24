@@ -605,17 +605,40 @@ First call indent, second complete symbol, third complete fname."
 ;; Helm Colors
 ;; ----------------------------------------------------
 ;; Insert Helm Color
-(defun bvr/helm/insert-color-at-point-or-reigon (arg)
+(defun bvr/helm/insert-color-at-point-or-region (arg)
   "Insert Color Name with interactive selector
 by helm-colors. With prefix ARG insert RGB instead."
   (interactive "P")
   (let* ((beg (use-region-beginning))
          (end (use-region-end))
-         (color (helm-colors)))
-    (and beg
-         (goto-char beg)
-         (delete-region beg end))
+         (color-name (helm-colors))
+         (color (if (not arg) color-name
+                  (bvr/named-color-as-rgb color-name))))
+    (and beg (delete-region beg end))
     (insert color)))
+
+(defun bvr/insert-named-color-as-rgb (arg)
+  "Insert COLOR-NAME as hex RGB value.  Prompt for color name if
+not marked with active region, or numeric prefix ARG."
+  (interactive "*P")
+  (pcase-let*
+      ((color-name (or (and (use-region-p)
+                            (not arg)
+                            (delete-and-extract-region
+                             (use-region-beginning)
+                             (use-region-end)))
+                       (read-string "Color Name: "))))
+    (insert (bvr/named-color-as-rgb color-name))))
+
+(defun bvr/named-color-as-rgb (color-name &optional prefix)
+  "Convert COLOR-NAME to hex RGB; Optionally prefixed with #. Use
+empty string to inhibit prefix"
+  (pcase-let* ((`(,r ,g ,b)
+                (mapcar (lambda (x) (ash x -8))
+                        (color-values color-name)))
+               (p (or prefix "#")))
+    (format "%s%02x%02x%02x" p r g b)))
+;; ----------------------------------------------------
 
 
 ;;; Ctl-x-5 map
@@ -680,7 +703,7 @@ by helm-colors. With prefix ARG insert RGB instead."
 (define-key global-map (kbd "C-x r p")               'helm-projects-history)
 (define-key global-map (kbd "C-x r c")               'helm-addressbook-bookmarks)
 (define-key global-map (kbd "C-c t r")               'helm-dictionary)
-(define-key global-map (kbd "C-x c c")               #'bvr/helm/insert-color-at-point-or-reigon)
+(define-key global-map (kbd "C-x c c")               #'bvr/helm/insert-color-at-point-or-region)
 
 ;; Indent or complete with completion-at-point
 ;; (setq tab-always-indent 'complete)
