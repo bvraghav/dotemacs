@@ -13,7 +13,7 @@
 	   yas-dropdown-prompt
 	   yas-no-prompt))
   (yas-reload-all)
-  (require 'bvr/create-python-command))
+  (require 'create-python-command))
 
 (use-package yasnippet-snippets
   :ensure t)
