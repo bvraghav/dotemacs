@@ -2,8 +2,35 @@
 # name: import_almost_all
 # key: import
 # --
+## ----------------------------------------------------
+## Fundamental Imports
+## ----------------------------------------------------
 import logging as LG
 
+from pathlib import Path
+import os, sys
+from enum import Enum
+import itertools as It
+import functools as Ft
+import math as m
+
+from argparse import Namespace as NS
+from collections import (abc, OrderedDict, namedtuple)
+
+import json
+import operator as Op
+import random
+
+import time
+import datetime as Dt
+from datetime import timedelta as Tdelta
+
+from dataclasses import dataclass
+## ----------------------------------------------------
+
+## ----------------------------------------------------
+## Third Party Imports
+## ----------------------------------------------------
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -15,37 +42,16 @@ from torchvision import models as Tvm
 from torchvision import transforms as Tvt
 from torchvision.transforms import functional as Tvf
 
-import h5py as h5
-from pathlib import Path
-import os, sys
-
 import numpy as np
 from numpy.random import default_rng as RNG
-
-import itertools as It
-import functools as Ft
-import math as m
 
 from matplotlib import pyplot as plt
 from matplotlib import ticker
 
-from argparse import Namespace as NS
-from collections import (abc, OrderedDict, namedtuple)
-
-import json
-import operator as Op
-
-from PIL import Image
-
-import click
-import random
-
-import time
-import datetime as Dt
-from datetime import timedelta as Tdelta
-
 from PyGnuplot import gp
 
+import h5py as h5
 from tqdm import tqdm
-
-from dataclasses import dataclass
+from PIL import Image
+import click
+## ----------------------------------------------------

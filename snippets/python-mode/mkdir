@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: mkdir
+# key: mkdir
+# --
+mkdir(exist_ok=True, parents=True)
