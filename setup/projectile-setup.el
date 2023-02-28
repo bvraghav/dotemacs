@@ -13,7 +13,7 @@
   :init
   (setq projectile-enable-caching t
 	projectile-completion-system 'default
-	projectile-project-search-path '("~/code")
+	projectile-project-search-path '("~/code" "~/webr")
 	projectile-switch-project-action 'projectile-dired
 	projectile-project-root-files
 	'("rebar.config" "project.clj" "build.boot"
