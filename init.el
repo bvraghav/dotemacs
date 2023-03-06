@@ -82,3 +82,6 @@
 
 ;; Org Roam Setup
 (require 'org-roam-setup)
+
+;; Markdown Mode Setup
+(require 'markdown-setup)
