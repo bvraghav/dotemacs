@@ -2,27 +2,23 @@
 # name: sfc
 # --
 <template>
-  <div id="$1">
-    
-  </div>
+$0
 </template>
 
 <script setup>
-  import { ref, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 
-  const props = defineProps({
+const props = defineProps({
   
-  });
+});
 
-  const some_num = ref(0);
+const some_num = ref(0);
 
-  onMounted(() => {
-    // TODO: do something
-  })
+onMounted(() => {
+  // TODO: do something
+})
 </script>
 
-<style lang="css">
-  #$1 {
-  
-  }
+<style scoped>
+
 </style>
