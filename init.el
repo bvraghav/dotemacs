@@ -64,14 +64,10 @@
 (require 'gnus-setup)
 (require 'project-explorer-setup)
 
-;; (require 'icicles-setup)
 ;; (require 'slime-setup)
 (require 'scheme-setup)
 
-;; (require 'proxy-setup)
-;; (require 'openwith-setup)
-
-(require 'lsp-setup)
+(require 'eglot-setup)
 
 ;; From .elisp
 (require 'trivial-functions)
@@ -85,3 +81,6 @@
 
 ;; Markdown Mode Setup
 (require 'markdown-setup)
+
+(provide 'init)
+;;; init.el ends here
