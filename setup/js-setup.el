@@ -1,7 +1,7 @@
 (use-package js2-mode
   :ensure t
 
-  :mode ("\\.[cm]?js\\'" "\\.json\\'")
+  :mode "\\.[cm]?js\\'"
 
   :bind (:map js2-mode-map
 	      ("C-x C-e"	. js-send-last-sexp)
@@ -23,6 +23,10 @@
         ;; Node setup
         js-comint-program-arguments
         '("--experimental-json-modules" "--experimental-repl-await")))
+
+(use-package json-mode
+  :ensure t
+  :mode "\\.json\\'")
 
 
 ;; ----------------------------------------------------
