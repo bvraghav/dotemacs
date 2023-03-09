@@ -41,42 +41,53 @@
 ;;        :require 'frobnicate-mode
 ;;        :group 'frobnicate)
 
+(defgroup 'bvr/js-setup nil "For BVR javascript setup" :version "v1.0")
 (defcustom bvr/shell-source-command "source"
-  "/bin/sh uses `\.' /bin/zsh uses `source'. Define based on
-source")
+  "/bin/sh uses `\.' /bin/zsh uses `source'.   Define based on source."
+  :type '(string)
+  :group 'bvr/js-setup)
 (defcustom bvr/nvm-search-dirs-list
   '("~/.nvm" "~/.config/nvm")
-  "List of dirs to search for nvm installation")
-(defcustom bvr/default-nvm-dir nil "NVM_DIR")
-(defcustom bvr/default-nodejs-repl-command nil "")
-(defcustom bvr/nvm-node-args nil "Node REPL args")
+  "List of dirs to search for nvm installation."
+  :type '(list string)
+  :group 'bvr/js-setup)
+(defcustom bvr/default-nvm-dir nil "NVM_DIR."
+  :type '(string)
+  :group 'bvr/js-setup)
+(defcustom bvr/default-nodejs-repl-command nil
+  "Default NodeJS REPL command."
+  :type '(string)
+  :group 'bvr/js-setup)
+(defcustom bvr/nvm-node-args nil "Node REPL args."
+  :type '(string)
+  :group 'bvr/js-setup)
 
 (defun bvr/has-nvm-sh-p (dir)
-  "Search if `nvm.sh' is a top level member of dir in FS"
+  "Search if `nvm.sh' is a top level member of DIR in fs."
   (file-exists-p (file-name-concat dir "nvm.sh")))
 (defun bvr/not-has-nvm-sh-p (dir)
-  "Negage #'bvr/has-nvm-sh-p"
+  "Negate #'bvr/has-nvm-sh-p for DIR."
   (not (bvr/has-nvm-sh-p dir)))
 (defun bvr/find-nvm-dir (&optional path-list)
-  "Search for nvm installation in the given PATH-LIST, which is
-taken from 'bvr/nvm-search-dirs-list by default."
+  "Search for nvm installation in the given PATH-LIST.
+PATH_LIST is taken from 'bvr/nvm-search-dirs-list by default."
   (let* ((path-list (or path-list bvr/nvm-search-dirs-list))
          (found (-drop-while #'bvr/not-has-nvm-sh-p path-list)))
     (and found (first found))))
 (defun bvr/nvm-dir ()
-  "Get of find NVM_DIR"
+  "Get or find NVM_DIR."
   (expand-file-name
    (or bvr/default-nvm-dir (bvr/find-nvm-dir))))
 
 (defun bvr/nvm-shell-cmd ()
-  "Get nvm shell command"
+  "Get nvm shell command."
   (or (getenv "NVM_DIR")
       (setenv "NVM_DIR"))
   (format "%s ${NVM_DIR}/nvm.sh ; nvm "
           bvr/shell-source-command))
 
 (defun bvr/nvm-list-versions ()
-  "List acceptable versions for nvm"
+  "List acceptable versions for nvm."
   (let* ((nvm-versions-cmd
           (format "%s list --no-colors"
                   (bvr/nvm-shell-cmd)))
