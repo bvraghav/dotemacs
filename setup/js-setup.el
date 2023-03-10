@@ -41,7 +41,7 @@
 ;;        :require 'frobnicate-mode
 ;;        :group 'frobnicate)
 
-(defgroup 'bvr/js-setup nil "For BVR javascript setup" :version "v1.0")
+(defgroup bvr/js-setup nil "For BVR javascript setup" :version "v1.0")
 (defcustom bvr/shell-source-command "source"
   "/bin/sh uses `\.' /bin/zsh uses `source'.   Define based on source."
   :type '(string)
