@@ -30,6 +30,9 @@
   :config
   (setq js-indent-level 2))
 
+;; Magit-like for NPM
+(use-package npm
+    :ensure t)
 
 ;; ----------------------------------------------------
 ;; Setting up NVM Convenience functions
