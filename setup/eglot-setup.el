@@ -14,5 +14,7 @@
   :ensure t
   :init (global-flycheck-mode))
 
+(use-package bvr-flycheck-eslint)
+
 (provide 'eglot-setup)
 ;;; eglot-setup.el ends here
