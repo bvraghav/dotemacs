@@ -24,6 +24,19 @@
         js-comint-program-arguments
         '("--experimental-json-modules" "--experimental-repl-await")))
 
+(defun bvr/set-local-flycheck-eslint-maybe ()
+  "Set local eslint may be as executable."
+  (interactive)
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (eslint (and root (expand-file-name
+                            "./node_modules/.bin/eslint"
+                            root))))
+    (when (and eslint (file-executable-p eslint))
+      (setq-local flycheck-javascript-eslint-executable
+                  eslint))))
+
 (use-package json-mode
   :ensure t
   :mode "\\.json\\'"
