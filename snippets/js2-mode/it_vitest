@@ -1,0 +1,4 @@
+# key: it
+# name: it_vitest
+# --
+it('${1:My test}', () => {$0})

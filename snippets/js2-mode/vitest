@@ -1,0 +1,20 @@
+# key: vitest
+# name: vitest
+# --
+// ----------------------------------------------------
+// In-source ViTest
+// ----------------------------------------------------
+if (import.meta.vitest) {
+  const {describe, test, it, expect} =
+        (import.meta.vitest)
+
+  // const { Symbol } = await import ('#/Symbol.js')
+
+  describe('${1:My Test Suite}', () => {
+    it('${2:My Test}', () => {
+      expect($0 0).toBe(0)
+    })
+  })
+  
+}
+// ----------------------------------------------------
