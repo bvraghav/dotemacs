@@ -1,2 +1,3 @@
 ;;; -*- lisp-data -*-
-(("/home/rbv23/code/tsne/"))
+(("~/code/ga-render/")
+ ("~/code/tsne/"))
