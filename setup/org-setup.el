@@ -122,13 +122,15 @@
                     "TOREAD(r)"
                     "URGENT(u)"
                     "PROCESSING(p)"
+                    "ONHOLD(h)"
                     "|"
                     "DONE(d)"
                     "ABANDONED(a!)"
                     "CANCELLED(c!)")
 	  (sequence "DONOT(D)" "|")))
 
-  (setq org-todo-keyword-faces '(("PROCESSING" . "#55aaff")))
+  (setq org-todo-keyword-faces '(("PROCESSING" . "#55aaff")
+                                 ("ONHOLD" . "#ddbb55")))
 
   ;; Org Babel Load Languages
   (org-babel-do-load-languages
