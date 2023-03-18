@@ -1,0 +1,6 @@
+# key: jsdom
+# name: js_dom
+# --
+/**
+ * @vitest-environment jsdom
+ */
