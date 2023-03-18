@@ -102,7 +102,11 @@
          ("C-z C-d C-f" . org-roam-dailies-find-tomorrow)
          ("C-z C-d C-b" . org-roam-dailies-find-yesterday)
          ("C-z C-d C-n" . org-roam-dailies-find-next-note)
-         ("C-z C-d C-p" . org-roam-dailies-find-previous-note))
+         ("C-z C-d C-p" . org-roam-dailies-find-previous-note)
+         ("C-z C-d SPC" . bvr/helm-org-roam-daily-rifle)
+         ("C-z SPC"     . bvr/helm-org-roam-rifle)
+         ("C-z C-d C-SPC" . bvr/helm-org-roam-daily-rifle)
+         ("C-z C-SPC  " . bvr/helm-org-roam-rifle))
 
   :config
   (setq org-roam-directory "~/code/org-roam")
@@ -197,4 +201,115 @@
 ")
 		  :unnarrowed t)))
 
+
+;; ----------------------------------------------------
+;; Hacking up org-rifle to show buffer name
+;; ----------------------------------------------------
+
+(require 'helm-org-rifle)
+
+
+(cl-defmacro bvr/helm-org-rifle-define-command (name args docstring &key sources (let nil) (transformer nil) (buffer nil))
+  "Define interactive helm-org-rifle command, which will run the appropriate hooks.
+Helm will be called with vars in LET bound."
+  `(cl-defun ,(intern (concat "bvr/helm-org-rifle" (when (s-present? name) (concat "-" name)))) ,args
+     ,docstring
+     (interactive)
+     (unwind-protect
+         (progn
+           (run-hooks 'helm-org-rifle-before-command-hook)
+           (let* ((helm-candidate-separator " ")
+                  ,(if transformer
+                       ;; I wish there were a cleaner way to do this,
+                       ;; because if this `if' evaluates to nil, `let' will
+                       ;; try to set `nil', which causes an error.  The
+                       ;; choices seem to be to a) evaluate to a list and
+                       ;; unsplice it (since unsplicing `nil' evaluates to
+                       ;; nothing), or b) return an ignored symbol when not
+                       ;; true.  Option B is less ugly.
+                       `(helm-org-rifle-transformer ,transformer)
+                     'ignore)
+                  ,@let)
+             (helm :sources ,sources :buffer ,buffer)))
+       (run-hooks 'helm-org-rifle-after-command-hook))))
+
+(bvr/helm-org-rifle-define-command
+ "files" (&optional files &key (buffer nil))
+ "Rifle through FILES, where FILES is a list of paths to Org files.
+If FILES is nil, prompt with `helm-read-file-name'.  All FILES
+are searched; they are not filtered with
+`helm-org-rifle-directories-filename-regexp'."
+ :sources (--map (helm-org-rifle-get-source-for-file it) files)
+ :buffer buffer
+ :let ((files (helm-org-rifle--listify (or files
+                                           (helm-read-file-name "Files: " :marked-candidates t))))
+       (helm-candidate-separator " ")
+       (helm-cleanup-hook (lambda ()
+                            ;; Close new buffers if enabled
+                            (when helm-org-rifle-close-unopened-file-buffers
+                              (if (= 0 helm-exit-status)
+                                  ;; Candidate selected; close other new buffers
+                                  (let ((candidate-source (helm-attr 'name (helm-get-current-source))))
+                                    (dolist (source helm-sources)
+                                      (unless (or (equal (helm-attr 'name source)
+                                                         candidate-source)
+                                                  (not (helm-attr 'new-buffer source)))
+                                        (kill-buffer (helm-attr 'buffer source)))))
+                                ;; No candidates; close all new buffers
+                                (dolist (source helm-sources)
+                                  (when (helm-attr 'new-buffer source)
+                                    (kill-buffer (helm-attr 'buffer source))))))))))
+
+
+(defun bvr/helm-org-rifle-directories
+    (&optional directories toggle-recursion buffer)
+  "Rifle through Org files in DIRECTORIES.
+DIRECTORIES may be a string or list of strings.  If DIRECTORIES
+is nil, prompt with `helm-read-file-name'.  With prefix or
+TOGGLE-RECURSION non-nil, toggle recursion from the default.
+Files in DIRECTORIES are filtered using
+`helm-org-rifle-directories-filename-regexp'."
+  ;; This does not need to be defined with helm-org-rifle-define-command because it calls helm-org-rifle-files which is.
+  (interactive)
+  (let* ((recursive (if (or toggle-recursion current-prefix-arg)
+                        (not helm-org-rifle-directories-recursive)
+                      helm-org-rifle-directories-recursive))
+         (directories (helm-org-rifle--listify
+                       (or directories
+                           (-select 'f-dir? (helm-read-file-name "Directories: " :marked-candidates t)))))
+         (files (-flatten (--map (f-files it
+                                          (lambda (file)
+                                            (s-matches? helm-org-rifle-directories-filename-regexp (f-filename file)))
+                                          recursive)
+                                 directories))))
+    (if files
+        (bvr/helm-org-rifle-files files :buffer buffer)
+      (error "No org files found in directories: %s" (s-join " " directories)))))
+
+
+(defun bvr/helm-org-roam-daily-rifle ()
+  "Search org-roam-dailies with helm-org-rifle."
+  (interactive)
+  (let* ((dir (expand-file-name org-roam-dailies-directory
+                                org-roam-directory)))
+    (bvr/helm-org-rifle-directories
+     dir nil
+     "Helm-Org-Rifle : Org Roam Dailies")))
+
+(defun bvr/helm-org-roam-rifle ()
+  "Search org-roam with helm-org-rifle."
+  (interactive)
+  (let* ((helm-org-rifle-directories-recursive nil)
+         (pdir org-roam-directory)
+         (jdir (expand-file-name "journal" pdir))
+         (rdir (expand-file-name "ref" pdir)))
+    (bvr/helm-org-rifle-directories
+     (list pdir jdir rdir) nil
+     "Helm-Org-Rifle : Org Roam Root/ Jounal/ Ref")))
+
+;; ----------------------------------------------------
+;; DONE: Hacking up org-rifle to show buffer name
+;; ----------------------------------------------------
+
 (provide 'org-roam-setup)
+;;; org-roam-setup.el ends here
