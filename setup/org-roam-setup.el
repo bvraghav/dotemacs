@@ -62,7 +62,7 @@
 
   :config
   (defun bvr/nov-mode-hook ()
-    (face-rqemap-add-relative 'variable-pitch nil))
+    (face-remap-add-relative 'variable-pitch nil))
   (setq nov-text-width 55))
 
 ;; Org Noter
