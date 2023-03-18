@@ -384,5 +384,17 @@
 (use-package helm-org-rifle
   :ensure t
   :after (helm dash f s))
+;; Warning (emacs): Helm source ‘file1.org’: after-init-hook Should be defined as a symbol Disable showing Disable logging
+;; ----------------------------------------------------
+;; Fixed here : https://github.com/alphapapa/org-rifle/pull/77
+;; ----------------------------------------------------
+;; But not yet pushed to upstream. So may have to patch like this commit:
+;; https://github.com/alphapapa/org-rifle/pull/77/commits/5f480ae651fd1f1842a637d79f2154caf36c4dfe
+;; ----------------------------------------------------
+;; helm-org-rifle.el L708 near
+;; (defun helm-org-rifle-get-source-for-buffer (buffer) ...)
+;; quote the hook name like this:
+;; ----------------------------------------------------
+;; :after-init-hook 'helm-org-rifle-after-init-hook
 
 (provide 'org-setup)
