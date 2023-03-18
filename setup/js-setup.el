@@ -1,3 +1,14 @@
+;;; js-setup.el --- Setting up JS handling.
+
+;;; Commentary:
+;;; ---------------------------------------------------
+;;; Setting up JS handling.
+;;;
+;;; Use flycheck; setup the executable.
+;;;
+;;; Disable flymake.
+
+;;; Code:
 (use-package js2-mode
   :ensure t
 
@@ -10,7 +21,10 @@
 	      ("C-x C-b"	. js-send-buffer-and-go)
 	      ("C-x l"		. js-load-file-and-go))
 
-  :hook ((js2-mode . auto-revert-mode))
+  :hook ((js2-mode . auto-revert-mode)
+         (js2-mode . bvr/set-local-flycheck-eslint-maybe)
+                      ;; bvr/disable-flymake
+                      )
 
   :config
   (setq js-indent-level 2
@@ -24,6 +38,10 @@
         js-comint-program-arguments
         '("--experimental-json-modules" "--experimental-repl-await")))
 
+(defun bvr/disable-flymake ()
+  "Disable Flymake minor mode."
+  (setq flymake-mode nil))
+
 (defun bvr/set-local-flycheck-eslint-maybe ()
   "Set local eslint may be as executable."
   (interactive)
@@ -35,6 +53,8 @@
                             root))))
     (when (and eslint (file-executable-p eslint))
       (setq-local flycheck-javascript-eslint-executable
+                  eslint)
+      (setq-local flycheck-bvr-javascript-eslint-executable
                   eslint))))
 
 (use-package json-mode
@@ -136,3 +156,4 @@ PATH_LIST is taken from 'bvr/nvm-search-dirs-list by default."
 ;; (add-hook 'typescript-mode-hook #'bvr/ts-setup)
 
 (provide 'js-setup)
+;;; js-setup.el ends here
