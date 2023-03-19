@@ -547,7 +547,7 @@ First call indent, second complete symbol, third complete fname."
   (setq helm-locate-fuzzy-match t))
 
 (use-package helm-org
-  :after (helm)
+  :after (helm org)
   :ensure t
   :config
   (setq helm-org-headings-fontify t))

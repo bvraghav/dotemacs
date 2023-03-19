@@ -2,6 +2,19 @@
 (require 'yas-setup)
 (require 'get-dpi)
 
+
+;; Change number of lines in org emphasis
+;; --------------------------------------------
+;; Necessary on top because, anything that invokes
+;; (require 'org) prior to this will override this
+;; setting.
+(setq org-emphasis-regexp-components
+      '("-[:space:]('\"{" "-[:space:].,:!?;'\")}\\[" "[:space:]" "." 4)
+
+      )
+
+
+
 ;; Org Mode Latex Export Syntax Highlighting
 ;; Include the latex-exporter
 ;; (require 'ox-latex)
@@ -67,6 +80,7 @@
    :height 126
    :weight 'extralight))
 
+
 ;; Org
 (use-package org
   :ensure t
@@ -83,6 +97,7 @@
 	 ("C-c C-a"	. org-agenda)
 	 ("C-c c"	. org-capture)
          ("C-c b"       . org-backward-heading-same-level))
+
 
   :init
   (require 'jupyter)
@@ -105,6 +120,7 @@
 
     (setq org-log-done 'time))
   ;; (add-hook 'org-mode-hook #'bvr-org-setup)
+
 
   :config
   (require 'ob)
@@ -280,7 +296,6 @@
         ;; --------------------------------------------
         org-startup-with-latex-preview t
         ;; --------------------------------------------
-
         )
 
   ;; Default Properties
@@ -294,6 +309,7 @@
                   "header-args:elisp+"
                   "header-args:python"
                   "header-args:python+")))
+
   ;; Ob async
   (require 'ob-async)
   )

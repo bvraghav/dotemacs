@@ -55,12 +55,13 @@
 (require 'yas-setup)
 (require 'magit-setup)
 
+(require 'org-setup)
+
 (require 'helm-setup)
 (require 'projectile-setup)
 
 (require 'latex-setup)                  ;depends upon helm
 
-(require 'org-setup)
 (require 'gnus-setup)
 (require 'project-explorer-setup)
 
