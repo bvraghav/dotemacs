@@ -19,7 +19,7 @@
 (electric-pair-mode t)
 (show-paren-mode t)
 (setq show-paren-delay 0)
-(toggle-word-wrap t)
+(setq-default word-wrap t)
 (global-subword-mode t)
 (setq ring-bell-function 'ignore)
 
