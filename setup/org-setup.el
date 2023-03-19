@@ -310,6 +310,11 @@
                   "header-args:python"
                   "header-args:python+")))
 
+  ;; Org Link Abbreviations
+  (setq org-link-abbrev-alist
+        '(("ddg"      . "https://duckduckgo.com/?q=%h")
+          ("search"   . "https://duckduckgo.com/?q=%h")))
+
   ;; Ob async
   (require 'ob-async)
   )
