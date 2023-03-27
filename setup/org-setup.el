@@ -340,7 +340,7 @@
           (?B  :foreground "gold" :weight normal)
           (?C  :foreground "yellow" :weight normal)
           (?D  :foreground "pale turquoise" :weight extralight)
-          (?E  :foreground "sky blue" :weight normal))
+          (?E  :foreground "Dodgerblue3" :weight extralight))
         ;; --------------------------------------------
         )
 
