@@ -1,3 +1,36 @@
+;;; org-setup.el --- Set up Org Mode -*- lexical-binding: t -*-
+
+;; Author: B.V. Raghav
+;; Maintainer: B.V. Raghav
+;; Version: 0.1
+;; Package-Requires: (get-dpi yas-setup)
+;; Homepage: https://github.com/bvraghav/dotemacs.git
+;; Keywords: org-mode,setup
+
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+
+;; Setup for Org Mode with BVR's Dotemacs.
+
+;;; Code:
+
+
 ;; Org Mode
 (require 'yas-setup)
 (require 'get-dpi)
@@ -296,6 +329,19 @@
         ;; --------------------------------------------
         org-startup-with-latex-preview t
         ;; --------------------------------------------
+
+        ;; Org Priority Cookies
+        ;; --------------------------------------------
+        org-priority-lowest ?E
+        org-priority-highest ?A
+        org-priority-default ?D
+        org-priority-faces
+        '((?A  :foreground "orange" :weight bold)
+          (?B  :foreground "gold" :weight normal)
+          (?C  :foreground "yellow" :weight normal)
+          (?D  :foreground "pale turquoise" :weight extralight)
+          (?E  :foreground "sky blue" :weight normal))
+        ;; --------------------------------------------
         )
 
   ;; Default Properties
@@ -420,4 +466,7 @@
 ;; ----------------------------------------------------
 ;; :after-init-hook 'helm-org-rifle-after-init-hook
 
+
 (provide 'org-setup)
+
+;;; org-setup.el ends here
