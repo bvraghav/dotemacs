@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: vitest_describe
+# key: test
+# --
+describe('${1:My Test Suite}', () => {
+  it$0
+})

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: vitest_expect
+# key: test
+# --
+expect($1).$0toBe({})
