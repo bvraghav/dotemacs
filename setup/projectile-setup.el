@@ -1,3 +1,35 @@
+;;; projectile-setup.el --- Setup Projectile -*- lexical-binding: t -*-
+
+;; Author: B.V. Raghav
+;; Maintainer: B.V. Raghav
+;; Version: 0.1
+;; Package-Requires: ()
+;; Homepage: https://github.com/bvraghav/dotemacs
+;; Keywords: dotemacs,emacs,projectile
+
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+
+;; Setup Projectile
+
+;;; Code:
+
 ;; Projectile Setup
 (use-package projectile
   :ensure t
@@ -36,20 +68,7 @@
   :config
   (rg-enable-default-bindings))
 
-;; (require 'projectile)
-
-;; (custom-set-variables
-;;  '(projectile-enable-caching t)
-;;  '(projectile-completion-system 'default)
-;;  '(projectile-project-search-path '("~/code"))
-;;  '(projectile-switch-project-action 'projectile-dired)
-;;  )
-
-;; (define-key projectile-mode-map (kbd "C-'") 'projectile-command-map)
-;; (define-key projectile-mode-map (kbd "s-p") 'projectile-command-map)
-
-;; (define-key projectile-command-map (kbd "SPC") #'helm-projectile)
-
-;; (projectile-mode t)
 
 (provide 'projectile-setup)
+
+;;; projectile-setup.el ends here
