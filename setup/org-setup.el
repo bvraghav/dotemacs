@@ -434,7 +434,9 @@
 ;;     (define-key org-mode-map (kbd "<f9> p") 'my-prev-image)
 ;;     (define-key org-mode-map (kbd "<f9> i") 'my-insert-current-image-path)))
 
+;; ----------------------------------------------------
 ;; Org Ref
+;; ----------------------------------------------------
 (use-package org-ref
   :ensure t
   :after ob-http
@@ -448,11 +450,18 @@
       #'org-ref-insert-link)
     (define-key org-mode-map (kbd "C-c C-x )")
       #'org-ref-insert-ref-link)))
+;; ----------------------------------------------------
 
+;; ----------------------------------------------------
 ;; Org Rifle
+;; ----------------------------------------------------
 (use-package helm-org-rifle
   :ensure t
   :after (helm dash f s))
+;; ----------------------------------------------------
+;; PATCH: helm-org-rifle.el L788
+;; ----------------------------------------------------
+;; 
 ;; Warning (emacs): Helm source ‘file1.org’: after-init-hook Should be defined as a symbol Disable showing Disable logging
 ;; ----------------------------------------------------
 ;; Fixed here : https://github.com/alphapapa/org-rifle/pull/77
