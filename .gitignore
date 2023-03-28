@@ -2,6 +2,7 @@
 
 .cache/
 /socket
+/url/
 
 ### github/gitignore.git
 ### Elisp.gitignore
