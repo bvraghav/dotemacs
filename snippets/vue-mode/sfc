@@ -1,10 +1,6 @@
 # key: sfc
 # name: sfc
 # --
-<template>
-$0
-</template>
-
 <script setup>
 import { ref, onMounted } from 'vue'
 
@@ -18,6 +14,11 @@ onMounted(() => {
   // TODO: do something
 })
 </script>
+
+<template>
+$0
+</template>
+
 
 <style scoped>
 
