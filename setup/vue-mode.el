@@ -1,3 +1,36 @@
+;;; vue-mode.el --- Vue Mode -*- lexical-binding: t -*-
+
+;; Author: B.V. Raghav
+;; Maintainer: B.V. Raghav
+;; Version: version
+;; Package-Requires: (sgml-mode edit-indirect)
+;; Homepage: https://github.com/bvraghav/dotemacs.git
+;; Keywords: vue-mode
+
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+
+;; Vue Mode Definiiton
+
+;;; Code:
+
+
 (require 'sgml-mode)
 (require 'edit-indirect)
 
@@ -7,7 +40,7 @@
   '("template" "script" "style"))
 
 ;; I'd probably put in a default that you want, as opposed to nil
-(defvar vue-tab-width nil "Width of a tab for VUE mode")
+(defvar vue-tab-width 2 "Width of a tab for Vue mode.")
 
 ;; Two small edits.
 ;; First is to put an extra set of parens () around the list
@@ -30,7 +63,7 @@
     map))
 
 (define-derived-mode vue-mode html-mode "V"
-  "VUE mode is a major mode for editing VUE files"
+  "VUE mode is a major mode for editing Vue SFC files."
   ;; you again used quote when you had '((vue-hilite))
   ;; I just updated the variable to have the proper nesting (as noted above)
   ;; and use the value directly here
@@ -60,6 +93,7 @@
 ;; Vue Functions
 ;; ------------------------------------------------------------------------
 (defun vue-part-end (part-name)
+  "Find the end of the part defined by PART-NAME."
   (save-excursion
     (goto-char (point-max))
     (search-backward
@@ -68,6 +102,7 @@
     (point)))
 
 (defun vue-part-beg (part-name)
+  "Find the beginning of the part defined by PART-NAME."
   (save-excursion
     (goto-char (point-min))
     (search-forward
@@ -77,11 +112,16 @@
     (point)))
 
 (defun vue-part-buffer (part-name)
+  "Compute edit-indirect buffer name.
+Using PART-NAME and (current-buffer)."
   (format "*VUE %s: %s*"
 	  (capitalize part-name)
 	  (buffer-name (current-buffer))))
 
 (defun vue-edit-part (part-name)
+  "Edit PART-NAME in an indirect-buffer.
+Mark PART-NAME, Edit it in indirect buffer, and delete other
+windows."
   (let ((current-point (point))
 	(part-beg (vue-part-beg part-name))
 	(part-end (vue-part-end part-name))
@@ -94,16 +134,19 @@
   (call-interactively 'delete-other-windows))
 
 (defun vue-edit-template ()
+  "Edit template part."
   (interactive)
   (vue-edit-part "template")
   (html-mode))
 
 (defun vue-edit-script ()
+  "Edit script part."
   (interactive)
   (vue-edit-part "script")
   (js2-mode))
 
 (defun vue-edit-css ()
+  "Edit style part."
   (interactive)
   (vue-edit-part "style")
   (css-mode))
@@ -125,4 +168,7 @@
 (define-key vue-edit-map (kbd "C-c") #'vue-edit-css)
 (define-key vue-edit-map (kbd "c") #'vue-edit-css)
 
+
 (provide 'vue-mode)
+
+;;; vue-mode.el ends here
