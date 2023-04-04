@@ -738,6 +738,9 @@ empty string to inhibit prefix"
 (define-key global-map (kbd "C-x r c")               'helm-addressbook-bookmarks)
 (define-key global-map (kbd "C-c t r")               'helm-dictionary)
 (define-key global-map (kbd "C-x c c")               #'bvr/helm/insert-color-at-point-or-region)
+(define-key global-map (kbd "C-#")                   #'helm-command-prefix)
+(define-key global-map (kbd "C-# SPC")               #'helm-multi-files)
+
 
 ;; Indent or complete with completion-at-point
 ;; (setq tab-always-indent 'complete)
