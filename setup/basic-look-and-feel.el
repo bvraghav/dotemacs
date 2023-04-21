@@ -205,5 +205,6 @@
 
 ;; Require uuidgen
 (use-package uuidgen :ensure t)
+(use-package bvr-uuid :after uuidgen)
 
 (provide 'basic-look-and-feel)
