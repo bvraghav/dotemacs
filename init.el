@@ -44,6 +44,7 @@
 (require 'rectangle-replace)
 (require 'auto-insert-setup)
 (require 'w3m-ext)
+(require 'hs-setup)
 
 (require 'plumb)
 (require 'gnuplot-setup)

@@ -9,6 +9,7 @@
 ;;; Disable flymake.
 
 ;;; Code:
+
 (use-package js2-mode
   :ensure t
 
@@ -23,8 +24,8 @@
 
   :hook ((js2-mode . auto-revert-mode)
          (js2-mode . bvr/set-local-flycheck-eslint-maybe)
-                      ;; bvr/disable-flymake
-                      )
+         ;; bvr/disable-flymake
+         (js2-mode . bvr/js2/code-fold-setup))
 
   :config
   (setq js-indent-level 2
@@ -37,6 +38,11 @@
         ;; Node setup
         js-comint-program-arguments
         '("--experimental-json-modules" "--experimental-repl-await")))
+
+(defun bvr/js2/code-fold-setup ()
+  "Setup code folding for js2-mode."
+  (hs-minor-mode)
+  (hs-hide-all))
 
 (defun bvr/disable-flymake ()
   "Disable Flymake minor mode."
