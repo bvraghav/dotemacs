@@ -96,7 +96,7 @@
 (defun bvr/set-theme-colors ()
   "BVR Customisations over the base theme"
   (set-face-background 'default "#2c353f")
-  (set-face-foreground 'font-lock-string-face "Dodgerblue2")
+  (set-face-foreground 'font-lock-string-face "#6ca0f0")
   (set-face-foreground 'font-lock-comment-face "gray50")
   (set-face-foreground 'font-lock-comment-delimiter-face "gray50")
   (set-face-foreground 'font-lock-doc-face "#987878"))
