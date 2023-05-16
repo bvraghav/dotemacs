@@ -67,8 +67,8 @@
 
 ;; Org Noter
 ;; -----------------------------------
-(use-package org-noter
-  :ensure t)
+;; (use-package org-noter
+;;   :ensure t)
 
 ;; Org Download
 ;; -----------------------------------
