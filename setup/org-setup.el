@@ -110,7 +110,7 @@
   "Set default agenda face to 14pt."
   (face-remap-set-base
    'default
-   :height 126
+   :height (if (< 192 (get-dpi)) 126 92)
    :weight 'extralight))
 
 
