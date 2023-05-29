@@ -2,6 +2,6 @@
 # name: h5.File.write
 # key: h5
 # --
-with h5.File(${1:hpath}, '${2:w}') as H :
+with h5.File(${1:hpath}, '${2:w}', libver='latest') as H :
    H.swmr_mode = True
    
