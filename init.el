@@ -81,6 +81,9 @@
 ;; Org Roam Setup
 (require 'org-roam-setup)
 
+;; Org CV Setup
+(use-package org-cv-setup)
+
 ;; Markdown Mode Setup
 (require 'markdown-setup)
 
