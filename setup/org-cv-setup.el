@@ -53,8 +53,8 @@ Use (BUFFER-FILE-NAME) for FNAME by default."
   (interactive)
   (let* ((fname (or fname (buffer-file-name)))
          (out-tex (file-name-with-extension fname ".tex")))
-  (org-export-to-file 'moderncv out-tex)
-  (org-latex-compile out-tex)))
+    (org-export-to-file 'moderncv out-tex)
+    (org-latex-compile out-tex)))
 
 (message "DONE: Initialising Org CV!")
 
