@@ -84,12 +84,6 @@
 ;; Ob-Http
 (use-package ob-http
   :ensure t)
-  
-
-;; Org-Autolist
-(use-package org-autolist
-  :ensure t
-  :hook org-mode)
 
 ;; ;; Org-Beautify
 ;; ----------------------------------------------------
@@ -369,6 +363,14 @@
   :after org
   :config
   (setq org-attach-use-inheritance t))
+  
+
+;; Org-Autolist
+(use-package org-autolist
+  :ensure t
+  :after org
+  :hook (org-mode . org-autolist-mode)
+  )
 
 
 ;; Org Mode Latex Export Syntax Highlighting
