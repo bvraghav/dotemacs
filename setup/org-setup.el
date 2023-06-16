@@ -74,13 +74,6 @@
 ;; 	       ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))
 ;;              )
 
-;; Ob-Async
-(use-package ob-async
-  :ensure t
-  :config
-  (setq ob-async-no-async-languages-alist '("python"))
-  )
-
 ;; Ob-Http
 (use-package ob-http
   :ensure t)
@@ -145,7 +138,13 @@
     (require 'yasnippet)
     (yas-minor-mode-on)
 
-    (setq org-log-done 'time))
+    (setq org-log-done 'time)
+
+    ;; Use python as language for `#begin_src jupyter' blocks
+    (require 'jupyter)
+    (org-babel-jupyter-override-src-block "python")
+
+    )
   ;; (add-hook 'org-mode-hook #'bvr-org-setup)
 
 
@@ -154,7 +153,18 @@
   (require 'org-tempo)
 
   ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
-  (setq bvr/org-babel-lang '("jupyter" "jupyter-python" "python" "shell" "bash" "sh" "emacs-lisp" "elisp" "lisp" "js" "http"))
+  (setq bvr/org-babel-lang
+        '("jupyter"
+          "jupyter-python"
+          "python"
+          "shell"
+          "bash"
+          "sh"
+          "emacs-lisp"
+          "elisp"
+          "lisp"
+          "js"
+          "http"))
   (defun bvr/org-confirm-babel-evaluate (lang body)
     (not (member lang bvr/org-babel-lang)))
   (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
@@ -191,9 +201,6 @@
      (sql . t)
      (lisp . t)
      (scheme . t)))
-
-  ;; Use python as language for `#begin_src jupyter' blocks
-  (org-babel-jupyter-override-src-block "python")
 
   ;; Add org link for sc
   (org-add-link-type
@@ -357,6 +364,14 @@
 
   ;; Ob async
   (require 'ob-async)
+  )
+
+;; Ob-Async
+(use-package ob-async
+  :ensure t
+  :after org
+  :config
+  (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
   )
 
 (use-package org-attach
