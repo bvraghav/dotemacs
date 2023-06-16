@@ -37,7 +37,8 @@
 (use-package sgml-mode
   :ensure t
   :hook ((sgml-mode . css-completion-minor-mode)
-	 (sgml-mode . auto-fill-mode))
+	 (sgml-mode . auto-fill-mode)
+         (sgml-mode . sgml-electric-tag-pair-mode))
   :bind (:map sgml-mode-map
               ("C-c C-r" . rename-sgml-tag)
               ("C-c r" . rename-sgml-tag)))
