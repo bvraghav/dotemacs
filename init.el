@@ -25,6 +25,10 @@
   (package-install 'use-package))
 (require 'use-package)
 
+;; Bootstrap
+;; ----------------------------------------------------
+(use-package sqlite3 :ensure t)
+
 (require 'myelpa-setup)
 
 (require 'basic-look-and-feel)
