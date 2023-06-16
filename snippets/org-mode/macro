@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: macro
+# key: macro
+# --
+#+MACRO: ${1:name}   ${2:replacement text; \$1, \$2 are arguments}
