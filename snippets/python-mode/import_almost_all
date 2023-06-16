@@ -58,3 +58,8 @@ from tqdm.contrib import tenumerate
 from PIL import Image
 import click
 ## ----------------------------------------------------
+
+# -----------------------------------------------------
+# Use regex as regular expression engine and api
+# -----------------------------------------------------
+import regex as RE
