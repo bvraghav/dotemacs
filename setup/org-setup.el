@@ -152,7 +152,8 @@
   (require 'ob)
   (require 'org-tempo)
 
-  ;; Org Babel Evaluate Confirmation not for ipython codes or shell:
+  ;; Org Babel Evaluate Confirmation not for ipython
+  ;; codes or shell:
   (setq bvr/org-babel-lang
         '("jupyter"
           "jupyter-python"
@@ -167,7 +168,8 @@
           "http"))
   (defun bvr/org-confirm-babel-evaluate (lang body)
     (not (member lang bvr/org-babel-lang)))
-  (setq org-confirm-babel-evaluate 'bvr/org-confirm-babel-evaluate)
+  (setq org-confirm-babel-evaluate
+        'bvr/org-confirm-babel-evaluate)
 
   ;; Org TODO Keywords
   (setq org-todo-keywords
