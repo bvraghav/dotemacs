@@ -1,0 +1,9 @@
+# key: inc
+# name: inc
+# --
+#+include: "`(let* ((fname (read-file-name "Choose file: "))
+       (pname (buffer-file-name))
+       (pname (file-name-parent-directory pname))
+       (fname (file-relative-name fname pname)))
+  fname)`"
+  
