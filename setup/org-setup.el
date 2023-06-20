@@ -108,15 +108,15 @@
   :after ob-http
 
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
-  :hook ((org-mode . bvr-org-setup)
-         (org-mode . bvr/org-set-face)
+  :hook ((org-mode        . bvr-org-setup)
+         (org-mode        . bvr/org-set-face)
          (org-agenda-mode . bvr/org-set-face))
 
-  :bind (("C-c l"	. org-store-link)
-	 ("C-c a"	. org-agenda)
-	 ("C-c C-a"	. org-agenda)
-	 ("C-c c"	. org-capture)
-         ("C-c b"       . org-backward-heading-same-level))
+  :bind (("C-c l"   . org-store-link)
+	 ("C-c a"   . org-agenda)
+	 ("C-c C-a" . org-agenda)
+	 ("C-c c"   . org-capture)
+         ("C-c b"   . org-backward-heading-same-level))
 
 
   :init
