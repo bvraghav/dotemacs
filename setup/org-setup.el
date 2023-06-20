@@ -140,9 +140,20 @@
 
     (setq org-log-done 'time)
 
-    ;; Use python as language for `#begin_src jupyter' blocks
+    ;; Use python as language for `#begin_src jupyter'
+    ;; blocks
+    ;; ------------------------------------------------
+    ;; Note, org-babel-default-header-args:python will
+    ;; not be an alias of
+    ;; org-babel-default-header-args:jupyter-python,
+    ;; the value of the former is merely set to the
+    ;; value of the latter after calling
+    ;; org-babel-jupyter-override-src-block.
+    ;;
+    ;; https://github.com/emacs-jupyter/jupyter#org-mode-source-blocks
     (require 'jupyter)
     (org-babel-jupyter-override-src-block "python")
+    (org-babel-jupyter-restore-src-block "python")
 
     )
   ;; (add-hook 'org-mode-hook #'bvr-org-setup)
