@@ -153,7 +153,7 @@
     ;; https://github.com/emacs-jupyter/jupyter#org-mode-source-blocks
     (require 'jupyter)
     (org-babel-jupyter-override-src-block "python")
-    (org-babel-jupyter-restore-src-block "python")
+    ;; (org-babel-jupyter-restore-src-block "python")
 
     )
   ;; (add-hook 'org-mode-hook #'bvr-org-setup)
