@@ -1,0 +1,78 @@
+# key: boot
+# name: bootstrap-python
+# --
+* Bootstrap
+** Import
+#+begin_src python
+  ## ----------------------------------------------------
+  ## Fundamental Imports
+  ## ----------------------------------------------------
+  import logging as LG
+
+  from pathlib import Path
+  import os, sys, shutil
+  from enum import Enum
+  import itertools as It
+  import functools as Ft
+  import math as m
+
+  from argparse import Namespace as NS
+  from collections import (abc, OrderedDict, namedtuple)
+
+  import json
+  import operator as Op
+  import random
+
+  import time
+  import datetime as Dt
+  from datetime import timedelta as Tdelta
+
+  from dataclasses import dataclass, asdict, field
+  from dataclasses import InitVar
+  ## ----------------------------------------------------
+
+  ## ----------------------------------------------------
+  ## Third Party Imports
+  ## ----------------------------------------------------
+  import torch
+  from torch import nn
+  from torch.nn import functional as F
+
+  from torch.utils.data import DataLoader, Dataset
+
+  from torchvision import utils as Tvu
+  from torchvision import models as Tvm
+  from torchvision import transforms as Tvt
+  from torchvision.transforms import functional as Tvf
+
+  import numpy as np
+  from numpy.random import default_rng as RNG
+
+  from matplotlib import pyplot as plt
+  from matplotlib import ticker
+
+  from PyGnuplot import gp
+
+  import h5py as h5
+  import tqdm
+  from tqdm import tqdm, trange
+  from tqdm.contrib import tenumerate
+  from PIL import Image
+  import click
+  ## ----------------------------------------------------
+
+  # -----------------------------------------------------
+  # Use regex as regular expression engine and api
+  # -----------------------------------------------------
+  import regex as RE
+
+#+end_src
+** Logging
+#+begin_src python
+  LG.basicConfig(
+    level=LG.INFO,
+    format='%(levelname)-8s: [%(name)s] %(message)s'
+  )
+  lg = LG.getLogger(__name__)
+  lg.info(f'Hello World!')
+#+end_src
