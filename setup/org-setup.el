@@ -112,11 +112,14 @@
          (org-mode        . bvr/org-set-face)
          (org-agenda-mode . bvr/org-set-face))
 
-  :bind (("C-c l"   . org-store-link)
-	 ("C-c a"   . org-agenda)
-	 ("C-c C-a" . org-agenda)
-	 ("C-c c"   . org-capture)
-         ("C-c b"   . org-backward-heading-same-level))
+  :bind (("C-c l"       . org-store-link)
+	 ("C-c a"       . org-agenda)
+	 ("C-c C-a"     . org-agenda)
+	 ("C-c c"       . org-capture)
+         ("C-c b"       . org-backward-heading-same-level)
+         :map org-mode-map
+         ("C-c C-v r"   . bvr/goto-result-beginning)
+         ("C-c C-v C-r" . bvr/goto-result-beginning))
 
 
   :init
@@ -509,38 +512,28 @@
 ;; :after-init-hook 'helm-org-rifle-after-init-hook
 
 
-;; ----------------------------------------------------
-;; Org Babel
-;;
-;; Ansi color results after org-babel-execute-src-block
-;;
-;; Use org-babel-after-execute-hook
-;; (https://orgmode.org/worg/doc.html)
-;;
-;; As shown in this issue and comment
-;; https://github.com/emacs-jupyter/jupyter/issues/366#issuecomment-985758277
-;; titled "Error handling prints ANSI color sequences
-;; in plaintext."
-;;
-;; Requires ansi-color
-;; ----------------------------------------------------
-(require 'ansi-color)
 
+;; ----------------------------------------------------
+;; Result Navigation
+;; ----------------------------------------------------
+;; Navigate to the beginning or end of results of the
+;; source code block at point.
+;; ----------------------------------------------------
 
-;; Uses condition-case
-;; --------------------------
-;; (condition-case nil
-;;     (delete-file filename)
-;;   ((debug error) nil))
-;;
-;; Refer [[info:elisp#Handling Errors]]
-;; $ info elisp "Handling Errors"
+; Uses condition-case
+; --------------------------
+; (condition-case nil
+;     (delete-file filename)
+;   ((debug error) nil))
+;
+; Refer [[info:elisp#Handling Errors]]
+; $ info elisp "Handling Errors"
 (defun bvr/result-beginning ()
   "Beginning of results of src-block or nil.
 
 Nil if point is elsewhere."
   (condition-case nil
-      (unless (org-babel-where-is-src-block-result)
+      (or (org-babel-where-is-src-block-result)
         (error "No source block"))
     (error (progn
              (message "Can't find beginning of results")
@@ -559,9 +552,36 @@ Nil if point is elsewhere."
         (message "Can't find beginning of results")
         nil))))
 
-;; (defun bvr/ansi-color-result ()
-;;   (ansi-color-apply-on-region (point-min)
-;;                               (point-max)))
+(defun bvr/goto-result-beginning ()
+  "Go to the beginning of results of a src block."
+  (interactive)
+  (let* ((c (bvr/result-beginning)))
+    (and c (goto-char c))))
+
+(defun bvr/goto-result-end ()
+  "Go to the end of results of a src block."
+  (interactive)
+  (let* ((c (bvr/result-end)))
+    (and c (goto-char c))))
+;; ----------------------------------------------------
+
+
+;; ----------------------------------------------------
+;; Org Babel
+;;
+;; Ansi color results after org-babel-execute-src-block
+;;
+;; Use org-babel-after-execute-hook
+;; (https://orgmode.org/worg/doc.html)
+;;
+;; As shown in this issue and comment
+;; https://github.com/emacs-jupyter/jupyter/issues/366#issuecomment-985758277
+;; titled "Error handling prints ANSI color sequences
+;; in plaintext."
+;;
+;; Requires ansi-color
+;; ----------------------------------------------------
+(require 'ansi-color)
 
 (defun bvr/ansi-color-result ()
   "Ansi color results of src-block."
