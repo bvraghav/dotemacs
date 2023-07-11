@@ -201,7 +201,8 @@
   ;; Org Babel Load Languages
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((js . t)
+   '((C . t)
+     (js . t)
      (http . t)
      (emacs-lisp . t)
      (R . t)
