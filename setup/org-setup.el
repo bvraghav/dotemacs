@@ -509,6 +509,72 @@
 ;; :after-init-hook 'helm-org-rifle-after-init-hook
 
 
+;; ----------------------------------------------------
+;; Org Babel
+;;
+;; Ansi color results after org-babel-execute-src-block
+;;
+;; Use org-babel-after-execute-hook
+;; (https://orgmode.org/worg/doc.html)
+;;
+;; As shown in this issue and comment
+;; https://github.com/emacs-jupyter/jupyter/issues/366#issuecomment-985758277
+;; titled "Error handling prints ANSI color sequences
+;; in plaintext."
+;;
+;; Requires ansi-color
+;; ----------------------------------------------------
+(require 'ansi-color)
+
+
+;; Uses condition-case
+;; --------------------------
+;; (condition-case nil
+;;     (delete-file filename)
+;;   ((debug error) nil))
+;;
+;; Refer [[info:elisp#Handling Errors]]
+;; $ info elisp "Handling Errors"
+(defun bvr/result-beginning ()
+  "Beginning of results of src-block or nil.
+
+Nil if point is elsewhere."
+  (condition-case nil
+      (unless (org-babel-where-is-src-block-result)
+        (error "No source block"))
+    (error (progn
+             (message "Can't find beginning of results")
+             nil))))
+
+(defun bvr/result-end ()
+  "End of results of src-block or nil.
+
+Nil if point is elsewhere."
+  (let* ((beg (bvr/result-beginning)))
+    (if beg
+        (save-excursion
+          (goto-char beg)
+          (org-babel-result-end))
+      (progn
+        (message "Can't find beginning of results")
+        nil))))
+
+;; (defun bvr/ansi-color-result ()
+;;   (ansi-color-apply-on-region (point-min)
+;;                               (point-max)))
+
+(defun bvr/ansi-color-result ()
+  "Ansi color results of src-block."
+  (interactive)
+  (let* ((beg (or (bvr/result-beginning) (point-min)))
+         (end (or (bvr/result-end) (point-max))))
+    (ansi-color-apply-on-region beg end)
+    (message "Applied Ansi Color")))
+
+(add-hook 'org-babel-after-execute-hook
+          #'bvr/ansi-color-result)
+;; ----------------------------------------------------
+
 (provide 'org-setup)
 
 ;;; org-setup.el ends here
