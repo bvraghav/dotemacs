@@ -123,7 +123,9 @@
   (require 'jupyter)
 
   ;; Define org mode as default
-  (setq-default major-mode 'org-mode)
+  ;; --------------------------------------------------
+  ;; FIXME: https://github.com/bvraghav/dotemacs/issues/10
+  ;; (setq-default major-mode 'org-mode)
 
 
   ;; Mode customizations for Org mode
