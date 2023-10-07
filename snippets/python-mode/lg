@@ -3,5 +3,3 @@
 # key: lg
 # --
 lg.`(completing-read "Level: " '("info" "debug" "warning" "error" "critical" "log") nil t nil nil "info" nil)`(f'$0')
-
-
