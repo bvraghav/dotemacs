@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbRef_db_path
+# key: fire
+# --
+${1:const dbRef = }${2:rtdbRef}(fireRtdb, ${3:path})

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbPush
+# key: fire
+# --
+rtdbPush(${1:dbRef}, ${2:value})

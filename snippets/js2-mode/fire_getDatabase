@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: fire_getDatabase
+# key: fire
+# --
+const ${1:fireRtdb} = getDatabase(${2:fireApp}${3:, url})
+$0

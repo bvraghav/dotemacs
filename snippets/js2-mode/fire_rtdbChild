@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbChild
+# key: fire
+# --
+rtdbChild(${1:dbRef}, ${2:path})

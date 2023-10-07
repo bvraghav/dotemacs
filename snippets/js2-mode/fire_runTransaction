@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: fire_runTransaction
+# key: fire
+# --
+const result = await runTransaction(
+  /* DatabaseReference */
+  dbRef,
+  (${1:item}) => {
+    // TODO
+    // Do something with the item
+
+    // !!! Return the new value
+    return $1
+  }
+)
+// const { committed, snapshot } = result

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbRemove
+# key: fire
+# --
+await rtdbRemove(${1:dbRef})

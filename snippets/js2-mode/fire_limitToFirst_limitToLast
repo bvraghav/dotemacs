@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_limitToFirst_limitToLast
+# key: fire
+# --
+limitTo`(completing-read "First/Last: " '("First" "Last") nil t nil nil "First" nil)`(${1:10})

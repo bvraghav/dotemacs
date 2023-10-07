@@ -1,0 +1,30 @@
+# -*- mode: snippet -*-
+# name: fire_on_event_listen
+# key: fire
+# --
+`(completing-read "Event: " '("onChildAdded" "onChildChanged" "onChildMoved" "onChildRemoved" "onValue") nil t nil nil "onValue" nil)`(
+  /* Query */
+  dbQuery,
+
+  /* Callback */
+  (snap) => {
+    // // Directly ditil the value
+    // vueRef.value = snap.val()
+    // // OR
+    // const _list = []
+    // snap.forEach((snapItem) => {
+    //   // Do something with the snapItem
+    //   _list.push(snapItem.val())
+    // })
+    // vueRef.value = _list
+  },
+
+  /* Cancel Callback */
+  (err) => {
+    // If ever subscription gets cancelled
+    // TODO
+  },
+
+  /* options */
+  { onlyOnce: false },
+)

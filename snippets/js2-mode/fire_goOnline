@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_goOnline
+# key: fire
+# --
+goOnline(fireRtdb)

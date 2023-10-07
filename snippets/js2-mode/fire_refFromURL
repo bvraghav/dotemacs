@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_refFromURL
+# key: fire
+# --
+${1:const dbRef = }refFromURL(fireRtdb, url)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_enableLogging_console
+# key: fire
+# --
+enableLogging(${1:console.log})

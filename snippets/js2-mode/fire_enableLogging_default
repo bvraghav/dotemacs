@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: fire_enableLogging_default
+# key: fire
+# --
+enableLogging(
+  /* Enable */
+  `(completing-read "Enable: " '("true" "false") nil t nil nil "true" nil)`,
+
+  /* Persist between page refreshes */
+  `(completing-read "Persist between page refreshes: " '("true" "false") nil t nil nil "false" nil)`,
+)

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_forceWebSockets
+# key: fire
+# --
+forceWebSockets()

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_forceLongPolling
+# key: fire
+# --
+forceLongPolling()

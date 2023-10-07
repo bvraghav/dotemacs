@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: fire_connectDatabaseEmulator
+# key: fire
+# --
+connectDatabaseEmulator(
+  fire_Rtdb, // : Database : mutable DB instance,
+  host, // : string : ,
+  port, // : number : ,
+  // // options?:
+  // {
+  //   mockUserToken, // ?: EmulatorMockTokenOptions | string;
+  // },
+)

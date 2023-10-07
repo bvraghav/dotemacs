@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_orderBy
+# key: fire
+# --
+orderBy`(completing-read "Sort Method: " '("Key" "Priority" "Value" "Child") nil t nil nil "Key" nil)`($1)

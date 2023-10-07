@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_queryConstraint_end_start_equal_less_greater_gt_more
+# key: fire
+# --
+`(completing-read "Constraint: " '("startAt" "startAfter" "endBefore" "endAt" "equalTo") nil t nil nil "equalTo" nil)`(${1:value}${2:$(and (not (string-empty-p yas-text)) ", ")}${2:key})

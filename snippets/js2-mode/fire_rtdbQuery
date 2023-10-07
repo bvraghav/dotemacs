@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbQuery
+# key: fire
+# --
+rtdbQuery(
+  /* Query. (DatabaseReference extends Query) */
+  ${1:dbRef},${2:
+
+  /* Query Constraints; like Order/Limit/Start/End */
+})

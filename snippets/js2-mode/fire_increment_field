@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_increment_field
+# key: fire
+# --
+increment(${1:1})

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbGet
+# key: fire
+# --
+const ${1:snap} = ${2:$(if (string-empty-p yas-text) "" "(")}await rtdbGet($0)${2:$(if (string-empty-p yas-text) "" ")")}${2:.val()}

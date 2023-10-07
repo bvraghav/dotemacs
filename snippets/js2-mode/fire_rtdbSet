@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbSet
+# key: fire
+# --
+await rtdbSet(${1:dbRef}, ${2:value})

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: fire_rtdbUpdate
+# key: fire
+# --
+await rtdbUpdate(${1:dbRef}, ${2:kvPairs})
