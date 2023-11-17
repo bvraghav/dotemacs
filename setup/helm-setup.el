@@ -597,11 +597,18 @@ First call indent, second complete symbol, third complete fname."
   :config
   (setq helm-find-noerrors t))
 
-(use-package helm-elisp-package
-  :after (helm)
-  :config
-  (setq helm-el-package-autoremove-on-start t
-        helm-el-package-upgrade-on-start t))
+;; Obsoleted because of new helm-packages manager
+;; ----------------------------------------------------
+;; https://github.com/emacs-helm/helm/blob/b4fe77174e09537a58077c24054f14fa99cad42e/NEWS.org#new-helm-packages-manager
+;; ----------------------------------------------------
+;; (use-package helm-elisp-package
+;;   :after (helm)
+;;   :config
+;;   (setq helm-el-package-autoremove-on-start t
+;;         helm-el-package-upgrade-on-start t))
+;; ----------------------------------------------------
+(use-package helm-packages
+  :after (helm))
 
 (use-package helm-imenu
   :after (helm)
