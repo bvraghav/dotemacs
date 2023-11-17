@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: input_fieldset
+# key: input
+# --
+<fieldset>
+  <label for="${2:$1}">
+    ${1:$(camel-to-title-case yas-text)}
+  </label>
+  <input id="$2" name="$2"
+         class="${4:flex-1}"
+         :readonly="readonly"
+         v-model="item.${1:phoneNo}"
+         type="${3:tel}" />
+</fieldset>
