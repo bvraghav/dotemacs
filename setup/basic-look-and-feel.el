@@ -24,10 +24,16 @@
 (setq ring-bell-function 'ignore)
 
 ;; Inhibit Linum mode for non-text modes
+(defun safe-linum-mode (&rest args)
+  (if (version-list-<=
+       (version-to-list emacs-version)
+       '(29 0))
+      (apply #'linum-mode args)
+    (apply #'display-line-numbers-mode args)))
 (defun inhibit-linum-mode ()
   "Inhibit global linum mode"
   (add-hook 'after-change-major-mode-hook
-	    (lambda () (linum-mode 0))
+	    (lambda () (safe-linum-mode 0))
 	    :append :local))
 (setq non-text-modes
       '(doc-view-mode-hook
@@ -46,7 +52,7 @@
 	prog-mode-hook
 	fundamental-mode-hook))
 (dolist (mode-hook text-mode-hook-list)
-  (add-hook mode-hook #'linum-mode))
+  (add-hook mode-hook #'safe-linum-mode))
 
 
 ;; Other basic customizations
@@ -206,5 +212,18 @@
 ;; Require uuidgen
 (use-package uuidgen :ensure t)
 (use-package bvr-uuid :after uuidgen)
+
+;; UTF-8 by default
+;; ----------------------------------------------------
+;; http://xahlee.info/emacs/emacs/emacs_file_encoding.html
+
+;; UTF-8 as default encoding
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-keyboard-coding-system 'utf-8-unix)
+
+;; add this especially on Windows, else python output problem
+(set-terminal-coding-system 'utf-8-unix)
+;; ----------------------------------------------------
 
 (provide 'basic-look-and-feel)
