@@ -47,7 +47,8 @@
 (require 'c-headers)
 (require 'rectangle-replace)
 (require 'auto-insert-setup)
-(require 'w3m-ext)
+;; Obsoleted.
+;; (require 'w3m-ext)
 (require 'hs-setup)
 
 (require 'plumb)
