@@ -39,6 +39,9 @@
 (defcustom bvr/org-cv-dir "~/code/org-cv/"
   "Path to ORG-CV codebase.")
 
+;; Install Titan-C/org-cv
+;; https://github.com/Titan-C/org-cv/tree/master#installation
+;; into `bvr/org-cv-dir'!
 (use-package ox-moderncv
   :load-path bvr/org-cv-dir
   :init (require 'ox-moderncv)
