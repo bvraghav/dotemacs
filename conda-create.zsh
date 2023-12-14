@@ -6,7 +6,6 @@ conda create -n emacs   \
 beautifulsoup4 \
 click		\
 curl		\
-dominate	\
 ffmpeg		\
 flask		\
 gflags		\
@@ -17,7 +16,6 @@ imageio		\
 jedi		\
 jsonschema	\
 jupyter		\
-kornia		\
 markdown	\
 matplotlib	\
 mlflow		\
@@ -47,7 +45,15 @@ tqdm \
 xz \
 yaml \
 
+
+
 conda activate emacs
+
+conda install --yes \
+    -c conda-forge \
+    dominate	\
+    kornia		\
+
 
 conda install --yes pytorch torchvision torchaudio cpuonly -c pytorch
 
