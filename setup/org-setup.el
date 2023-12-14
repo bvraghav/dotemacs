@@ -331,7 +331,9 @@
         ;; ---------------
         org-format-latex-options
         (plist-put org-format-latex-options
-                   :scale 1.8)
+                   :scale 1.2)
+        ;; (plist-put org-format-latex-options
+        ;;            :scale 1.8) ; for thinkpad
         ;; --------------------------------------------
         ;; Using DVISVGM
         ;; ---------------
