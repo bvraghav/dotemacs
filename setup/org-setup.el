@@ -98,7 +98,7 @@
   (face-remap-set-base
    'default
    :height (if (< 192 (get-dpi)) 126 92)
-   :weight 'extralight))
+   :weight (if (< 192 (get-dpi)) 'extralight 'light)))
 
 
 ;; Org
