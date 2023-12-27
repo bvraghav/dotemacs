@@ -60,7 +60,7 @@
                          (bvr-dired-dwim-directory))
                        default-directory)))
       (async-shell-command
-       (format "xterm -e 'tmux new-session -c %s'" dirname))))
+       (format "xterm -e 'tmux new-session -c \"%s\"'" dirname))))
 
   (defun bvr-dired-dwim-directory()
     (let ((sel (dired-get-file-for-visit)))
