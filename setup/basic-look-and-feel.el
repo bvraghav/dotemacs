@@ -210,8 +210,13 @@
 (winner-mode t)
 
 ;; Require uuidgen
+;; ----------------------------------------------------
 (use-package uuidgen :ensure t)
 (use-package bvr-uuid :after uuidgen)
+
+;; Install glsl-mode maybe
+;; ----------------------------------------------------
+(use-package glsl-mode :ensure t)
 
 ;; UTF-8 by default
 ;; ----------------------------------------------------
