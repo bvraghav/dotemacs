@@ -92,5 +92,8 @@
 ;; Markdown Mode Setup
 (require 'markdown-setup)
 
+;; Livedown Setup
+(require 'livedown-setup)
+
 (provide 'init)
 ;;; init.el ends here
