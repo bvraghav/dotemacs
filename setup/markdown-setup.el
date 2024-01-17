@@ -1,5 +1,6 @@
 (use-package markdown-mode
   :ensure t
+  :init (bvr/ms/validate-markserv)
   :hook (markdown-mode . auto-fill-mode)
   :bind (("C-c C-q C-l" . #'bvr/ms/start)
 
@@ -7,7 +8,8 @@
 ;; ----------------------------------------------------
 ;; Use MarkServ
 ;;
-;; depeneds: (s)
+;; depends: (s)
+;; Install `markserv' using `npm i -g markserv'.
 ;; ----------------------------------------------------
 (use-package s :ensure t)
 
@@ -50,5 +52,16 @@ If buffer-filename has a README.md at the end, \"readme\" else
   "End the markserv-process."
   (interactive)
   (delete-process (bvr/ms/proc-name)))
+
+(defun bvr/ms/validate-markserv ()
+  "Warn if markserv is not installed."
+  (interactive)
+  (and (< 0
+          (call-process-shell-command
+           "markserv --help"w
+           nil nil nil))
+       (warn "%s\n%s"
+             "Install markserv using:"
+             "npm install -g markserv")))
 
 (provide 'markdown-setup)
