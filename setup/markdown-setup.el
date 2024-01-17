@@ -10,6 +10,15 @@
 ;;
 ;; depends: (s)
 ;; Install `markserv' using `npm i -g markserv'.
+;;
+;; Unless this issue:
+;; https://github.com/markserv/markserv/issues/132 is
+;; resolved,
+;;
+;; (UPDATE: The following doesn't help)
+;; Manually insert a script tag into Mathjax config
+;; here (replace _VERSION_ appropriately):
+;; ~/.config/nvm/versions/node/_VERSION_/lib/node_modules/markserv/lib/templates/markdown.html#L14
 ;; ----------------------------------------------------
 (use-package s :ensure t)
 
