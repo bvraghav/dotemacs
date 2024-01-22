@@ -1,8 +1,43 @@
+;;; markdown-setup.el --- Setup for markdown-mode. -*- lexical-binding: t -*-
+
+;; Author: B.V. Raghav
+;; Maintainer: B.V. Raghav
+;; Version: 1.0.0
+;; Package-Requires: (markdown-mode)
+;; Homepage: https://github.com/bvraghav/dotemacs
+;; Keywords: dotemacs,markdown
+
+
+;; This file is not part of GNU Emacs
+
+;; This program is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
+
+;; This program is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+
+;;; Commentary:
+
+;; Setup for markdown mode.
+
+;;; Code:
+
+
+
 (use-package markdown-mode
   :ensure t
   :init (bvr/ms/validate-markserv)
   :hook (markdown-mode . auto-fill-mode)
   :bind (("C-c C-q C-l" . #'bvr/ms/start)
+         ("C-c C-q C-q C-l" . #'bvr/ms/end)))
 
 
 ;; ----------------------------------------------------
@@ -40,13 +75,13 @@ If buffer-filename has a README.md at the end, \"readme\" else
     "markserv"))
 
 (defun bvr/ms/proc-name ()
-  "Get program-name for start-process."
+  "Get process name for `start-process'."
   (format "%s::%s"
           (bvr/ms/get-prog)
           (bvr/ms/dirname)))
 
 (defun bvr/ms/start ()
-  "Start the markserv-process."
+  "Start the markserv process."
   (interactive)
   (or
    (and (get-process (bvr/ms/proc-name))
@@ -73,4 +108,7 @@ If buffer-filename has a README.md at the end, \"readme\" else
              "Install markserv using:"
              "npm install -g markserv")))
 
+
 (provide 'markdown-setup)
+
+;;; markdown-setup.el ends here
