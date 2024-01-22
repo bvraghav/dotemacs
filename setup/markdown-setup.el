@@ -31,15 +31,6 @@
 ;;; Code:
 
 
-
-(use-package markdown-mode
-  :ensure t
-  :init (bvr/ms/validate-markserv)
-  :hook (markdown-mode . auto-fill-mode)
-  :bind (("C-c C-q C-l" . #'bvr/ms/start)
-         ("C-c C-q C-q C-l" . #'bvr/ms/end)))
-
-
 ;; ----------------------------------------------------
 ;; Use MarkServ
 ;;
@@ -102,12 +93,22 @@ If buffer-filename has a README.md at the end, \"readme\" else
   (interactive)
   (and (< 0
           (call-process-shell-command
-           "markserv --help"w
+           "markserv --help"
            nil nil nil))
        (warn "%s\n%s"
              "Install markserv using:"
              "npm install -g markserv")))
 
+;; ----------------------------------------------------
+
+;; Markdown
+;; ----------------------------------------------------
+(use-package markdown-mode
+  :ensure t
+  :init (bvr/ms/validate-markserv)
+  :hook (markdown-mode . auto-fill-mode)
+  :bind (("C-c C-q C-l" . #'bvr/ms/start)
+         ("C-c C-q C-q C-l" . #'bvr/ms/end)))
 
 (provide 'markdown-setup)
 
