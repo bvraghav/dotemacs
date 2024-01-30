@@ -96,7 +96,10 @@
 (use-package dired-open
   :ensure t
   :config
-  (setq dired-open-extensions '(("pdf" . "xdg-open"))))
+  ;; (setq dired-open-extensions '(("pdf" . "xdg-open")))
+  (setq dired-open-functions
+        '(dired-open-xdg dired-open-by-extension dired-open-subdir))
+  )
 
 (use-package dired-rainbow
   :ensure t
