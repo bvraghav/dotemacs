@@ -36,7 +36,7 @@
 
   :bind (:map dired-mode-map
               ("C-c C-n" . dired-narrow)
-              ("C-c ."   . bvr-dired-kill-dot-files)
+              ("C-c ."   . bvr-dired-kill-dotfiles)
               ("C-c C-d" . bvr-dired-desktop-revert)
               ("C-c C-t" . bvr-dired-open-tmux-here))
 
