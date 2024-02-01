@@ -96,9 +96,72 @@
 (use-package dired-open
   :ensure t
   :config
-  ;; (setq dired-open-extensions '(("pdf" . "xdg-open")))
-  (setq dired-open-functions
-        '(dired-open-xdg dired-open-by-extension dired-open-subdir))
+  (setq dired-open-extensions
+        '(
+          ;; XournalPP
+          ("xopp" . "xdg-open")
+          ;; Images/ Graphics
+          ("jpg"  . "xdg-open")
+          ("jif"  . "xdg-open")
+          ("jpe"  . "xdg-open")
+          ("jfi"  . "xdg-open")
+          ("jfif" . "xdg-open")
+          ("jpeg" . "xdg-open")
+          ("png"  . "xdg-open")
+          ("gif"  . "xdg-open")
+          ("webp" . "xdg-open")
+          ("tif"  . "xdg-open")
+          ("tiff" . "xdg-open")
+          ("psd"  . "xdg-open")
+          ("raw"  . "xdg-open")
+          ("arw"  . "xdg-open")
+          ("cr2"  . "xdg-open")
+          ("nrw"  . "xdg-open")
+          ("k25"  . "xdg-open")
+          ("bmp"  . "xdg-open")
+          ("heif" . "xdg-open")
+          ("heic" . "xdg-open")
+          ("ind"  . "xdg-open")
+          ("indd" . "xdg-open")
+          ("indt" . "xdg-open")
+          ("jp2"  . "xdg-open")
+          ("j2k"  . "xdg-open")
+          ("jpf"  . "xdg-open")
+          ("jpx"  . "xdg-open")
+          ("jpm"  . "xdg-open")
+          ("mj2"  . "xdg-open")
+          ("svg"  . "xdg-open")
+          ("svgz" . "xdg-open")
+          ("ai"   . "xdg-open")
+          ("eps"  . "xdg-open")
+          ("pdf"  . "xdg-open")
+          ;; Archives
+          ("iso"  . "xdg-open")
+          ("mar"  . "xdg-open")
+          ("tar"  . "xdg-open")
+          ("br"   . "xdg-open")
+          ("bz2"  . "xdg-open")
+          ("gz"   . "xdg-open")
+          ("lz"   . "xdg-open")
+          ("lz4"  . "xdg-open")
+          ("lzma" . "xdg-open")
+          ("lzo"  . "xdg-open")
+          ("rz"   . "xdg-open")
+          ("sz"   . "xdg-open")
+          ("xz"   . "xdg-open")
+          ("z"    . "xdg-open")
+          ("Z"    . "xdg-open")
+          ("zst"  . "xdg-open")
+          ("7z"   . "xdg-open")
+          ("rar"  . "xdg-open")
+          ("xar"  . "xdg-open")
+          ("zip"  . "xdg-open")
+          ("zz"   . "xdg-open")
+          )
+        dired-open-functions
+        '(dired-open-by-extension
+          dired-open-call-function-by-extension
+          dired-open-subdir))
   )
 
 (use-package dired-rainbow
