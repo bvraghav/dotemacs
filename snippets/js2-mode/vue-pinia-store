@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: vue-pinia-store
+# key: V
+# --
+import { defineStore } from 'pinia'
+import { ref, computed } from 'vue'
+
+export const use${1:$(upcase-initials yas-text)}Store = defineStore('${1:`(if (buffer-file-name) (file-name-base (buffer-file-name)) "exampleState")`}', () => {
+  const ${2:myArray} = ref([])
+$0
+  return { $2 }
+})
