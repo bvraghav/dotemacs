@@ -60,9 +60,17 @@
 	  ".bzr" "_darcs" ".svn"))
   (defun bvr/projectile-open-tmux-in-root ()
     (interactive)
-    (async-shell-command
-     (format "xterm -e 'tmux new-session -c \"%s\"'"
-             (directory-file-name (projectile-project-root)))))
+    (let* ((dir (directory-file-name (projectile-project-root)))
+           (cmd-1 (format
+                   "{ tmux ls -F '#S#,#{session_path}' 2>/dev/null } | grep '%s' | grep -o '^E_.*,' | tr -d ','"
+                   dir))
+           (sess (string-trim (shell-command-to-string cmd-1)))
+           (cmd-attach (format "xterm -e 'tmux attach -t \"%s\"'"
+                               sess))
+           (cmd-new (format "xterm -e 'tmux new-session -c \"%s\"  -s \"E_`uuidgen | head -c 6`\"'"
+                            dir)))
+      (async-shell-command (if (string-empty-p sess) cmd-new cmd-attach))))
+
   (projectile-mode t))
 
 (use-package helm-projectile
