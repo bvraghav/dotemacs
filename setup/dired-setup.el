@@ -66,7 +66,7 @@
     (let ((sel (dired-get-file-for-visit)))
       (if (file-directory-p sel)
           sel
-        (file-name-directory sel))))
+        (directory-file-name (file-name-directory sel)))))
 
   :config
 
