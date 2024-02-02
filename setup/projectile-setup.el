@@ -40,7 +40,8 @@
 	      ("C-'" . projectile-command-map)
 	      ("s-p" . projectile-command-map)
 	      :map projectile-command-map
-	      ("SPC" . helm-projectile))
+	      ("SPC" . helm-projectile)
+              ("C-d" . bvr/projectile-open-tmux-in-root))
 
   :init
   (setq projectile-enable-caching t
@@ -57,6 +58,11 @@
 	projectile-project-root-files-bottom-up
 	'(".projectile" ".git" ".hg" ".fslckout" "_FOSSIL_"
 	  ".bzr" "_darcs" ".svn"))
+  (defun bvr/projectile-open-tmux-in-root ()
+    (interactive)
+    (async-shell-command
+     (format "xterm -e 'tmux new-session -c \"%s\"'"
+             (directory-file-name (projectile-project-root)))))
   (projectile-mode t))
 
 (use-package helm-projectile
