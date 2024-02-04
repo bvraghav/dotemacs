@@ -1,0 +1,25 @@
+# key: V
+# name: vue-sfc
+# --
+<script setup>
+import { ref, onMounted } from 'vue'
+
+const props = defineProps({
+  
+});
+
+const some_num = ref(0);
+
+onMounted(() => {
+  // TODO: do something
+})
+</script>
+
+<template>
+$0
+</template>
+
+
+<style scoped>
+
+</style>
