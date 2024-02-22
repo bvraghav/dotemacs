@@ -60,7 +60,8 @@
 	  ".bzr" "_darcs" ".svn"))
   (defun bvr/projectile-open-tmux-in-root ()
     (interactive)
-    (let* ((dir (directory-file-name (projectile-project-root)))
+    (let* ((dir (projectile-project-root))
+           (dir (and dir (directory-file-name dir)))
            (cmd-1 (format
                    "{ tmux ls -F '#S#,#{session_path}' 2>/dev/null } | grep '%s' | grep -o '^E_.*,' | tr -d ','"
                    dir))
