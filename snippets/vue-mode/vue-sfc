@@ -4,9 +4,13 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+// defineProps automatically available here
 const props = defineProps({
   
 });
+
+// defineEmits automatically available here
+const emit = defineEmits([])
 
 const some_num = ref(0);
 
