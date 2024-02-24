@@ -27,8 +27,16 @@
          ;; bvr/disable-flymake
          (js2-mode . bvr/js2/code-fold-setup))
 
+  ;; js2-mode provides 4 level of syntax
+  ;; highlighting. They are
+  ;; --------------------------------------------------
+  ;; 0 or a negative value means none.
+  ;; 1 adds basic syntax highlighting.
+  ;; 2 adds highlighting of some Ecma built-in properties.
+  ;; 3 adds highlighting of many Ecma built-in functions.
   :config
   (setq js-indent-level 2
+        js2-highlight-level 3
 	js2-missing-semi-one-line-override t
 	js2-strict-missing-semi-warning nil
 
