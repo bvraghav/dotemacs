@@ -140,6 +140,12 @@
     (flyspell-mode t)
     (typo-mode t)
 
+     ;; Images
+    (setq org-image-actual-width
+          (if (< 192 (get-dpi))
+              '(768)
+            '(320)))
+
     (require 'yasnippet)
     (yas-minor-mode-on)
 
@@ -284,11 +290,6 @@
 	  ("\\.png\\'" . "feh %s")
 	  ("\\.jpg\\'" . "feh %s")
 	  ("\\.gif\\'" . "feh %s")))
-
-	;; Images
-	org-image-actual-width (if (< 192 (get-dpi))
-                                   '(768)
-                                 '(320))
 
 	;; Babel languages
 	org-src-lang-modes
