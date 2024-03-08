@@ -92,5 +92,8 @@
 ;; Markdown Mode Setup
 (require 'markdown-setup)
 
+;; Arduino Setup
+(require 'arduino-setup)
+
 (provide 'init)
 ;;; init.el ends here
