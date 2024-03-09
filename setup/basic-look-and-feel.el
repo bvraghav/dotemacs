@@ -97,6 +97,7 @@
       indent-tabs-mode nil     ; Untabify (by default).
 
       ;; Set dictionary for Ispell/ Hunspell/ Flyspell.
+      ispell-program-name "/usr/bin/hunspell"
       ispell-dictionary "en_GB"
 
       ;; Whitespaces
