@@ -258,6 +258,23 @@
 	))
       (t Y))))
 
+  ;; Default values
+  (setq-default
+
+   ;; Latex preview scale
+   ;; https://emacs.stackexchange.com/a/30318
+   ;; aka font size for latex
+   ;; --------------------------------------------
+   ;; Using DVIPNG
+   ;; ---------------
+   org-preview-latex-default-process 'dvipng
+
+   ;; Startup with LaTeX Preview
+   ;; --------------------------------------------
+   ;; org-startup-with-latex-preview t
+   ;; --------------------------------------------
+   )
+
   ;; Variables
   (setq org-default-notes-file "~/code/org/notes.org" ; notes
 
@@ -325,37 +342,6 @@
         ;; Org user labels
         org-latex-prefer-user-labels t
 
-        ;; Latex preview scale
-        ;; https://emacs.stackexchange.com/a/30318
-        ;; aka font size for latex
-        ;; --------------------------------------------
-        ;; Using DVIPNG
-        ;; ---------------
-        org-preview-latex-default-process 'dvipng
-        ;; ---------------
-        org-format-latex-options
-        (plist-put org-format-latex-options
-                   :scale 1.2)
-        ;; (plist-put org-format-latex-options
-        ;;            :scale 1.8) ; for thinkpad
-        ;; --------------------------------------------
-        ;; Using DVISVGM
-        ;; ---------------
-        ;; When using with dvisvgm the scale required,
-        ;; is much smaller.
-        ;; ---------------
-        ;; org-preview-latex-default-process 'dvisvgm
-        ;; ---------------
-        ;; org-format-latex-options
-        ;; (plist-put org-format-latex-options
-        ;;            :scale 1.2)
-        ;; --------------------------------------------
-
-        ;; Startup with LaTeX Preview
-        ;; --------------------------------------------
-        org-startup-with-latex-preview t
-        ;; --------------------------------------------
-
         ;; Org Priority Cookies
         ;; --------------------------------------------
         org-priority-lowest ?E
@@ -368,6 +354,58 @@
           (?D  :foreground "pale turquoise" :weight extralight)
           (?E  :foreground "Dodgerblue3" :weight extralight))
         ;; --------------------------------------------
+
+        ;; Preview LaTeX Compilers
+        ;; --------------------------------------------
+        org-latex-inputenc-alist '(("utf8" . "utf8x"))
+        org-preview-latex-process-alist
+        '((dvipng :programs
+                  ("latex" "dvipng")
+                  :description "dvi > png"
+                  :message "you need to install the programs: latex and dvipng."
+                  :image-input-type "dvi"
+                  :image-output-type "png"
+                  :image-size-adjust (1.3 . 1.3)
+                  :latex-compiler
+                  ("latex -shell-escape -interaction nonstopmode -output-directory %o %f")
+                  :image-converter
+                  ("dvipng -D %D -T tight -o %O %f")
+                  :transparent-image-converter
+                  ("dvipng -D %D -T tight -bg Transparent -o %O %f"))
+          (xdvsvgm :programs
+                   ("xelatex" "dvisvgm")
+                   :description "xdv > svg"
+                   :message "you need to install the programs: xelatex and dvisvgm."
+                   :use-xcolor t
+                   :image-input-type "xdv"
+                   :image-output-type "svg"
+                   :image-size-adjust (1.5 . 1.5)
+                   :latex-compiler
+                   ("xelatex -shell-escape -no-pdf -interaction nonstopmode -output-directory %o %f")
+                   :image-converter
+                   ("dvisvgm %f -n -b min -c %S -o %O"))
+          (dvisvgm :programs
+                   ("latex" "dvisvgm")
+                   :description "dvi > svg"
+                   :message "you need to install the programs: latex and dvisvgm."
+                   :image-input-type "dvi"
+                   :image-output-type "svg"
+                   :image-size-adjust (1.7 . 1.5)
+                   :latex-compiler
+                   ("latex -shell-escape -interaction nonstopmode -output-directory %o %f")
+                   :image-converter
+                   ("dvisvgm %f --no-fonts --exact-bbox --scale=%S --output=%O"))
+          (imagemagick :programs
+                       ("latex" "convert")
+                       :description "pdf > png"
+                       :message "you need to install the programs: latex and imagemagick."
+                       :image-input-type "pdf"
+                       :image-output-type "png"
+                       :image-size-adjust (1.0 . 1.0)
+                       :latex-compiler
+                       ("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f")
+                       :image-converter
+                       ("convert -density %D -trim -antialias %f -quality 100 %O")))
         )
 
   ;; Default Properties
