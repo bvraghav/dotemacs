@@ -35,6 +35,8 @@
 (require 'yas-setup)
 (require 'get-dpi)
 
+;; Require cdlatex
+(use-package cdlatex :ensure t)
 
 ;; Change number of lines in org emphasis
 ;; --------------------------------------------
@@ -105,11 +107,12 @@
 (use-package org
   :ensure t
 
-  :after ob-http
+  :after (ob-http cdlatex)
 
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
   :hook ((org-mode        . bvr-org-setup)
          (org-mode        . bvr/org-set-face)
+         (org-mode        . turn-on-org-cdlatex)
          (org-agenda-mode . bvr/org-set-face))
 
   :bind (("C-c l"       . org-store-link)
