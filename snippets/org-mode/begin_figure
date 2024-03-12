@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: begin_figure
+# key: begin
+# --
+\begin{figure}
+  \centering
+  \def\svgwidth{\\${1:textwidth}}\\${2:footnotesize}
+  \input{${3:drawing}.pdf_tex}
+\end{figure}
