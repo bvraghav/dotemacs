@@ -3,7 +3,7 @@
 ;; Author: B.V. Raghav
 ;; Maintainer: B.V. Raghav
 ;; Version: 1.0.0
-;; Package-Requires: (markdown-mode)
+;; Package-Requires: (markdown-mode cl-lib)
 ;; Homepage: https://github.com/bvraghav/dotemacs
 ;; Keywords: dotemacs,markdown
 
@@ -47,6 +47,7 @@
 ;; ~/.config/nvm/versions/node/_VERSION_/lib/node_modules/markserv/lib/templates/markdown.html#L14
 ;; ----------------------------------------------------
 (use-package s :ensure t)
+(use-package cl-lib)
 
 (defun bvr/ms/dirname ()
   "Get parent directory of the current buffer."
@@ -79,9 +80,10 @@ If buffer-filename has a README.md at the end, \"readme\" else
         (message (format "Process already running: %s"
                          (bvr/ms/proc-name))))
    (with-existing-directory (bvr/ms/dirname)
-     (start-process (bvr/ms/proc-name)
-                    (format "*%s*" (bvr/ms/proc-name))
-                    (bvr/ms/get-prog)))))
+     (apply #'start-process (bvr/ms/proc-name)
+            (format "*%s*" (bvr/ms/proc-name))
+            (bvr/ms/get-prog)
+            (bvr/ms/get-cmd-args)))))
 
 (defun bvr/ms/end ()
   "End the markserv-process."
@@ -97,7 +99,45 @@ If buffer-filename has a README.md at the end, \"readme\" else
            nil nil nil))
        (warn "%s\n%s"
              "Install markserv using:"
-             "npm install -g markserv")))
+             "npm install -g markserv"))
+  (and (< 0
+          (call-process-shell-command
+           "netstat --help"
+           nil nil nil))
+       (warn "%s\n%s"
+             "Install netstat. In ArchLinux:"
+             "pacman -S net-tools")))
+
+(defun bvr/ms/get-random-ports (&optional n)
+  "Get N random ports for markserv.
+
+Check for ports in use by markserv processes.  Choose N random
+ports not in such a use.  N=1 by default."
+  (let* ((cmd "{ netstat -tulpn 2>/dev/null } | grep markserv | awk '{ print $4
+}' | awk -F: '{print $4}'")
+         (out (shell-command-to-string cmd))
+         (ports-in-use (split-string out))
+         (ports-in-use (mapcar #'string-to-number ports-in-use))
+         (ports nil)
+         (n (or n 1)))
+    (cl-loop until (equal n (length ports)) do
+      (let ((port nil))
+        (unless (and port
+                     (not (member port ports-in-use))
+                     (not (member port ports)))
+          (setq port (+ 3000 (random 8000))))
+        (setq ports (cons port ports))))
+    ports))
+
+(defun bvr/ms/get-cmd-args ()
+  "Get arguments for a new markserv process."
+  (pcase-let ((`(,port ,livereloadport)
+               (bvr/ms/get-random-ports 2)))
+    (list "--port"
+          (format "%s" port)
+          "--livereloadport"
+          (format "%s" livereloadport))))
+
 
 ;; ----------------------------------------------------
 
