@@ -67,7 +67,12 @@
       Man-width 65
 
       ;; Auth Sources
-      auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")
+      ;; ----------------------------------------------
+      ;; https://magit.vc/manual/ghub.html#Storing-a-Token
+      ;; Make sure only one exists and store everything
+      ;; there.
+      ;; auth-sources '("~/.authinfo.gpg" "~/.authinfo" "~/.netrc")
+      auth-sources '("~/.authinfo.gpg")
 
       ;; Bookmarks
       bmkp-last-as-first-bookmark-file "~/.emacs.d/bookmarks"
