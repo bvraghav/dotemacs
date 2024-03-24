@@ -94,6 +94,9 @@ publications)."
    (LaTeX-mode . TeX-PDF-mode)
    (LaTeX-mode . TeX-source-correlate-mode)
 
+   ;; Math mode
+   (LaTeX-mode . LaTeX-math-mode)
+
    ;; Use helm-bibtex instead of reftex citation
    (reftex-mode . bvr/reftex-mode-hook)
    )
