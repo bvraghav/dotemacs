@@ -50,6 +50,7 @@
 ;; Obsoleted.
 ;; (require 'w3m-ext)
 (require 'hs-setup)
+(require 'vcard-setup)
 
 (require 'plumb)
 (require 'gnuplot-setup)
