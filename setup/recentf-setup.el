@@ -35,6 +35,11 @@
 ;; ====================================================
 (recentf-mode t)
 
+;; Count items in menu and saved list
+;; ----------------------------------------------------
+(setq recentf-max-menu-items 8
+      recentf-max-saved-items 1000)
+
 ;; ====================================================
 ;; Periodically saving the list of files
 ;; ----------------------------------------------------
