@@ -106,6 +106,7 @@
 ;; Org
 (use-package org
   :ensure t
+  :pin gnu
 
   :after (ob-http cdlatex)
 
@@ -330,7 +331,11 @@
 	  ("C++" . c++)
 	  ("screen" . shell-script)
 	  ("shell" . sh)
-	  ("bash" . sh)))
+	  ("bash" . sh)
+
+          ;; This is to avoid the ambiguity between
+          ;; latex-mode and LaTeX mode
+          ("latex" . LaTeX)))
 
         ;; Org Refile
         org-refile-targets '((org-agenda-files :maxlevel . 1))
@@ -424,9 +429,6 @@
   (setq org-link-abbrev-alist
         '(("ddg"      . "https://duckduckgo.com/?q=%h")
           ("search"   . "https://duckduckgo.com/?q=%h")))
-
-  ;; Ob async
-  (require 'ob-async)
   )
 
 ;; Ob-Async
@@ -435,6 +437,8 @@
   :after org
   :config
   (setq ob-async-no-async-languages-alist '("python" "jupyter-python"))
+  ;; Ob async
+  (require 'ob-async)
   )
 
 (use-package org-attach
