@@ -69,8 +69,11 @@ publications)."
 
 ;; ====================================================
 
+;; Load TeX
+;; ----------------------------------------------------
 (use-package tex
   :ensure auctex
+  :pin gnu
   :init
   (progn (defun bvr-latex-mode-hook ()
            "Creates Latex Mode hook"
