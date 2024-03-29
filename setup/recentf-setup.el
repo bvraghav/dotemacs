@@ -31,6 +31,11 @@
 ;;; Code:
 
 (require 'recentf)
+
+;; Add package recentf-ext
+;; ----------------------------------------------------
+(use-package recentf-ext :ensure t)
+
 ;; Activate recentf mode
 ;; ====================================================
 (recentf-mode t)
