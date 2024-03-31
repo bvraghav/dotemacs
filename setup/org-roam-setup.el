@@ -119,7 +119,9 @@
   :after org)
 
 ;; Bibtex completion
-;; -----------------------------------
+;; ----------------------------------------------------
+;; TODO: Migrate this configuration to
+;; latex-setup.el:155-191.
 (use-package helm-bibtex
   :ensure t
   :after helm
@@ -133,10 +135,7 @@
         bibtex-completion-pdf-field "file"
 
         bibtex-completion-pdf-open-function
-        (lambda (fpath) (call-process "zathura" nil 0 nil fpath))
-
-        bibtex-completion-additional-search-fields
-        '(keywords tags)))
+        (lambda (fpath) (call-process "zathura" nil 0 nil fpath))))
 
 ;; Org Roam Bibtex
 ;; -----------------------------------
