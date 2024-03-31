@@ -133,7 +133,10 @@
         bibtex-completion-pdf-field "file"
 
         bibtex-completion-pdf-open-function
-        (lambda (fpath) (call-process "zathura" nil 0 nil fpath))))
+        (lambda (fpath) (call-process "zathura" nil 0 nil fpath))
+
+        bibtex-completion-additional-search-fields
+        '(keywords tags)))
 
 ;; Org Roam Bibtex
 ;; -----------------------------------
