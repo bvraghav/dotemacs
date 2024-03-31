@@ -531,9 +531,10 @@
 
   (defun ref-link-keymap ()
     (define-key org-mode-map (kbd "C-c C-x [")
-      #'org-ref-insert-link)
+                #'org-ref-cite-insert-helm)
+      ;; #'org-ref-insert-link)
     (define-key org-mode-map (kbd "C-c C-x )")
-      #'org-ref-insert-ref-link)))
+                #'org-ref-insert-ref-link)))
 ;; ----------------------------------------------------
 
 ;; ----------------------------------------------------
