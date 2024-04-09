@@ -1,0 +1,16 @@
+# -*- mode: snippet -*-
+# name: col_single
+# key: col
+# --
+****                                                           :B_columns:
+:PROPERTIES:
+:BEAMER_env: columns
+:END:
+
+*****                                                    :B_column:BMCOL:
+:PROPERTIES:
+:BEAMER_env: column
+:BEAMER_col: ${1:0.45}
+:END:
+
+$0
