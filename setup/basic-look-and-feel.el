@@ -250,4 +250,9 @@
 ;; Set text as default major mode
 ;; ----------------------------------------------------
 (setq-default major-mode 'text-mode)
+
+;; Enable electric quote (locally) in text modes
+;; ----------------------------------------------------
+(add-hook 'text-mode-hook 'electric-quote-local-mode)
+
 (provide 'basic-look-and-feel)
