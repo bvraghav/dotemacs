@@ -123,7 +123,8 @@
          ("C-c b"       . org-backward-heading-same-level)
          :map org-mode-map
          ("C-c C-v r"   . bvr/goto-result-beginning)
-         ("C-c C-v C-r" . bvr/goto-result-beginning))
+         ("C-c C-v C-r" . bvr/goto-result-beginning)
+         ("C-c C-`"     . org-cdlatex-mode))
 
 
   :init
