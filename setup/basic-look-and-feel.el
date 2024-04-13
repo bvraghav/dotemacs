@@ -237,8 +237,17 @@
 (set-default-coding-systems 'utf-8)
 (set-keyboard-coding-system 'utf-8-unix)
 
-;; add this especially on Windows, else python output problem
+;; Add this especially on Windows, else python output
+;; problem
 (set-terminal-coding-system 'utf-8-unix)
 ;; ----------------------------------------------------
 
+;; Enable Flyspell by default
+;; ----------------------------------------------------
+(add-hook 'text-mode-hook 'flyspell-mode)
+(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+
+;; Set text as default major mode
+;; ----------------------------------------------------
+(setq-default major-mode 'text-mode)
 (provide 'basic-look-and-feel)
