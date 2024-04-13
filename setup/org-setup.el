@@ -100,7 +100,9 @@
   (face-remap-set-base
    'default
    :height (if (< 192 (get-dpi)) 126 92)
-   :weight (if (< 192 (get-dpi)) 'extralight 'light)))
+   ;; Cascadia code regular seems good enough for most
+   ;; of the cases.
+   :weight (if (< 192 (get-dpi)) 'light 'regular)))
 
 
 ;; Org
