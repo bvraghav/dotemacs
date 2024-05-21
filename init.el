@@ -33,6 +33,7 @@
 
 (require 'basic-look-and-feel)
 (require 'global-key-bindings)
+(require 'abbrev-setup)
 
 (require 'gui-setup)
 
