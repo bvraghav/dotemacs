@@ -2,6 +2,24 @@
 # name: bootstrap-python
 # --
 * Bootstrap
+
+** Jupyter Setup
+#+begin_src emacs-lisp
+  (org-babel-jupyter-restore-src-block "python")
+#+end_src
+
+#+begin_src jupyter-python
+  a=4
+#+end_src
+
+#+begin_src jupyter-python
+  print(a)
+#+end_src
+
+#+begin_src emacs-lisp
+  (org-babel-jupyter-override-src-block "python")
+#+end_src
+
 ** Import
 #+begin_src python
   ## ----------------------------------------------------
@@ -62,9 +80,9 @@
   ## ----------------------------------------------------
 
   # -----------------------------------------------------
-  # Use regex as regular expression engine and api
+  # Use re as regular expression engine and api
   # -----------------------------------------------------
-  import regex as RE
+  import re as RE
 
 #+end_src
 ** Logging
