@@ -245,7 +245,7 @@
 ;; Enable Flyspell by default
 ;; ----------------------------------------------------
 (add-hook 'text-mode-hook 'flyspell-mode)
-(add-hook 'prog-mode-hook 'flyspell-prog-mode)
+;; (add-hook 'prog-mode-hook 'flyspell-prog-mode)
 
 ;; Set text as default major mode
 ;; ----------------------------------------------------
