@@ -475,7 +475,7 @@
 	org-latex-pdf-process
 	'("latexmk -f -interaction=nonstopmode -output-directory=%o %f"))
 
-  ;; latex document class(es)
+  ;; Latex document class(es)
   (add-to-list 'org-latex-classes
 	       `("booksansparts"
 		 "\\documentclass{book}"
@@ -486,7 +486,11 @@
 		 ("\\paragraph{%s}" . "\\paragraph*{%s}")
 		 ("\\subparagraph{%s}" . "\\subparagraph*{%s}")))
   (add-to-list 'org-latex-classes
-	       `("letter" "\\documentclass{letter}" nil)))
+	       `("letter" "\\documentclass{letter}" nil))
+  ;; Install separately:
+  ;; https://github.com/bvraghav/qptiet_latex-class#from-source
+  (add-to-list 'org-latex-classes
+	       `("qptiet" "\\documentclass{qptiet}" nil)))
 
 
 ;; Org Mode Keymap
