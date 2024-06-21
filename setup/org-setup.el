@@ -490,7 +490,16 @@
   ;; Install separately:
   ;; https://github.com/bvraghav/qptiet_latex-class#from-source
   (add-to-list 'org-latex-classes
-	       `("qptiet" "\\documentclass{qptiet}" nil)))
+	       `("qptiet"
+                 "\\documentclass{qptiet}
+[NO-DEFAULT-PACKAGES]
+\\usepackage{amsmath}
+\\usepackage{graphicx}
+\\usepackage{wrapfig}
+\\usepackage{amssymb}
+\\usepackage[unicode]{hyperref}
+"
+                 nil)))
 
 
 ;; Org Mode Keymap
