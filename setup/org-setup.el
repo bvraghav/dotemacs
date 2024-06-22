@@ -490,8 +490,8 @@
   ;; Install separately:
   ;; https://github.com/bvraghav/qptiet_latex-class#from-source
   (add-to-list 'org-latex-classes
-	       `("qptiet"
-                 "\\documentclass{qptiet}
+	       `("tiet-question-paper"
+                 "\\documentclass{tiet-question-paper}
 [NO-DEFAULT-PACKAGES]
 \\usepackage{amsmath}
 \\usepackage{graphicx}
