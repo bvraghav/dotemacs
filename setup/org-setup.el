@@ -194,7 +194,8 @@
           "elisp"
           "lisp"
           "js"
-          "http"))
+          "http"
+          "awk"))
   (defun bvr/org-confirm-babel-evaluate (lang body)
     (not (member lang bvr/org-babel-lang)))
   (setq org-confirm-babel-evaluate
@@ -232,7 +233,11 @@
      (gnuplot . t)
      (sql . t)
      (lisp . t)
-     (scheme . t)))
+     (scheme . t)
+     (awk . t)))
+
+  ;; Use GAWK as AWK executable
+  (setq org-babel-awk-command "/usr/bin/gawk")
 
   ;; Add org link for sc
   (org-add-link-type
