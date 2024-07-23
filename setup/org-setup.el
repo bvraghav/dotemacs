@@ -126,6 +126,7 @@
          :map org-mode-map
          ("C-c C-v r"   . bvr/goto-result-beginning)
          ("C-c C-v C-r" . bvr/goto-result-beginning)
+         ("C-c C-v C-t" . bvr/org-babel-tangle-block)
          ("C-c C-`"     . org-cdlatex-mode))
 
 
@@ -663,6 +664,21 @@ Nil if point is elsewhere."
 
 (add-hook 'org-babel-after-execute-hook
           #'bvr/ansi-color-result)
+;; ----------------------------------------------------
+
+;; ----------------------------------------------------
+;; Org Babel Tangle Block
+;;
+;; Tangle the block at point.
+;;
+;; Under the hood call `org-babel-tangle' with a prefix
+;; argument.  Adapted from here:
+;; https://stackoverflow.com/a/39628921
+;; ----------------------------------------------------
+(defun bvr/org-babel-tangle-block ()
+  (interactive)
+  (let ((current-prefix-arg '(4)))
+     (call-interactively 'org-babel-tangle)))
 ;; ----------------------------------------------------
 
 (provide 'org-setup)
