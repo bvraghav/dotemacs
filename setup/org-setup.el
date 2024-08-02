@@ -258,7 +258,7 @@
 	 (format "<kbd>%s</kbd>" desc))
 	(t (format "%s" desc))))
       ;; "</span>" )))
-      ((eq format 'latex)
+      ((or (eq format 'beamer) (eq format 'latex))
        (format "\\text%s{%s}" path desc))
       ((eq format 'odt)
        (cond
@@ -266,7 +266,7 @@
 	 (format "<span style=\"font-variant:small-caps; text-transform: lowercase\">%s</span>" desc))
 	;; more code for it, bf, tt etc.
 	))
-      (t Y))))
+      (t desc))))
 
   ;; Default values
   (setq-default
