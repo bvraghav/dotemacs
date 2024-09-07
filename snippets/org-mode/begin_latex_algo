@@ -1,0 +1,13 @@
+# key: begin
+# name: begin_latex_algo
+# --
+# \usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\begin{algorithm}[H]
+  \caption{$1}
+  \DontPrintSemicolon
+  \KwIn{$$2$ \hfill\scriptsize $3}
+
+  \KwOut{$$4$ \hfill\scriptsize $4}
+
+  $0
+\end{algorithm}

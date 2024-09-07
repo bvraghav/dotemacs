@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: begin_guard
+# key: begin
+# --
+#+begin_${1:algorithm}
+$0
+#+end_$1
