@@ -559,6 +559,21 @@
                 #'org-ref-insert-ref-link)))
 ;; ----------------------------------------------------
 
+
+;; ----------------------------------------------------
+;; Org-Contrib
+;; ----------------------------------------------------
+;; Requires Non-GNU Elpa (https://elpa.nongnu.org/)
+;;
+;; Homepage: https://elpa.nongnu.org/nongnu/org-contrib.html
+;;
+;; I added it here for `ox-bibtex'
+;; ----------------------------------------------------
+;; (use-package org-contrib
+;;   :ensure t
+;;   :config
+;;   (require 'ox-bibtex))
+
 ;; ----------------------------------------------------
 ;; Org Rifle
 ;; ----------------------------------------------------
