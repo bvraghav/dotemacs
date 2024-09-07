@@ -1,6 +1,6 @@
 # key: align
 # name: align
 # --
-\begin{align}
+\begin{${1:align}}
 $0
-\end{align}
+\end{$1}
