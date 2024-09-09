@@ -566,13 +566,17 @@
 ;; Requires Non-GNU Elpa (https://elpa.nongnu.org/)
 ;;
 ;; Homepage: https://elpa.nongnu.org/nongnu/org-contrib.html
-;;
-;; I added it here for `ox-bibtex'
 ;; ----------------------------------------------------
-;; (use-package org-contrib
-;;   :ensure t
-;;   :config
-;;   (require 'ox-bibtex))
+(use-package org-contrib
+  :ensure t
+  :config
+  ;; Seems abandoned??
+  ;; (require 'ox-bibtex)
+
+  ;; Ignore headlines with tag `:ignore:'
+  (require 'ox-extra)
+  (ox-extras-activate '(ignore-headlines))
+  )
 
 ;; ----------------------------------------------------
 ;; Org Rifle
