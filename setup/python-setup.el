@@ -1,14 +1,15 @@
 ;; Run ggtags if projectile root folder available
 ;; ====================================================
+(defun bvr-python-mode-hook ()
+  (customize-set-variable 'indent-tabs-mode nil)
+  ;; (ggtags-mode 1)
+  (projectile-mode 1))
+
 (use-package python
   :ensure t
   :hook (python-mode . bvr-python-mode-hook)
   :init
   (setq python-indent-offset 2)
-  (defun bvr-python-mode-hook ()
-    (customize-set-variable 'indent-tabs-mode nil)
-    ;; (ggtags-mode 1)
-    (projectile-mode 1))
   :bind
   (("C-M-t" . treemacs-select-window)
    ;; ("M-." . lsp-goto-type-definition)
@@ -36,5 +37,8 @@
   ;; Push this to org-setup
   ;; (org-babel-jupyter-override-src-block "python")
   )
+
+(use-package python-docstring
+  :ensure t)
 
 (provide 'python-setup)
