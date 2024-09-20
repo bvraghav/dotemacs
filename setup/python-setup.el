@@ -3,11 +3,13 @@
 (defun bvr-python-mode-hook ()
   (customize-set-variable 'indent-tabs-mode nil)
   ;; (ggtags-mode 1)
-  (projectile-mode 1))
+  (projectile-mode 1)
+  (hs-minor-mode)
+  (outline-minor-mode))
 
 (use-package python
   :ensure t
-  :hook (python-mode . bvr-python-mode-hook)
+  :hook (python-base-mode . bvr-python-mode-hook)
   :init
   (setq python-indent-offset 2)
   :bind
