@@ -5,7 +5,20 @@
   ;; (ggtags-mode 1)
   (projectile-mode 1)
   (hs-minor-mode)
-  (outline-minor-mode))
+
+  ;; FIXME:
+  ;; --------------------------------------------------
+  ;; helm-search in python-mode buffer fails
+  ;; with error:
+  ;; 
+  ;; Debugger entered--Lisp error:
+  ;; (outline-before-first-heading)
+  ;; --------------------------------------------------
+  ;; But with outline-minor-mode disabled; the error
+  ;; disappears
+
+  ;; (outline-minor-mode)
+  )
 
 (use-package python
   :ensure t
