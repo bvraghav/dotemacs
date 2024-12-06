@@ -105,6 +105,33 @@
    :weight (if (< 192 (get-dpi)) 'light 'regular)))
 
 
+(defun bvr/org-refiles-from-agenda ()
+  "List of refile target files computed from `org-agenda-files'."
+  (cl-labels ((create-if-not-exists (fname)
+                (let* ((cmd "FNAME=%s; GNAME=${FNAME/agenda/record};
+if [[ $FNAME != $GNAME ]] ; then
+  [[ -a $FNAME ]] && {
+    if [[ -f ${FNAME} ]] ; then [ ! -f ${GNAME} ] && touch ${GNAME} ; echo ${GNAME} ; fi ;
+    if [[ -d ${FNAME} ]] ; then [ ! -d ${GNAME} ] && mkdir ${GNAME} ; find ${GNAME} -iname \'*.org\' ; fi ;
+  }
+else
+  if [[ -f ${FNAME} ]] ; then
+    echo ${FNAME} ;
+  else
+    find ${FNAME} -iname \'*.org\' ;
+  fi ;
+fi ;")
+                       (cmd (format cmd fname)))
+                  (message "fname: %s" fname)
+                  (message "cmd: %s" cmd)
+                  (s-lines (s-chomp (shell-command-to-string cmd))))))
+
+    (cl-loop for fname in org-agenda-files with gname
+             if (and
+                 (setq gname (create-if-not-exists fname))
+                 (or (not (stringp gname)) (if (s-blank? gname) nil (list gname))))
+             append gname)))
+
 ;; Org
 (use-package org
   :ensure t
@@ -289,7 +316,22 @@
   (setq org-default-notes-file "~/code/org/notes.org" ; notes
 
         ;; Agenda Files (and folders)
-        org-agenda-files '("~/code/org" "~/code/org-roam" "~/code/org-roam/daily")
+        org-agenda-files '("~/code/org/agenda")
+        ;; org-agenda-files '("~/code/org" "~/code/org-roam" "~/code/org-roam/daily")
+
+        ;; Refile targets
+        org-refile-targets '((bvr/org-refiles-from-agenda :maxlevel . 2)
+                             (org-agenda-files :maxlevel . 2))
+        ;; org-refile-targets '(("~/code/org/record" :maxlevel . 1))
+
+        ;; To refile as top level headings
+        org-refile-use-outline-path 'file
+
+        ;; Archive
+        org-archive-location "::* Archived Tasks"
+
+        ;; Columns Default Format
+        org-columns-default-format "%25ITEM %TODO %3PRIORITY %TAGS %SCHEDULED"
 
 	;; Exporter
 	org-export-backends
@@ -345,10 +387,6 @@
           ;; This is to avoid the ambiguity between
           ;; latex-mode and LaTeX mode
           ("latex" . LaTeX)))
-
-        ;; Org Refile
-        org-refile-targets '((org-agenda-files :maxlevel . 1))
-        org-archive-location "::* Archived Tasks"
 
         ;; Org Node Properties 
         org-use-property-inheritance t
