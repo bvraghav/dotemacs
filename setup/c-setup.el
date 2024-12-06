@@ -12,14 +12,16 @@
   ;; (set (make-local-variable 'compile-command)
   ;;      "b2 -d 2 -j 12 -s PREFIX=$HOME/.local")
   ;; Enable ggtags-mode
-  (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'cc-mode)
+  (when (derived-mode-p 'c-ts-base-mode 'c-mode 'c++-mode 'java-mode 'cc-mode)
     (ggtags-mode 1))
   (setq-local c-cleanup-list '(brace-else-brace
 			       brace-elseif-brace
 			       brace-catch-brace
 			       defun-close-semi
 			       comment-close-slash)))
-(add-hook 'c-mode-common-hook 'bvr-c-mode-common)
+(add-hook 'c-mode-common-hook #'bvr-c-mode-common)
+(add-hook 'c-mode-hook #'bvr-c-mode-common)
+(add-hook 'c-ts-mode-hook #'bvr-c-mode-common)
 
 ;; Compile command for throw away c++ files
 (defun bvr-compile-and-run(&optional cmd)
