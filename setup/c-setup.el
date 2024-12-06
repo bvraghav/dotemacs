@@ -9,8 +9,8 @@
 (defun bvr-c-mode-common ()
   "Customizations to the cc-mode"
   (yas-minor-mode t)
-  (set (make-local-variable 'compile-command)
-       "b2 -d 2 -j 12 -s PREFIX=$HOME/.local")
+  ;; (set (make-local-variable 'compile-command)
+  ;;      "b2 -d 2 -j 12 -s PREFIX=$HOME/.local")
   ;; Enable ggtags-mode
   (when (derived-mode-p 'c-mode 'c++-mode 'java-mode 'cc-mode)
     (ggtags-mode 1))
