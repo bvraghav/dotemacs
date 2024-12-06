@@ -98,5 +98,8 @@
 ;; Arduino Setup
 (require 'arduino-setup)
 
+;; Julia Setup
+(use-package julia-setup)
+
 (provide 'init)
 ;;; init.el ends here
