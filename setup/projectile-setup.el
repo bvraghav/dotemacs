@@ -1,4 +1,4 @@
-;;; projectile-setup.el --- Setup Projectile -*- lexical-binding: t -*-
+﻿;;; projectile-setup.el --- Setup Projectile -*- lexical-binding: t -*-
 
 ;; Author: B.V. Raghav
 ;; Maintainer: B.V. Raghav
@@ -66,11 +66,14 @@
                    "{ tmux ls -F '#S#,#{session_path}' 2>/dev/null } | grep '%s' | grep -o '^E_.*,' | tr -d ','"
                    dir))
            (sess (string-trim (shell-command-to-string cmd-1)))
-           (cmd-attach (format "xterm -e 'tmux attach -t \"%s\"'"
+           (cmd-attach (format "which xterm; xterm -e 'tmux attach -t \"%s\"' "
                                sess))
            (cmd-new (format "xterm -e 'tmux new-session -c \"%s\"  -s \"E_`uuidgen | head -c 6`\"'"
-                            dir)))
-      (async-shell-command (if (string-empty-p sess) cmd-new cmd-attach))))
+                            dir))
+           (cmd (if (string-empty-p sess) cmd-new cmd-attach)))
+      (message "bvr/projectile-open-tmux-in-root Async Shell CMD:")
+      (message "  {%s}" cmd)
+      (async-shell-command cmd)))
 
   (projectile-mode t))
 
