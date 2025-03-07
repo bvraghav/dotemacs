@@ -1,4 +1,4 @@
-;;; org-setup.el --- Set up Org Mode -*- lexical-binding: t -*-
+﻿;;; org-setup.el --- Set up Org Mode -*- lexical-binding: t -*-
 
 ;; Author: B.V. Raghav
 ;; Maintainer: B.V. Raghav
@@ -335,8 +335,8 @@ fi ;")
 
 	;; Exporter
 	org-export-backends
-	(quote
-	 (ascii beamer html icalendar latex md odt koma-letter))
+	'(ascii beamer html icalendar latex md odt koma-letter)
+
 	org-export-global-macros (quote (("sc" . "[[fm:sc][$1]]") ("tt" . "[[fm:tt][$1]]")))
 
 	;; HTML Exporter
@@ -476,6 +476,9 @@ fi ;")
   (setq org-link-abbrev-alist
         '(("ddg"      . "https://duckduckgo.com/?q=%h")
           ("search"   . "https://duckduckgo.com/?q=%h")))
+
+  ;; Require ox-md (https://orgmode.org/manual/Exporting.html)
+  (require 'ox-md)
   )
 
 ;; Ob-Async
