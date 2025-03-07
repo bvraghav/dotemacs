@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: nt
+# key: nt
+# --
+from collections import namedtuple as Nt

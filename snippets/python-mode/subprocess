@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: subprocess
+# key: sp
+# --
+import subprocess as Sp
