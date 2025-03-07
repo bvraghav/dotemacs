@@ -1,7 +1,7 @@
 (defun devanagari-setup ()
   (interactive)
 
-  ;; "Devanagari"  U+0900 - U+1097F
+  ;; "Devanagari"  U+0900 - U+097F
   (set-fontset-font "fontset-default"
                     (cons (decode-char 'ucs #x0900)
                           (decode-char 'ucs #x097f))
@@ -34,10 +34,20 @@
                           (decode-char 'ucs #x11fff))
                     "Noto Sans Tamil"))
 
+(defun gurmukhi-setup ()
+  (interactive)
+
+  ;; "Gurmukhi" U+0A00 - U+0A7f
+  (set-fontset-font "fontset-default"
+                    (cons (decode-char 'ucs #x0a00)
+                          (decode-char 'ucs #x0a7f))
+                    "Noto Serif Gurmukhi"))
+
 (defun indic-fonts-setup ()
   (interactive)
   (devanagari-setup)
   (tamil-setup)
+  (gurmukhi-setup)
   (define-key 'iso-transl-ctl-x-8-map "r" [?₹]))
 
 (indic-fonts-setup)
