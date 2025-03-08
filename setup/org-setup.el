@@ -132,6 +132,30 @@ fi ;")
                  (or (not (stringp gname)) (if (s-blank? gname) nil (list gname))))
              append gname)))
 
+
+
+(defun bvr/latex-replace-quotes (backend)
+  "Ensure \"“ ” ‘ ’\" are properly handled in LaTeX export.
+
+This is meant to be used with a hook before export and written
+for use with the LaTeX backend.
+
+Usage:
+  (add-hook 'org-export-before-parsing-hook
+            #'bvr/latex-replace-quotes)
+"
+  (message "[bvr/latex-filter-quotes] Backend: {%s}" backend)
+  ;; (message "[bvr/latex-filter-quotes] Info: {%s}" info)
+  (when (org-export-derived-backend-p backend 'latex)
+    (message "[bvr/latex-filter-quotes] Exporting LaTeX.")
+    (save-excursion
+      (let* ((text (delete-and-extract-region (point-min) (point-max)))
+             (text (replace-regexp-in-string "“" "``" text))
+             (text (replace-regexp-in-string "”" "''" text))
+             (text (replace-regexp-in-string "‘" "`" text))
+             (text (replace-regexp-in-string "’" "'" text)))
+        (insert text)))))
+
 ;; Org
 (use-package org
   :ensure t
@@ -143,7 +167,8 @@ fi ;")
   :hook ((org-mode        . bvr-org-setup)
          (org-mode        . bvr/org-set-face)
          (org-mode        . turn-on-org-cdlatex)
-         (org-agenda-mode . bvr/org-set-face))
+         (org-agenda-mode . bvr/org-set-face)
+         (org-export-before-parsing . bvr/latex-replace-quotes))
 
   :bind (("C-c l"       . org-store-link)
 	 ("C-c a"       . org-agenda)
@@ -175,7 +200,7 @@ fi ;")
     (flyspell-mode t)
     (typo-mode t)
 
-     ;; Images
+    ;; Images
     (setq org-image-actual-width
           (if (< 192 (get-dpi))
               '(768)
