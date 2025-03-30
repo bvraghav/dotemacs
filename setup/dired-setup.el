@@ -1,4 +1,4 @@
-;;; dired-setup.el --- Setup Dired Enhancements -*- lexical-binding: t -*-
+﻿;;; dired-setup.el --- Setup Dired Enhancements -*- lexical-binding: t -*-
 
 ;; Author: B.V. Raghav
 ;; Maintainer: B.V. Raghav
@@ -98,8 +98,11 @@
   :config
   (setq dired-open-extensions
         '(
-          ;; XournalPP
-          ("xopp" . "xdg-open")
+          ;; XournalPP xournalpp
+          ;; ("xopp" . "xdg-open")
+          ("xopp" . "xournalpp")    ; Require this hack
+                                    ; because of
+                                    ; https://github.com/xournalpp/xournalpp/issues/6069
           ;; Images/ Graphics
           ("jpg"  . "xdg-open")
           ("jif"  . "xdg-open")
@@ -158,6 +161,7 @@
           ("zip"  . "xdg-open")
           ("zz"   . "xdg-open")
           )
+
         dired-open-functions
         '(dired-open-by-extension
           dired-open-call-function-by-extension
@@ -169,13 +173,14 @@
   :config
   (progn
     (dired-rainbow-define-chmod directory "#6cb2eb" "d.*")
+    (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")
     (dired-rainbow-define html "#eb5286" ("css" "less" "sass" "scss" "htm" "html" "jhtm" "mht" "eml" "mustache" "xhtml"))
     (dired-rainbow-define xml "#f2d024" ("xml" "xsd" "xsl" "xslt" "wsdl" "bib" "json" "msg" "pgn" "rss" "yaml" "yml" "rdata"))
     (dired-rainbow-define document "#9561e2" ("docm" "doc" "docx" "odb" "odt" "pdb" "pdf" "ps" "rtf" "djvu" "epub" "odp" "ppt" "pptx"))
     (dired-rainbow-define markdown "#ffed4a" ("org" "etx" "info" "markdown" "md" "mkd" "nfo" "pod" "rst" "tex" "textfile" "txt"))
     (dired-rainbow-define database "#6574cd" ("xlsx" "xls" "csv" "accdb" "db" "mdb" "sqlite" "nc"))
     (dired-rainbow-define media "#de751f" ("mp3" "mp4" "MP3" "MP4" "avi" "mpeg" "mpg" "flv" "ogg" "mov" "mid" "midi" "wav" "aiff" "flac"))
-    (dired-rainbow-define image "#f66d9b" ("tiff" "tif" "cdr" "gif" "ico" "jpeg" "jpg" "png" "psd" "eps" "svg"))
+    (dired-rainbow-define image "#f66d9b" ("tiff" "tif" "cdr" "gif" "ico" "jpeg" "jpg" "png" "psd" "eps" "svg" "xopp"))
     (dired-rainbow-define log "#c17d11" ("log"))
     (dired-rainbow-define shell "#f6993f" ("awk" "bash" "bat" "sed" "sh" "zsh" "vim"))
     (dired-rainbow-define interpreted "#38c172" ("py" "ipynb" "rb" "pl" "t" "msql" "mysql" "pgsql" "sql" "r" "clj" "cljs" "scala" "js"))
@@ -187,7 +192,6 @@
     (dired-rainbow-define fonts "#6cb2eb" ("afm" "fon" "fnt" "pfb" "pfm" "ttf" "otf"))
     (dired-rainbow-define partition "#e3342f" ("dmg" "iso" "bin" "nrg" "qcow" "toast" "vcd" "vmdk" "bak"))
     (dired-rainbow-define vc "#0074d9" ("git" "gitignore" "gitattributes" "gitmodules"))
-    (dired-rainbow-define-chmod executable-unix "#38c172" "-.*x.*")
     ))
 
 (use-package dired-subtree
