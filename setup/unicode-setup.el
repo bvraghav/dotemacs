@@ -57,7 +57,16 @@
   (set-fontset-font "fontset-default"
                     (cons (decode-char 'ucs #x4e00)
                           (decode-char 'ucs #x9fff))
-                    "Jigmo"))
+
+                    ;; pacman -S adobe-source-han-sans-otc-fonts
+                    "Source Han Sans"
+
+                    ;; ;; pacman -S noto-fonts-cjk
+                    ;; "Noto Sans Mono CJK TC"
+
+                    ;; ;; pacman -S ttf-jigmo
+                    ;; "Jigmo"
+                    ))
 
 (defun unicode-setup ()
   (interactive)
