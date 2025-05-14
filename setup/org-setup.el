@@ -1,4 +1,4 @@
-﻿;;; org-setup.el --- Set up Org Mode -*- lexical-binding: t -*-
+;;; org-setup.el --- Set up Org Mode -*- lexical-binding: t -*-
 
 ;; Author: B.V. Raghav
 ;; Maintainer: B.V. Raghav

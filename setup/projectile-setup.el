@@ -1,4 +1,4 @@
-﻿;;; projectile-setup.el --- Setup Projectile -*- lexical-binding: t -*-
+;;; projectile-setup.el --- Setup Projectile -*- lexical-binding: t -*-
 
 ;; Author: B.V. Raghav
 ;; Maintainer: B.V. Raghav
