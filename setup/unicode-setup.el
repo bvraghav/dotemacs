@@ -50,6 +50,20 @@
   (gurmukhi-setup)
   (define-key 'iso-transl-ctl-x-8-map "r" [?₹]))
 
-(indic-fonts-setup)
+(defun cjk-setup ()
+  "Setup unicode for CJK."
+  (interactive)
+  ;; "CJK" U+4E00–9FFF
+  (set-fontset-font "fontset-default"
+                    (cons (decode-char 'ucs #x4e00)
+                          (decode-char 'ucs #x9fff))
+                    "Jigmo"))
 
-(provide 'indic-setup)
+(defun unicode-setup ()
+  (interactive)
+  (indic-fonts-setup)
+  (cjk-setup))
+
+(unicode-setup)
+
+(provide 'unicode-setup)

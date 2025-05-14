@@ -83,8 +83,8 @@
 (require 'trivial-functions)
 (require 'vue-mode-setup)
 
-;; The last (Indic Setup)
-(require 'indic-setup)
+;; Unicode setup including CJK
+(require 'unicode-setup)
 
 ;; Org Roam Setup
 (require 'org-roam-setup)
