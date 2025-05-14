@@ -233,16 +233,23 @@
 ;; http://xahlee.info/emacs/emacs/emacs_file_encoding.html
 
 ;; UTF-8 as default encoding
-(prefer-coding-system 'utf-8-with-signature)
+;; (prefer-coding-system 'utf-8-with-signature)
+;; (set-language-environment 'utf-8)
+;; (set-default-coding-systems 'utf-8)
+;; (set-keyboard-coding-system 'utf-8-unix) ; Overrides prefer-coding-system
+;; (setq coding-system-for-read 'utf-8-with-signature)
+;; (setq coding-system-for-write 'utf-8-with-signature)
+
+(prefer-coding-system 'utf-8)
 (set-language-environment 'utf-8)
 (set-default-coding-systems 'utf-8)
-(set-keyboard-coding-system 'utf-8-unix) ; Overrides prefer-coding-system
-(setq coding-system-for-read 'utf-8-with-signature)
-(setq coding-system-for-write 'utf-8-with-signature)
+(set-keyboard-coding-system 'utf-8)   ; Overrides prefer-coding-system
+(setq coding-system-for-read 'utf-8)
+(setq coding-system-for-write 'utf-8)
 
 ;; Add this especially on Windows, else python output
 ;; problem
-(set-terminal-coding-system 'utf-8-unix)
+(set-terminal-coding-system 'utf-8)
 ;; ----------------------------------------------------
 
 ;; Enable Flyspell by default
