@@ -134,15 +134,17 @@ fi ;")
 
 
 
-(defun bvr/latex-replace-quotes (backend)
-  "Ensure \"“ ” ‘ ’\" are properly handled in LaTeX export.
+(defun bvr/latex-replace-some-unicode (backend)
+  "Ensure (some) unicode chars are properly handled in LaTeX export.
+
+Ensure (some) unicode chars, e.g.  \"“ ” ‘ ’ …\" are properly handled in LaTeX export
 
 This is meant to be used with a hook before export and written
 for use with the LaTeX backend.
 
 Usage:
   (add-hook 'org-export-before-parsing-hook
-            #'bvr/latex-replace-quotes)
+            #'bvr/latex-replace-some-unicode)
 "
   (message "[bvr/latex-filter-quotes] Backend: {%s}" backend)
   ;; (message "[bvr/latex-filter-quotes] Info: {%s}" info)
@@ -150,6 +152,7 @@ Usage:
     (message "[bvr/latex-filter-quotes] Exporting LaTeX.")
     (save-excursion
       (let* ((text (delete-and-extract-region (point-min) (point-max)))
+             (text (replace-regexp-in-string "…" "\\\\ldots" text))
              (text (replace-regexp-in-string "“" "``" text))
              (text (replace-regexp-in-string "”" "''" text))
              (text (replace-regexp-in-string "‘" "`" text))
@@ -168,7 +171,7 @@ Usage:
          (org-mode        . bvr/org-set-face)
          (org-mode        . turn-on-org-cdlatex)
          (org-agenda-mode . bvr/org-set-face)
-         (org-export-before-parsing . bvr/latex-replace-quotes))
+         (org-export-before-parsing . bvr/latex-replace-some-unicode))
 
   :bind (("C-c l"       . org-store-link)
 	 ("C-c a"       . org-agenda)
