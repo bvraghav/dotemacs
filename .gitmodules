@@ -1,3 +1,3 @@
 [submodule "myelpa"]
 	path = myelpa
-	url = https://github.com/bvraghav/myelpa
+	url = gh:gbvraghav/myelpa
