@@ -1,4 +1,5 @@
-﻿
+(require 'cl-lib)
+
 ;; Basic reset
 (put 'set-goal-column 'disabled nil)
 (put 'downcase-region 'disabled nil)
@@ -270,16 +271,27 @@
 ;; https://github.com/renzmann/treesit-auto
 (use-package treesit-auto
   :ensure t
+  :after cmake-mode
 
   :custom
   (treesit-auto-install 'prompt)
 
-   :config
-  (treesit-auto-add-to-auto-mode-alist 'all)
+  :config
+  (setq bvr/treesit-auto-exceptions
+        '(cmake))
+  (let* ((all treesit-auto-langs)
+         (exceptions bvr/treesit-auto-exceptions)
+         (langs (cl-remove-if (lambda (x) (member x exceptions))
+                              all)))
+    (treesit-auto-add-to-auto-mode-alist langs))
   (global-treesit-auto-mode))
 
 ;; Install mmm-mode
 ;; ----------------------------------------------------
 (use-package mmm-mode :ensure t)
+
+;; Install cmake mode
+;; ----------------------------------------------------
+(use-package cmake-mode :ensure t)
 
 (provide 'basic-look-and-feel)
