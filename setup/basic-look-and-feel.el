@@ -286,6 +286,11 @@
     (treesit-auto-add-to-auto-mode-alist langs))
   (global-treesit-auto-mode))
 
+;; Treesit-Fold mode
+;; ----------------------------------------------------
+;; https://github.com/emacs-tree-sitter/treesit-fold.git
+(use-package treesit-fold)
+
 ;; Install mmm-mode
 ;; ----------------------------------------------------
 (use-package mmm-mode :ensure t)
