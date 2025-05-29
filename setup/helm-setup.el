@@ -485,19 +485,6 @@ new directory."
      'file-exists-p
      3)))
 
-(use-package helm-dictionary ; Its autoloads are already loaded.
-  :after (helm)
-  :commands helm-dictionary
-  :config
-  (setq helm-dictionary-database
-        '(("en-fr" . "~/helm-dictionary/dic-en-fr.iso")
-          ("fr-en" . "~/helm-dictionary/dic-fr-en.iso"))
-        helm-dictionary-online-dicts
-        '(("translate.reference.com en->fr" .
-           "http://translate.reference.com/translate?query=%s&src=en&dst=fr")
-          ("translate.reference.com fr->en" .
-           "http://translate.reference.com/translate?query=%s&src=fr&dst=en"))))
-
 (use-package helm-descbinds
   :after (helm)
   :ensure t
