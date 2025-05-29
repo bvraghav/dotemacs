@@ -229,6 +229,13 @@ Usage:
     (org-babel-jupyter-override-src-block "python")
     ;; (org-babel-jupyter-restore-src-block "python")
 
+    ;; Require org-ref
+    ;; ------------------------------------------------
+    ;; For some reason, this is necessary for latex
+    ;; export of org-ref functionality.  I do not
+    ;; understand why `(use-package 'org-ref)' isn't
+    ;; simply enough!
+    (require 'org-ref)
     )
   ;; (add-hook 'org-mode-hook #'bvr-org-setup)
 
