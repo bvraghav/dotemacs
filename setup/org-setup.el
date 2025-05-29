@@ -45,9 +45,7 @@
 ;; setting.
 (setq org-emphasis-regexp-components
       '("-[:space:]('\"{" "-[:space:].,:!?;'\")}\\[" "[:space:]" "." 4)
-
       )
-
 
 
 ;; Org Mode Latex Export Syntax Highlighting
@@ -104,7 +102,6 @@
    ;; of the cases.
    :weight (if (< 192 (get-dpi)) 'light 'regular)))
 
-
 (defun bvr/org-refiles-from-agenda ()
   "List of refile target files computed from `org-agenda-files'."
   (cl-labels ((create-if-not-exists (fname)
@@ -132,8 +129,6 @@ fi ;")
                  (or (not (stringp gname)) (if (s-blank? gname) nil (list gname))))
              append gname)))
 
-
-
 (defun bvr/latex-replace-some-unicode (backend)
   "Ensure (some) unicode chars are properly handled in LaTeX export.
 
@@ -146,17 +141,20 @@ Usage:
   (add-hook 'org-export-before-parsing-hook
             #'bvr/latex-replace-some-unicode)
 "
-  (message "[bvr/latex-filter-quotes] Backend: {%s}" backend)
+  (message "[bvr/latex-replace-some-unicode] Backend: {%s}" backend)
   ;; (message "[bvr/latex-filter-quotes] Info: {%s}" info)
   (when (org-export-derived-backend-p backend 'latex)
-    (message "[bvr/latex-filter-quotes] Exporting LaTeX.")
+    (message "[bvr/latex-replace-some-unicode] Exporting LaTeX.")
     (save-excursion
       (let* ((text (delete-and-extract-region (point-min) (point-max)))
              (text (replace-regexp-in-string "…" "\\\\ldots" text))
              (text (replace-regexp-in-string "“" "``" text))
              (text (replace-regexp-in-string "”" "''" text))
              (text (replace-regexp-in-string "‘" "`" text))
-             (text (replace-regexp-in-string "’" "'" text)))
+             (text (replace-regexp-in-string "’" "'" text))
+             ;; (text (replace-regexp-in-string " " "~" text))
+             ;; (text (replace-regexp-in-string " " "~" text))
+             )
         (insert text)))))
 
 ;; Org
@@ -302,7 +300,7 @@ Usage:
   ;; Use GAWK as AWK executable
   (setq org-babel-awk-command "/usr/bin/gawk")
 
-  ;; Add org link for sc
+  ;; Add org link {{{sc}}} for SMALL-CAPS
   (org-add-link-type
    "fm" nil
    (lambda (path desc format)
