@@ -302,4 +302,16 @@
 ;; ----------------------------------------------------
 (use-package cmake-mode :ensure t)
 
+;; Install and/or Load Deft
+;; ----------------------------------------------------
+(use-package deft
+  :ensure t
+  :bind (("C-z C-M-f" . deft)
+         ("C-x C-M-f" . deft-find-file))
+  :commands (deft)
+  :config (setq deft-recursive t
+                deft-directory "~/code/org"
+                deft-extenstions '("org" "md" "txt")
+                deft-default-extension "org"))
+
 (provide 'basic-look-and-feel)
