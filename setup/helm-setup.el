@@ -38,6 +38,8 @@
 
 ;;; Set up helm first (will load helm-autoloads.el)
 
+(require 'iso-transl)
+
 (use-package dash :ensure t :demand)
 (use-package f :ensure t :demand)
 (use-package s :ensure t :demand)
@@ -668,6 +670,76 @@ empty string to inhibit prefix"
     (format "%s%02x%02x%02x" p r g b)))
 ;; ----------------------------------------------------
 
+;; ----------------------------------------------------
+;; Insert org entity
+;; ----------------------------------------------------
+;; Courtesy: Kitchin Lab
+;; https://kitchingroup.cheme.cmu.edu/blog/2015/11/21/Insert-org-entities-into-org-mode-with-helm/
+;;
+;; Refactored from here.
+;; ----------------------------------------------------
+(defun bvr/helm-insert-org-entity (_)
+  "Helm interface to insert an entity from `org-entities'.
+F1 inserts entity code
+F2 inserts utf-8 character
+F3 inserts LaTeX code (does not wrap in math-mode)
+F4 inserts HTML code"
+  (interactive "i")
+  (helm :sources (bvr/helm-org-entity-sources)))
+
+(defun bvr/helm-org-entity-sources ()
+  "Helm sources for `org-entities'."
+  
+  (let ((sources '())
+        (candidates '())
+        (action `(("insert org entity"
+                   . ,(lambda (candidate)
+                        (insert (concat "\\"
+                                        (car candidate)
+                                        "{}"))))
+                  ("insert utf-8 char"
+                   . ,(lambda (candidate)
+                        (insert (nth 6 candidate))))
+                  ("insert latex"
+                   . ,(lambda (candidate)
+                        (insert (nth 1 candidate))))
+                  ("insert html"
+                   . ,(lambda (candidate)
+                        (insert (nth 3 candidate))))))
+        tl sl name)
+    (dolist (element (append
+                      '("* User" "** User entities")
+                      org-entities-user
+                      org-entities
+                      '("* " "** ")))
+      (when (and (stringp element)
+                 (s-starts-with? "* " element))
+        (setq tl element))
+      (when (and (stringp element)
+                 (s-starts-with? "** " element))
+        (when candidates
+          (setq candidates (reverse candidates))
+          (push `((name . ,name)
+                  (candidates . ,candidates)
+                  (action . ,action))
+                sources))
+        (setq sl (s-chop-left 3 element))
+        (setq name (concat tl " - " sl))
+        (setq candidates '()))
+      (when (and element (listp element))
+        (push (cons
+               (format "%10s %s"
+                       (nth 6 element)
+                       element)
+               element)
+              candidates)))
+    (reverse sources)))
+;; ----------------------------------------------------
+
+;;; ISO Transl Ctl-x-8 map
+(define-key 'iso-transl-ctl-x-8-map
+            (kbd "TAB")
+            #'bvr/helm-insert-org-entity)
 
 ;;; Ctl-x-5 map
 ;;
