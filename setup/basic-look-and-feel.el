@@ -1,4 +1,6 @@
 (require 'cl-lib)
+(require 'f)
+(require 's)
 
 ;; Basic reset
 (put 'set-goal-column 'disabled nil)
@@ -309,9 +311,28 @@
   :bind (("C-z C-M-f" . deft)
          ("C-x C-M-f" . deft-find-file))
   :commands (deft)
-  :config (setq deft-recursive t
-                deft-directory "~/code/org"
-                deft-extenstions '("org" "md" "txt")
-                deft-default-extension "org"))
+
+  :config
+  (setq deft-recursive t
+        deft-directory "~/code/org"
+        deft-extenstions '("org" "md" "txt")
+        deft-default-extension "org"
+        deft-strip-summary-regexp "\\([
+]\\|^#\\+[^+]+:.*$\\|^:[^:]+:.*$\\)")
+  (advice-add #'deft-parse-title
+              :around #'bvr/deft-parse-org-title))
+(defun bvr/deft-parse-org-title (func file contents)
+  "Advise `deft-parse-title' to use `org-get-title' instead."
+  (if (s-equals? "org" (f-ext file))
+      (with-temp-buffer
+        (insert contents)
+        (or (org-get-title)
+            (file-name-base file)))
+    (funcall func file contents))
+  )
+
+;; Try package
+;; ----------------------------------------------------
+(use-package try :ensure t)
 
 (provide 'basic-look-and-feel)
