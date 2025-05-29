@@ -6,6 +6,9 @@
 (put 'upcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; Reset "C-z" key
+(global-unset-key (kbd "C-z"))
+
 ;; Basic look and feel
 (menu-bar-mode -1)
 (scroll-bar-mode -1)

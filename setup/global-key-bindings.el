@@ -1,6 +1,3 @@
-;; Unset Keys
-(global-unset-key (kbd "C-z"))
-
 ;; Key Bindings
 (global-set-key (kbd "C-c C-i") #'ibuffer)
 (global-set-key (kbd "C-z C-a") #'align-regexp)
