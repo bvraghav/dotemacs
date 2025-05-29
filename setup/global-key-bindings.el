@@ -79,5 +79,8 @@
 (require 'fill-line)
 (global-set-key (kbd "M-#") #'fill-line)
 
+;; Dictionary Lookup
+;; ----------------------------------------------------
+(global-set-key (kbd "M-@") #'dictionary-lookup-definition)
 
 (provide 'global-key-bindings)
