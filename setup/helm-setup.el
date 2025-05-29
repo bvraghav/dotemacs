@@ -758,11 +758,11 @@ F4 inserts HTML code"
 ;;
 (define-key helm-command-map (kbd "g") 'helm-apt)
 (define-key helm-command-map (kbd "z") 'helm-complex-command-history)
-(define-key helm-command-map (kbd "w") 'helm-w3m-bookmarks)
-(define-key helm-command-map (kbd "x") 'helm-firefox-bookmarks)
-(define-key helm-command-map (kbd "#") 'helm-emms)
+;; (define-key helm-command-map (kbd "w") 'helm-w3m-bookmarks)
+;; (define-key helm-command-map (kbd "x") 'helm-firefox-bookmarks)
+;; (define-key helm-command-map (kbd "#") 'helm-emms)
 (define-key helm-command-map (kbd "I") 'helm-imenu-in-all-buffers)
-(define-key helm-command-map (kbd "@") 'helm-list-elisp-packages-no-fetch)
+;; (define-key helm-command-map (kbd "@") 'helm-list-elisp-packages-no-fetch)
 
 ;;; Global-map
 ;;
@@ -791,7 +791,7 @@ F4 inserts HTML code"
 (global-set-key (kbd "<f11>")                        nil)
 (global-set-key (kbd "<f11> o")                      'helm-org-agenda-files-headings)
 (global-set-key (kbd "C-s")                          'helm-occur-visible-buffers)
-(global-set-key (kbd "<f6> h")                       'helm-emms)
+;; (global-set-key (kbd "<f6> h")                       'helm-emms)
 (define-key global-map [remap jump-to-register]      'helm-register)
 (define-key global-map [remap list-buffers]          'helm-mini)
 (define-key global-map [remap dabbrev-expand]        'helm-dabbrev)
@@ -799,14 +799,13 @@ F4 inserts HTML code"
 ;; (define-key global-map [remap xref-find-definitions] 'helm-etags-select)
 (define-key global-map (kbd "M-g a")                 'helm-do-grep-ag)
 (define-key global-map (kbd "M-g g")                 'helm-grep-do-git-grep)
-(define-key global-map (kbd "M-g i")                 'helm-gid)
+;; (define-key global-map (kbd "M-g i")                 'helm-gid) ; Code browsing utility. Use GNU Global instead
 (define-key global-map (kbd "C-x r p")               'helm-projects-history)
-(define-key global-map (kbd "C-x r c")               'helm-addressbook-bookmarks)
+;; (define-key global-map (kbd "C-x r c")               'helm-addressbook-bookmarks)
 (define-key global-map (kbd "C-c t r")               'helm-dictionary)
 (define-key global-map (kbd "C-x c c")               #'bvr/helm/insert-color-at-point-or-region)
 (define-key global-map (kbd "C-#")                   #'helm-command-prefix)
 (define-key global-map (kbd "C-# SPC")               #'helm-multi-files)
-
 
 ;; Indent or complete with completion-at-point
 ;; (setq tab-always-indent 'complete)
