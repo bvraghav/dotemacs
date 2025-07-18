@@ -308,8 +308,8 @@
 ;; ----------------------------------------------------
 (use-package deft
   :ensure t
-  :bind (("C-z C-M-f" . deft)
-         ("C-x C-M-f" . deft-find-file))
+  ;; :bind (("C-z C-M-f" . deft)
+  ;;        ("C-x C-M-f" . deft-find-file))
   :commands (deft)
 
   :config
