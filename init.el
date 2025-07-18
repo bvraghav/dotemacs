@@ -87,16 +87,16 @@
 (require 'unicode-setup)
 
 ;; Org Roam Setup
-(require 'org-roam-setup)
+(use-package org-roam-setup)
 
 ;; Org CV Setup
 (use-package org-cv-setup)
 
 ;; Markdown Mode Setup
-(require 'markdown-setup)
+(use-package markdown-setup)
 
 ;; Arduino Setup
-(require 'arduino-setup)
+(use-package arduino-setup)
 
 ;; Julia Setup
 (use-package julia-setup)
