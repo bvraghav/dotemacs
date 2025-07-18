@@ -101,5 +101,9 @@
 ;; Julia Setup
 (use-package julia-setup)
 
+;; Notdeft Setup
+(use-package notdeft-setup
+  :after org-roam-setup)
+
 (provide 'init)
 ;;; init.el ends here
