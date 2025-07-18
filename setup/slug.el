@@ -1,6 +1,10 @@
+(defun get-slug (string)
+  "Convert STRING to its slug."
+  (shell-command-to-string (concat "slug '" string "'")))
+
 (defun slug (string)
   (interactive "sString for slug: ")
-  (insert (shell-command-to-string (concat "slug '" string "'"))))
+  (insert (get-slug string)))
 
 (defun slug-dwim ()
   (interactive)

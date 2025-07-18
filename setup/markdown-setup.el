@@ -141,6 +141,26 @@ ports not in such a use.  N=1 by default."
 
 ;; ----------------------------------------------------
 
+;; BVR's Utils for Markdown
+;; ----------------------------------------------------
+(defun bvr/md/insert-link-from-kill-ring ()
+  "Insert md link from heading in kill ring."
+  (interactive)
+  (insert (bvr/md/get-link-from-heading (car kill-ring))))
+
+(defun bvr/md/get-link-from-heading (str)
+  "Create md link from heading in STR.
+
+It's assumed that STR is a heading.  No validation performed."
+  (let* ((title (s-replace-regexp "^[#]* \\(.*\\) [#]*$"
+                                  "\\1" str))
+         (link (format "[%s](#%s)"
+                       title
+                       (get-slug title))))
+    link))
+
+;; ----------------------------------------------------
+
 ;; Markdown
 ;; ----------------------------------------------------
 (use-package markdown-mode
@@ -148,7 +168,8 @@ ports not in such a use.  N=1 by default."
   :init (bvr/ms/validate-markserv)
   :hook (markdown-mode . auto-fill-mode)
   :bind (("C-c C-q C-l" . #'bvr/ms/start)
-         ("C-c C-q C-q C-l" . #'bvr/ms/end)))
+         ("C-c C-q C-q C-l" . #'bvr/ms/end)
+         ("C-M-y" . #'bvr/md/insert-link-from-kill-ring)))
 
 (provide 'markdown-setup)
 
