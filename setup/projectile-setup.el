@@ -75,6 +75,13 @@
       (message "  {%s}" cmd)
       (async-shell-command cmd)))
 
+  ;; (defun bvr/projectile-refresh-py-cli-doc ()
+  ;;   (interactive)
+  ;;   (let* ((dir (projectile-project-root))
+  ;;          (dir (and dir (directory-file-name dir)))
+  ;;          )
+  ;;     ))
+
   (projectile-mode t))
 
 (use-package helm-projectile
