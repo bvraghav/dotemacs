@@ -1,0 +1,6 @@
+# key: mini
+# name: minipage
+# --
+#+latex: \begin{minipage}${1:[t]}{${2:0.5\linewidth}}
+$0
+#+latex: \end{minipage}
