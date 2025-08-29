@@ -42,4 +42,8 @@
 	  ("git.suckless.org" nil "git.suckless.org" forge-stagit-repository)
 	  ("git.sr.ht" nil "git.sr.ht" forge-srht-repository)))))
 
+(use-package magit-gitflow
+  :ensure t
+  :hook (magit-mode . turn-on-magit-gitflow))
+
 (provide 'magit-setup)
