@@ -331,6 +331,10 @@
     (funcall func file contents))
   )
 
+;; Enable savehist mode
+;; ----------------------------------------------------
+(savehist-mode t)
+
 ;; Try package
 ;; ----------------------------------------------------
 (use-package try :ensure t)

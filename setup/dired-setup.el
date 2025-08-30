@@ -80,8 +80,10 @@
 
 (use-package dired-quick-sort
   :ensure t
+  :hook ((dired-mode . dired-quick-sort))
   :config
-  (dired-quick-sort-setup))
+  (dired-quick-sort-setup)
+  (dired-quick-sort "time" nil 121))
 
 (use-package dired-hacks-utils
   :ensure t)
