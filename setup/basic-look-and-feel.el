@@ -339,4 +339,8 @@
 ;; ----------------------------------------------------
 (use-package try :ensure t)
 
+;; Enable EditorConfig by default
+;; ----------------------------------------------------
+(editorconfig-mode 1)
+
 (provide 'basic-look-and-feel)
