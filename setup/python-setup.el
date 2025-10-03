@@ -18,7 +18,9 @@
   ;; disappears
 
   ;; (outline-minor-mode)
-  )
+
+  ;; Use pyright flycheck checker
+  (setq flycheck-checker 'python-pyright))
 
 (use-package python
   :ensure t
