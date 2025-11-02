@@ -162,7 +162,7 @@ Usage:
   :ensure t
   :pin gnu
 
-  :after (ob-http cdlatex)
+  :after (ob-http cdlatex ob-rust)
 
   :mode "\\.org\\/[^.]*\(.org\)?\\'"
   :hook ((org-mode        . bvr-org-setup)
@@ -416,6 +416,7 @@ Usage:
 	  ("screen" . shell-script)
 	  ("shell" . sh)
 	  ("bash" . sh)
+          ("rust" . rust)
 
           ;; This is to avoid the ambiguity between
           ;; latex-mode and LaTeX mode

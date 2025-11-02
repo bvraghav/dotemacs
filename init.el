@@ -105,5 +105,8 @@
 (use-package notdeft-setup
   :after org-roam-setup)
 
+;; Rust Setup
+(use-package rust-setup)
+
 (provide 'init)
 ;;; init.el ends here
