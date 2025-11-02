@@ -399,7 +399,7 @@ Usage:
 	;; Babel languages
 	org-src-lang-modes
 	(quote
-	 (("jupyter-python" . python)
+	 (("jupyter-python" . python-ts)
 	  ("js" . js2)
 	  ("http" . ob-http)
 	  ("ipython" . python)
@@ -416,7 +416,7 @@ Usage:
 	  ("screen" . shell-script)
 	  ("shell" . sh)
 	  ("bash" . sh)
-          ("rust" . rust)
+          ("rust" . rust-ts)
 
           ;; This is to avoid the ambiguity between
           ;; latex-mode and LaTeX mode
