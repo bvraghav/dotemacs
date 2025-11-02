@@ -52,7 +52,9 @@
   (add-to-list 'org-babel-load-languages '(rust . t))
   (org-babel-do-load-languages
    'org-babel-load-languages
-   org-babel-load-languages))
+   org-babel-load-languages)
+  :config
+  (setq rust-indent-offset 2))
 
 (provide 'rust-setup)
 
