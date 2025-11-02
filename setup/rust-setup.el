@@ -54,7 +54,8 @@
    'org-babel-load-languages
    org-babel-load-languages)
   :config
-  (setq rust-indent-offset 2))
+  (setq rust-indent-offset 2
+        rust-ts-mode-indent-offset 2))
 
 (provide 'rust-setup)
 
