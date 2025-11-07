@@ -234,6 +234,10 @@
 ;; ----------------------------------------------------
 (use-package glsl-mode :ensure t)
 
+;; Install wgsl-mode maybe
+;; ----------------------------------------------------
+(use-package wgsl-mode :ensure t)
+
 ;; UTF-8 by default
 ;; ----------------------------------------------------
 ;; http://xahlee.info/emacs/emacs/emacs_file_encoding.html
