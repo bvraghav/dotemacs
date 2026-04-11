@@ -152,6 +152,8 @@ Usage:
              (text (replace-regexp-in-string "”" "''" text))
              (text (replace-regexp-in-string "‘" "`" text))
              (text (replace-regexp-in-string "’" "'" text))
+             (text (replace-regexp-in-string "–" "--" text))
+             (text (replace-regexp-in-string "—" "---" text))
              ;; (text (replace-regexp-in-string " " "~" text))
              ;; (text (replace-regexp-in-string " " "~" text))
              )

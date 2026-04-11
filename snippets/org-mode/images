@@ -1,0 +1,21 @@
+# -*- mode: snippet -*-
+# name: images
+# key: img
+# --
+#+latex: \begin{minipage}[b]{0.5\linewidth}
+
+#+attr_latex: :float nil
+#+caption: Caption for Image 1
+#+name: fig:img1
+file:FIRST_IMAGE_HERE
+
+#+latex: \end{minipage}%
+#+latex: \begin{minipage}[b]{0.5\linewidth}
+
+#+attr_latex: :float nil
+#+caption: Caption for Image 2
+#+name: fig:img2
+file:SECOND_IMAGE_HERE
+
+#+latex: \end{minipage}
+\thinsp{}@@latex: \hfill@@ /Image Courtesy: Courteously/
