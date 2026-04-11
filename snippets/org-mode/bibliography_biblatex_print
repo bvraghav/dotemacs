@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: bibliography_biblatex_print
+# key: bib
+# --
+* References
+\printbibliography[heading=none]

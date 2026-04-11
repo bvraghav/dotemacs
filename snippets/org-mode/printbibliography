@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: printbibliography
+# key: bib
+# --
+* References
+:PROPERTIES:
+:UNNUMBERED: t
+:END:
+
+\printbibliography[heading=none]

@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: link_hyperlink_hypersetup
+# key: link
+# --
+#+latex_header_extra: \hypersetup{
+#+latex_header_extra:   colorlinks,
+#+latex_header_extra:   allcolors=.,
+#+latex_header_extra:   urlcolor=blue,
+#+latex_header_extra: }
+

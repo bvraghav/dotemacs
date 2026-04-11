@@ -1,0 +1,22 @@
+# -*- mode: snippet -*-
+# name: bibliography_biblatex_header
+# key: bib
+# --
+#+latex_header_extra: \usepackage[date=year,%
+#+latex_header_extra:   backend=biber,%
+#+latex_header_extra:   style=alphabetic,%
+#+latex_header_extra:   maxnames=5,%
+#+latex_header_extra:   minnames=3,%
+#+latex_header_extra:   maxalphanames=4,%
+#+latex_header_extra:   minalphanames=3,%
+#+latex_header_extra:   backref=true,%
+#+latex_header_extra:   doi=false,%
+#+latex_header_extra:   isbn=false,%
+#+latex_header_extra:   url=false,%
+#+latex_header_extra:   eprint=false]{biblatex}
+#+latex_header_extra: \DefineBibliographyStrings{english}{%
+#+latex_header_extra:   backrefpage  = {\lowercase{s}ee p.}, % for single page number
+#+latex_header_extra:   backrefpages = {\lowercase{s}ee pp.} % for multiple page numbers
+#+latex_header_extra: }
+#+latex_header_extra: \addbibresource{/home/bvraghav/bibliography.bib}
+

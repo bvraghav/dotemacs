@@ -347,4 +347,13 @@
 ;; ----------------------------------------------------
 (editorconfig-mode 1)
 
+;; Install and enable graphviz-dot
+;; ----------------------------------------------------
+(use-package graphviz-dot-mode
+  :ensure t
+  :config
+  (setq graphviz-dot-indent-width 2)
+  :hook
+  (graphviz-dot-mode . flycheck-mode))
+
 (provide 'basic-look-and-feel)
