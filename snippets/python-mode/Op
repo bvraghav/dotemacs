@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: Op
-# key: Op
-# --
-import operator as Op
