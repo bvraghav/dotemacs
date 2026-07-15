@@ -1,0 +1,70 @@
+# You would still require to install pytorch along with its allies: torchvision torchaudio lightning etc.  Also recommemded is hugging face for its industry standard model blocks and accelerator.
+#
+# pip install torch torchvision torchaudio lightning timm accelerate
+
+name: emacs
+channels:
+  - pytorch
+  - conda-forge
+  - defaults
+dependencies:
+  - attrs
+  - aws-sdk-cpp
+  - beautifulsoup4
+  - blas
+  - bleach
+  - click
+  - databricks-cli
+  - dbus
+  - debugpy
+  - decorator
+  - docker-py
+  - fastparquet
+  - ffmpeg
+  - flask
+  - gflags
+  - gitpython
+  - glog
+  - gmp
+  - gunicorn
+  - h5py
+  - hdf5
+  - imageio
+  - jedi
+  - jsonschema
+  - jupyter
+  - jupyterlab
+  - lame
+  - markdown
+  - matplotlib
+  - mkl
+  - mlflow
+  - ncurses
+  - numba
+  - numpy
+  - pandas
+  - pcre
+  - pip
+  - pillow
+  - ply
+  - prompt-toolkit
+  - protobuf
+  - psutil
+  - pydantic
+  - python
+  - python-dateutil
+  - python-fastjsonschema
+  - readline
+  - regex
+  - scikit-image
+  - scikit-learn
+  - scipy
+  - seaborn
+  - tk
+  - tornado
+  - tqdm
+  - typing-extensions
+  - pip:
+      - opencv-python
+      - pygments
+      - pygnuplot
